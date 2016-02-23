@@ -29,7 +29,7 @@ if int(config.get('django', 'development_mode')) == 1:
     ec2 = session.resource('ec2')
 
     for instance in ec2.instances.all():
-        if instance.key_name == 'ping-korea': 
+        if instance.key_name == 'filibuster': 
             env.hosts.append(instance.public_dns_name)
 
 
