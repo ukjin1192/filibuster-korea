@@ -1,0 +1,130 @@
+{% load cache %}
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>필리버스터</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  {# Search option #}
+  <meta name="google" value="notranslate" />
+  <meta name="author" content="" />
+  <meta name="description" content="필리버스터 한국 (Filibuster Korea)" />
+  <meta name="keywords" content="필리버스터, Filibuster" />
+
+  {# Favicon #}
+  {% comment %}
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/manifest.json">
+  <link rel="mask-icon" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="{{ 'CDN_URL'|get_settings_variable }}/favicon/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  {% endcomment %}
+
+  {# CDN CSS #}
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.2.7/css/fileinput.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" />
+
+  {# Project CSS #}
+  {% compress css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+  {% endcompress %}
+
+  {# Support HTML5 tag and media query for IE below version 9 #}
+  <!--[if lte IE 8]>
+    {# Support HTML5 Section Element #}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    {# Support CSS Media Query #}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  {# Google Analytics #}
+  {% if 'DEBUG'|get_settings_variable == False %}
+  <script type="text/javascript" src="{% static 'js/googleAnalytics.js' %}"></script>
+  {% endif %}
+</head>
+<body>
+  {# Loading icon #}
+  <div id="loading-icon"></div>
+
+  {# Show if script is not executable at browser #}
+  {% cache 86400 noscript %}
+  <noscript>
+    <h1>Browser가 JavaScript를 지원하지 않고 있습니다</h1> 
+    <h2>아래 메뉴얼대로 따라해주세요</h2>
+    <h3>Internet Explorer</h3>
+    <div>
+      도구 - 인터넷 옵션 - 보안 탭 - 사용자 지정 수준 - 스크립팅 - Active 스크립팅 - 사용 - 확인
+    </div>
+    <h3>Chrome</h3>
+    <div>
+      도구 - 설정 - 개인정보 - 콘텐츠 설정 - 자바스크립트 - 모든 사이트에서 자바스크립트 실행 허용 - 완료
+    </div>
+    <h3>Android</h3>
+    <div>
+      메뉴 - 설정 - 고급설정 - 자바스크립트 사용
+    </div>
+    <h3>FireFox</h3>
+    <div>
+      주소창에 "about:config" 입력 - 고급 기능 사용 동의 - javascript.enabled 더블 클릭
+    </div>
+    <h3>Safari Mobile</h3>
+    <div>
+      설정 - Safari - JavaScript 클릭
+    </div>
+    <h3>Safari Desktop</h3>
+    <div>
+      도구 - 기본 설정 - 보안 - JavaScript 활성화
+    </div>
+  </noscript>
+  {% endcache %}
+
+  {% block container %}{% endblock %}
+
+  {# CDN JS #}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+  <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+  {# Project JS #}
+  {% compress js %}
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  {% endcompress %}
+
+  {# Support Placehoder for IE below version 10 #}
+  <!--[if lte IE 9]>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-placeholder/2.0.8/jquery.placeholder.min.js"></script>
+    <script type="text/javascript">
+      if(!Modernizr.input.placeholder) $('input').placeholder();
+    </script>
+  <![endif]-->
+</body>
+</html>

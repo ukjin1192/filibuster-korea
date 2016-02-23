@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% load custom_filter %}
+
+{% block container %}
+<input type="hidden" id="firebase-repo-url" value="{{ 'FIREBASE_REPO_URL'|get_settings_variable }}" />
+
+<div class="container-fit text-center">
+
+	<img src="http://placehold.it/400x400" style="width: 100%; max-width: 400px; margin: 0 auto; z-index: 5;" />
+
+	<div style="position: absolute; width: 100%; top: 20px; z-index: 10; margin: 0 auto; color: white;">
+		<h3><strong>임시국회 폐회까지</strong></h3>
+		<h3><strong>300시간 30분 3초</strong></h3>
+		<h1><strong><u>필리버스터 릴레이</u></strong></h1>
+	</div>
+
+	<div style="background-color: #76252B; color: #D2AF6D; padding: 20px 10px;">
+		<h4>테러방지법 직권상정에 대한</h4>
+		<h4>필리버스터가 이어지고 있습니다.</h4>
+		<h4>단상에 오르는 의원들의 입을 빌어</h4>
+		<h4>하고 싶은 이야기를 적어 주세요.</h4>
+	</div>
+
+	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
+		<h3><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
+		
+		<img src="http://placehold.it/200x200" class="full-width" style="max-width: 200px; margin-top: 10px;" />
+		
+		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
+			{% csrf_token %}
+			<input type="hidden" id="captcha-key" value="" />
+			<div class="input-group" id="captcha-group" style="margin-bottom: 10px;">
+				<span class="input-group-addon" id="captcha-image-container" style="padding: 0;">
+					<img src="" id="captcha-image" />
+				</span>
+				<span class="input-group-addon cursor-pointer" id="refresh-captcha">
+					<span class="glyphicon glyphicon-refresh"></span>
+				</span>
+				<input type="text" class="form-control" id="captcha-value" placeholder="왼쪽 문자를 입력해주세요" autocomplete="off" required style="height: 44px;" />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" id="content" rows="4" maxlength="1000" placeholder="박원석 의원을 통해 하고 싶은 이야기 (최대 1000자)"></textarea>
+			</div>
+			<div class="alert alert-info hidden" role="alert" id="success-message">
+				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
+				감사합니다. 당신의 목소리가 전달됐습니다.
+			</div>
+			<div class="alert alert-danger hidden" role="alert" id="fail-message">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
+				죄송합니다. 문자를 다시 입력해주세요.
+			</div>
+			<button type="submit" class="btn btn-danger btn-lg btn-block" style="background-color: #76252B; border: none;">게시하기</button>
+		</form>	
+		
+		<span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color: #76252B; font-size: 1.5em;"></span>
+	</div>
+
+	<div id="comment-list" style="background-color: #76252B; color: white;"></div>
+</div>
+
+<div class="comment hidden" data-comment-id="" id="comment-virtual-dom" style="padding: 20px 10px; border-bottom: 1px solid white;">
+	<h4 class="comment-nickname"></h4>
+	<h4 class="comment-content"></h4>
+	<div class="comment-speaker hidden"></div>
+	<div class="comment-created-at hidden"></div>
+	<div class="comment-updated-at hidden"></div>
+</div>
+{% endblock %}
