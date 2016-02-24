@@ -1,5 +1,35 @@
 var firebaseRepoURL, firebaseConnection;
 
+function d_timer(){
+  // set k_time
+  d = new Date();
+  utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+  now = new Date(utc + (3600000*9));
+
+  //set d_day
+  d_day = new Date("Mar 10 2016 23:59:59"); // set march 10 2016
+
+  //days = (d_day - now) / 1000 / 60 / 60 / 24;
+  //d_interval = Math.floor(days);
+  hours = (d_day - now) / 1000 / 60 / 60 ; 
+  h_interval = Math.floor(hours);
+  minutes = (d_day - now) / 1000 /60 - (60 * h_interval);
+  m_interval = Math.floor(minutes);
+  seconds = (d_day - now) / 1000 - (60 * 60 * h_interval) -
+  (60 * m_interval); 
+  secondsRound = Math.round(seconds);
+
+  // variable for display
+  sec = "초"
+  min = "분 "
+  hr = "시간 "
+  dy = " 일"
+
+  var d_value = h_interval + hr + m_interval + min + secondsRound + sec;
+  $('.due-timer').text(d_value);
+  newtime = window.setTimeout("d_timer();", 1000);
+}
+
 // Prevent CSRF token problem before sending reqeust with ajax
 function setCSRFToken() {
   $.ajaxSetup({
@@ -119,4 +149,7 @@ $(window).load(function() {
 
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
+
+  // Due timer
+  d_timer(); 
 });
