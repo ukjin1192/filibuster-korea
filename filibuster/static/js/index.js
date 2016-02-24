@@ -182,7 +182,7 @@ $(window).load(function() {
     },
     webButton: {
       text: '둘러보기',
-      url: 'http://www.필리버스터.me/'
+      url: 'http://filibuster.me/'
     }
   });
 });
