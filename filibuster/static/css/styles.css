@@ -89,6 +89,16 @@ a, a:focus, a:hover, a:active, a:visited {
 .comment .comment-content {
   white-space: pre-wrap; }
 
+#share-btn-group {
+  padding: 20px 0 10px 0;
+  text-align: center; }
+  #share-btn-group .share-btn {
+    display: inline;
+    padding: 7px; }
+    #share-btn-group .share-btn img {
+      width: 12%;
+      max-width: 50px; }
+
 /* ===============================
  * Loading icon - 3rd party 
  * Generated at http://loading.io/

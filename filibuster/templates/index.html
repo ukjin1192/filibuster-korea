@@ -13,7 +13,7 @@
 		<div style="position: absolute; width: 100%; top: 12px; z-index: 10; margin: 0 auto; color: white; font-weight: bold;">
 			<div style="font-size: 2.5em;">필리버스터 릴레이</div>
 			<div style="font-size: 1.5em;">임시국회 폐회까지</div>
-			<div style="font-size: 2.0em;">374시간</div>
+			<div style="font-size: 2.0em;">373시간</div>
 		</div>
 	</div>
 
@@ -23,7 +23,7 @@
 		<div style="position: absolute; width: 100%; top: 60px; z-index: 10; margin: 0 auto; color: white; font-weight: bold;">
 			<div style="font-size: 2.5em;">필리버스터 릴레이</div>
 			<div style="font-size: 1.5em;">임시국회 폐회까지</div>
-			<div style="font-size: 2.0em;">374시간</div>
+			<div style="font-size: 2.0em;">373시간</div>
 		</div>
 	</div>
 
@@ -32,6 +32,33 @@
 		<h4>필리버스터가 이어지고 있습니다.</h4>
 		<h4>단상에 오르는 의원들의 입을 빌어</h4>
 		<h4>하고 싶은 이야기를 적어 주세요.</h4>
+
+		<div id="share-btn-group">
+			{# Facebook #}
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me" target="_blank" class="share-btn">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
+			</a>
+			{# Twitter #}
+			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 단상에 오르는 의원들의 입을 빌어 하고 싶은 이야기를 적어 주세요 &url=http://filibuster.me" target="_blank" class="share-btn" id="twitter-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.svg" />
+			</a>
+			{# Google+ #}
+			<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="share-btn">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+			</a>
+			{# LINE #}
+			<a href="line://msg/text/[필리버스터 릴레이] 단상에 오르는 의원들의 입을 빌어 하고 싶은 이야기를 적어 주세요 http://filibuster.me" class="share-btn" id="line-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+			</a>
+
+			{% comment %}
+			{# Kakao talk #}
+			<a href="javascript:;" class="share-btn" id="kakaotalk-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+			</a>
+			{% endcomment %}
+		</div>
+		<h6>카카오톡 공유는 현재 작업 중에 있습니다 :)</h6>
 	</div>
 
 	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
