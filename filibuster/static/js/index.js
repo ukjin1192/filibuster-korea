@@ -119,6 +119,14 @@ $(document).on('submit', '#create-comment-form', function(event) {
   });
 });
 
+$('#realtime-switch').change(function() {
+  if ($(this).prop('checked') == false) {
+    Firebase.goOffline();
+  } else {
+    Firebase.goOnline();
+  }
+});
+
 $(window).scroll(function() {
    if($(window).scrollTop() + $(window).height() == $(document).height()) {
       var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id')) - 1;
