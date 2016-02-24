@@ -142,26 +142,42 @@ $(document).on('submit', '#create-comment-form', function(event) {
   });
 });
 
-$('#realtime-switch').change(function() {
-  if ($(this).prop('checked') == false) {
+$(document).on('click', '#realtime-switch--on', function() {
+  if($('#realtime-switch--on').attr('checked')) {
+    $('#realtime-switch--on').attr('checked', false);
+    $('#realtime-switch--off').attr('checked', true);
     Firebase.goOffline();
   } else {
+    $('#realtime-switch--on').attr('checked', true);
+    $('#realtime-switch--off').attr('checked', false);
     Firebase.goOnline();
   }
 });
 
+$(document).on('click', '#realtime-switch--off', function() {
+  if($('#realtime-switch--off').attr('checked')) {
+    $('#realtime-switch--off').attr('checked', false);
+    $('#realtime-switch--on').attr('checked', true);
+    Firebase.goOnline();
+  } else {
+    $('#realtime-switch--off').attr('checked', true);
+    $('#realtime-switch--on').attr('checked', false);
+    Firebase.goOffline();
+  }
+});
+
 $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-      var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id')) - 1;
-      if (lastCommentID > 0) getComments(Math.max(lastCommentID - 9, 1), lastCommentID, 'append');
-   }
+  if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id')) - 1;
+    if (lastCommentID > 0) getComments(Math.max(lastCommentID - 9, 1), lastCommentID, 'append');
+  }
 
    // Automatically position realtime switch
-   if ($(window).scrollTop() > $('#switch-container').offset().top) {
-     $('#realtime-switch').parent().addClass('fixed-switch');
-   } else {
-     $('#realtime-switch').parent().removeClass('fixed-switch');
-   }
+  if ($(window).scrollTop() > $('#switch-container').offset().top) {
+    $('#realtime-switch-group').addClass('fixed-switch');
+  } else {
+    $('#realtime-switch-group').removeClass('fixed-switch');
+  }
 });
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
