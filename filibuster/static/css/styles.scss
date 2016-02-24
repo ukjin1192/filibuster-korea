@@ -160,6 +160,13 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
+.fixed-switch {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	margin-left: -53px;
+}
+
 /* ===============================
  * Loading icon - 3rd party 
  * Generated at http://loading.io/

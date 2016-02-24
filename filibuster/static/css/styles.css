@@ -99,6 +99,12 @@ a, a:focus, a:hover, a:active, a:visited {
       width: 12%;
       max-width: 50px; }
 
+.fixed-switch {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -53px; }
+
 /* ===============================
  * Loading icon - 3rd party 
  * Generated at http://loading.io/

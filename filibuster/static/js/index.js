@@ -132,6 +132,15 @@ $(window).scroll(function() {
       var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id')) - 1;
       if (lastCommentID > 0) getComments(Math.max(lastCommentID - 9, 1), lastCommentID, 'append');
    }
+
+   // Automatically position realtime switch
+   if ($(window).scrollTop() > $('#switch-container').offset().top) {
+     console.log('a');
+     $('#realtime-switch').parent().addClass('fixed-switch');
+   } else {
+     console.log('b');
+     $('#realtime-switch').parent().removeClass('fixed-switch');
+   }
 });
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
