@@ -65,7 +65,7 @@
 	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
 		<h3 style="margin: 5px 0 0 0;"><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
 		
-		<img src="{{ 'CDN_URL'|get_settings_variable }}/m1.jpg" class="full-width" style="max-width: 400px; margin-top: 10px;" />
+		<img src="{{ 'CDN_URL'|get_settings_variable }}/m2.png" class="full-width" style="max-width: 400px; margin-top: 10px;" />
 		
 		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
 			{% csrf_token %}
@@ -83,7 +83,7 @@
 				<input type="text" class="form-control" id="nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
 			</div>
 			<div class="form-group">
-				<textarea class="form-control" id="content" rows="8" maxlength="5000" placeholder="은수미 의원을 통해 하고 싶은 이야기 (최대 5000자)"></textarea>
+				<textarea class="form-control" id="content" rows="8" maxlength="5000" placeholder="박원석 의원을 통해 하고 싶은 이야기 (최대 5000자)"></textarea>
 			</div>
 			<div class="alert alert-info hidden" role="alert" id="success-message">
 				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
