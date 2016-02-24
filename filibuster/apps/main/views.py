@@ -50,8 +50,8 @@ def get_comments(request):
 
     if all(x in request.GET for x in ['first_comment_id', 'last_comment_id']):
         
-        first_comment_id = request.GET['first_comment_id']
-        last_comment_id = request.GET['last_comment_id']
+        first_comment_id = int(request.GET['first_comment_id'])
+        last_comment_id = int(request.GET['last_comment_id'])
         
         comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id, is_deleted=False).values())
         
@@ -59,6 +59,13 @@ def get_comments(request):
         
     else:
         return HttpResponse(status=400)
+
+
+@require_http_methods(['GET'])
+def get_random_spoken_comments(request):
+
+    comments = list(Comment.objects.filter(is_spoken=True, is_deleted=False).order_by('?')[:5].values())
+    return JsonResponse({'comments': comments})
 
 
 def update_firebase_database(permalink, key, value):

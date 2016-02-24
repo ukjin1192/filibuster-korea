@@ -13,4 +13,8 @@ urlpatterns = patterns(
         regex=r'^comments/list/$',
         view='get_comments'
     ),
+    url(
+        regex=r'^comments/spoken/$',
+        view='get_random_spoken_comments'
+    ),
 )

@@ -9,8 +9,6 @@ function d_timer(){
   //set d_day
   d_day = new Date("Mar 10 2016 23:59:59"); // set march 10 2016
 
-  //days = (d_day - now) / 1000 / 60 / 60 / 24;
-  //d_interval = Math.floor(days);
   hours = (d_day - now) / 1000 / 60 / 60 ; 
   h_interval = Math.floor(hours);
   minutes = (d_day - now) / 1000 /60 - (60 * h_interval);
@@ -85,6 +83,31 @@ function getComments(firstCommentID, lastCommentID, position) {
   });
 }
 
+function getRandomSpokenComments() {
+  $('#loading-icon').removeClass('hidden');
+
+  $.ajax({
+    url: '/api/comments/spoken/',
+    type: 'GET',
+  }).done(function(data) {
+    var comments = data.comments;
+    
+    comments.forEach(function(comment, index) {
+      var $comment = $('#comment-slide-virtual-dom').clone().removeClass('hidden').removeAttr('id');
+      $comment.find('.comment-slide--image').attr('src', comment.image_url);
+      $comment.find('.comment-slide--content').text('"' + comment.content + '"');
+      $comment.find('.comment-slide--speaker').text(comment.speaker);
+      $comment.find('.comment-slide--id').text(comment.id);
+      
+      $('#spoken-comment-list').append($comment);
+    });
+    
+    $('#spoken-comment-list').slick();
+  }).always(function() {
+    $('#loading-icon').addClass('hidden');
+  });
+}
+
 $(document).on('click', '#refresh-captcha', getCaptcha);
 
 $(document).on('submit', '#create-comment-form', function(event) {
@@ -135,10 +158,8 @@ $(window).scroll(function() {
 
    // Automatically position realtime switch
    if ($(window).scrollTop() > $('#switch-container').offset().top) {
-     console.log('a');
      $('#realtime-switch').parent().addClass('fixed-switch');
    } else {
-     console.log('b');
      $('#realtime-switch').parent().removeClass('fixed-switch');
    }
 });
@@ -194,4 +215,6 @@ $(window).load(function() {
       url: 'http://filibuster.me/'
     }
   });
+
+  // getRandomSpokenComments();
 });

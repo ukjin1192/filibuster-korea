@@ -99,6 +99,12 @@ class Comment(models.Model):
     content = models.TextField(
         verbose_name = _('Content'),
     ) 
+    image_url = models.CharField(
+        verbose_name = _('Image URL'),
+        max_length = 255,
+        blank = True,
+        null = True
+    )
     is_deleted = models.BooleanField(
         verbose_name = _('Deleted or not'),
         default = False

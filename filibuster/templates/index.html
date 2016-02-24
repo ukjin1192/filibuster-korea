@@ -19,7 +19,7 @@
 
 	<div class="hidden-xs">
 		<img src="{{ 'CDN_URL'|get_settings_variable }}/landing_lg.jpg" style="width: 100%; margin: 0 auto; z-index: 5;" />
-
+		
 		<div style="position: absolute; width: 100%; top: 60px; z-index: 10; margin: 0 auto; color: white; font-weight: bold;">
 			<div style="font-size: 1.5em;">임시국회 폐회까지</div>
 			<div style="font-size: 2.0em;" class="due-timer"></div>
@@ -57,10 +57,20 @@
 		</div>
 	</div>
 
+	{% comment %}
+	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
+		<h3 style="margin: 5px 0 0 0;"><strong>우리의 말이 전해집니다</strong></h3>
+		
+		<div id="spoken-comment-list" style="width: 80%; max-width: 500px; margin: 10px auto 0 auto;"></div>
+	</div>
+
+	<div style="background-color: #76252B; height: 50px;"></div>
+	{% endcomment %}
+
 	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
 		<h3 style="margin: 5px 0 0 0;"><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
 		
-		<img src="{{ 'CDN_URL'|get_settings_variable }}/m2.png" class="full-width" style="max-width: 400px; margin-top: 10px;" />
+		<img src="http://d1es9gk2quk02b.cloudfront.net/m2.png" class="full-width" style="max-width: 400px; margin-top: 10px;" />
 		
 		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
 			{% csrf_token %}
@@ -107,5 +117,11 @@
 	<div class="comment-speaker hidden"></div>
 	<div class="comment-created-at hidden"></div>
 	<div class="comment-updated-at hidden"></div>
+</div>
+
+<div class="comment-slide hidden" id="comment-slide-virtual-dom">
+	<img src="" class="comment-slide--image" style="max-height: 200px; margin: 10px auto;" />
+	<h3 class="comment-slide--content" style="font-weight: 700;"></h3>
+	<h5><span class="comment-slide--speaker"></span> 의원 - "<span class="comment-slide--id"></span>번째 주자"의 말을 인용</h5>
 </div>
 {% endblock %}
