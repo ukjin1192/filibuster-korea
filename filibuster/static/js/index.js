@@ -134,6 +134,15 @@ $(window).scroll(function() {
    }
 });
 
+// Alert that kakaotalk and line messenger sharing is only available at mobile
+$(document).on('click', '#line-share, #kakaotalk-share', function() {
+  // Detect desktop browser
+  if (!('ontouchstart' in window)) {
+    alert("모바일에서만 가능합니다");
+  }
+  return false;
+});
+
 $(window).load(function() {
   firebaseRepoURL = $('#firebase-repo-url').val();
   firebaseConnection = new Firebase(firebaseRepoURL + 'comment/');
@@ -160,4 +169,20 @@ $(window).load(function() {
 
   // Due timer
   d_timer(); 
+
+  // Kakao talk sharing
+  Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
+  Kakao.Link.createTalkLinkButton({
+    container: '#kakaotalk-share',
+    label: '[필리버스터 릴레이] 단상에 오르는 의원들의 입을 빌어 하고 싶은 이야기를 적어 주세요',
+    image: {
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share7.png',
+      width: '960',
+      height: '480'
+    },
+    webButton: {
+      text: '둘러보기',
+      url: 'http://www.필리버스터.me/'
+    }
+  });
 });
