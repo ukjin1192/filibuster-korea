@@ -150,8 +150,12 @@ $(document).on('submit', '#create-comment-form', function(event) {
   });
 });
 
-$(document).on('hover', '#comment-slide', function() {
-  
+$(document).on('hover', '.comment-slide', function() {
+  $(this).find('.comment-slide--content').css('text-decoration', 'underline');
+});
+
+$(document).on('mouseleave', '.comment-slide', function() {
+  $(this).find('.comment-slide--content').css('text-decoration', 'none');
 });
 
 $(document).on('click', '#realtime-switch--on', function() {
