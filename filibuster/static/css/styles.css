@@ -89,13 +89,13 @@ a, a:focus, a:hover, a:active, a:visited {
 .comment .comment-content {
   white-space: pre-wrap; }
 
-#share-btn-group {
+#share-btn-group, .share-btn-group {
   padding: 25px 0;
   text-align: center; }
-  #share-btn-group .share-btn {
+  #share-btn-group .share-btn, .share-btn-group .share-btn {
     display: inline;
     padding: 7px; }
-    #share-btn-group .share-btn img {
+    #share-btn-group .share-btn img, .share-btn-group .share-btn img {
       width: 12%;
       max-width: 50px; }
 
@@ -104,6 +104,11 @@ a, a:focus, a:hover, a:active, a:visited {
   top: 0;
   left: 50%;
   margin-left: -118px; }
+
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0; }
 
 /* ===============================
  * Loading icon - 3rd party 

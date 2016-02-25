@@ -3,7 +3,7 @@
 
 from captcha.models import CaptchaStore
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect 
 from django.views.decorators.http import require_http_methods
 from firebase import firebase
@@ -82,7 +82,10 @@ def search_comment(request):
             comments = Comment.objects.filter(is_deleted=False)
         
         if category == 'id':
-            comments = comments.filter(id=int(keyword))
+            try:
+                comments = comments.filter(id=int(keyword))
+            except:
+                return HttpResponse(status=400)
         elif category == 'nickname':
             comments = comments.filter(nickname__contains=keyword, is_deleted=False)
         elif category == 'content':
@@ -91,8 +94,8 @@ def search_comment(request):
             return HttpResponse(status=400)
         
         if 'last_comment_id' in request.GET:
-            comments = comments.filter(id__lt=int(last_comment_id))
-
+            comments = comments.filter(id__lt=int(request.GET['last_comment_id']))
+        
         comments = list(comments[:10].values())
         return JsonResponse({'comments': comments})
         

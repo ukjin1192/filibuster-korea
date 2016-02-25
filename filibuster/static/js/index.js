@@ -220,7 +220,7 @@ $(window).load(function() {
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
-    label: '[필리버스터 릴레이] 단상에 오르는 의원들의 입을 빌어 하고 싶은 이야기를 적어 주세요',
+    label: '[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 원고 쓰러 가기',
     image: {
       src: 'http://d1es9gk2quk02b.cloudfront.net/share14.png',
       width: '960',

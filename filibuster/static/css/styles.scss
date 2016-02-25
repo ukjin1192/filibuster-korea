@@ -145,7 +145,7 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
-#share-btn-group {
+#share-btn-group, .share-btn-group {
 	padding: 25px 0;
 	text-align: center;
 	
@@ -165,6 +165,12 @@ a, a:focus, a:hover, a:active, a:visited {
 	top: 0;
 	left: 50%;
 	margin-left: -118px;
+}
+
+.fixed-navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 /* ===============================
