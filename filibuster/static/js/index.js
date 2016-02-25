@@ -95,14 +95,21 @@ function getRandomSpokenComments() {
     comments.forEach(function(comment, index) {
       var $comment = $('#comment-slide-virtual-dom').clone().removeClass('hidden').removeAttr('id');
       $comment.find('.comment-slide--image').attr('src', comment.image_url);
-      $comment.find('.comment-slide--content').text('"' + comment.content + '"');
+      if (comment.content.length > 100) {
+        $comment.find('.comment-slide--content').text('"' + comment.content.substring(0, 100) + '..."');
+      } else { 
+        $comment.find('.comment-slide--content').text('"' + comment.content + '"');
+      }
       $comment.find('.comment-slide--speaker').text(comment.speaker);
       $comment.find('.comment-slide--id').text(comment.id);
       
       $('#spoken-comment-list').append($comment);
     });
     
-    $('#spoken-comment-list').slick();
+    $('#spoken-comment-list').slick({
+      autoplay: true,
+      autoplaySpeed: 1500
+    });
   }).always(function() {
     $('#loading-icon').addClass('hidden');
   });
