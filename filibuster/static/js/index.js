@@ -151,25 +151,17 @@ $(document).on('submit', '#create-comment-form', function(event) {
 });
 
 $(document).on('click', '#realtime-switch--on', function() {
-  if($('#realtime-switch--on').attr('checked')) {
-    $('#realtime-switch--on').attr('checked', false);
-    $('#realtime-switch--off').attr('checked', true);
-    Firebase.goOffline();
-  } else {
-    $('#realtime-switch--on').attr('checked', true);
-    $('#realtime-switch--off').attr('checked', false);
+  if($('#realtime-switch--off').find('input[type="radio"]').attr('checked')) {
+    $('#realtime-switch--on').addClass('active').find('input[type="radio"]').attr('checked', true);
+    $('#realtime-switch--off').removeClass('active').find('input[type="radio"]').attr('checked', false);
     Firebase.goOnline();
   }
 });
 
 $(document).on('click', '#realtime-switch--off', function() {
-  if($('#realtime-switch--off').attr('checked')) {
-    $('#realtime-switch--off').attr('checked', false);
-    $('#realtime-switch--on').attr('checked', true);
-    Firebase.goOnline();
-  } else {
-    $('#realtime-switch--off').attr('checked', true);
-    $('#realtime-switch--on').attr('checked', false);
+  if($('#realtime-switch--on').find('input[type="radio"]').attr('checked')) {
+    $('#realtime-switch--off').addClass('active').find('input[type="radio"]').attr('checked', true);
+    $('#realtime-switch--on').removeClass('active').find('input[type="radio"]').attr('checked', false);
     Firebase.goOffline();
   }
 });
