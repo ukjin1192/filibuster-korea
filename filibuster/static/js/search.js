@@ -44,7 +44,7 @@ $(document).on('click', '.dropdown-menu li', function(event) {
 
   if ($target.text() == '주자 번호') $('#category').val('id');
   else if ($target.text() == '별명') $('#category').val('nickname');
-  else if ($target.text() == '원고 내용') $('#category').val('content');
+  else if ($target.text() == '연설문 내용') $('#category').val('content');
   else if ($target.text() == '의원명') $('#category').val('speaker');
   else $('#category').val('nickname');
 
@@ -153,7 +153,7 @@ $(window).load(function() {
         $('#category-text').text('별명');
       } else if (category == 'content') {
         $('#category').val('content');
-        $('#category-text').text('원고 내용');
+        $('#category-text').text('연설문 내용');
       } else if (category == 'speaker') {
         $('#category').val('speaker');
         $('#category-text').text('의원명');
