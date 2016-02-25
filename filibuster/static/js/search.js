@@ -181,7 +181,7 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share14.png',
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
       width: '960',
       height: '480'
     },

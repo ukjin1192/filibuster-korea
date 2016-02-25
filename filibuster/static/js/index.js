@@ -239,7 +239,7 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 원고 쓰러 가기',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share14.png',
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
       width: '960',
       height: '480'
     },
