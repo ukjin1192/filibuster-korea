@@ -222,7 +222,7 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[필리버스터 릴레이] 단상에 오르는 의원들의 입을 빌어 하고 싶은 이야기를 적어 주세요',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share12.png',
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share13.png',
       width: '960',
       height: '480'
     },
@@ -232,5 +232,5 @@ $(window).load(function() {
     }
   });
 
-  // getRandomSpokenComments();
+  getRandomSpokenComments();
 });
