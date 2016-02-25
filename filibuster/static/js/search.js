@@ -115,6 +115,15 @@ $(document).on('submit', '#search-form', function(event) {
   getSearchedComments($('#category').val(), $('#keyword').val(), -1);
 });
 
+// Alert that kakaotalk and line messenger sharing is only available at mobile
+$(document).on('click', '.line-share, .kakaotalk-share', function() {
+  // Detect desktop browser
+  if (!('ontouchstart' in window)) {
+    alert("모바일에서만 가능합니다");
+  }
+  return false;
+});
+
 $(window).scroll(function() {
   // Automatically position search navigation bar
   if ($(window).scrollTop() > $('#search-navbar').offset().top) {
@@ -178,7 +187,7 @@ $(window).load(function() {
   // Kakao talk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
-    container: '#kakaotalk-share',
+    container: '.kakaotalk-share',
     label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
     image: {
       src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
