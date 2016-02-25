@@ -109,7 +109,16 @@ function getRandomSpokenComments() {
     
     $('#spoken-comment-list').slick({
       autoplay: true,
-      autoplaySpeed: 5000
+      autoplaySpeed: 5000,
+      adaptiveHeight: true
+    });
+    
+    $('#spoken-comment-list').on('inview', function(event, isInView) {
+      if (isInView) {
+        $('#spoken-comment-list').slick('slickPlay');
+      } else {
+        $('#spoken-comment-list').slick('slickPause');
+      }
     });
   }).always(function() {
     $('#loading-icon').addClass('hidden');
