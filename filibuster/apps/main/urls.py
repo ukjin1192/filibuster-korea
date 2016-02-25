@@ -17,4 +17,8 @@ urlpatterns = patterns(
         regex=r'^comments/spoken/$',
         view='get_random_spoken_comments'
     ),
+    url(
+        regex=r'^comments/search/$',
+        view='search_comment'
+    ),
 )

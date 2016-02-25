@@ -74,8 +74,9 @@ def stop_server():
 def update_staticfiles():
     with lcd(ROOT_DIR + "/" + PROJECT_NAME + "/static/css/"):
         local("sass styles.scss:styles.css")
-    local("./manage.py collectstatic --noinput")
-    local("./manage.py compress --force")
+    with lcd(ROOT_DIR):
+        local("./manage.py collectstatic --noinput")
+        local("./manage.py compress --force")
 
 
 def deploy(*command):

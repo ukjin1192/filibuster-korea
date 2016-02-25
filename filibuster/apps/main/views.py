@@ -68,6 +68,38 @@ def get_random_spoken_comments(request):
     return JsonResponse({'comments': comments})
 
 
+@require_http_methods(['GET'])
+def search_comment(request):
+
+    if all(x in request.GET for x in ['category', 'keyword']):
+        
+        category = request.GET['category']
+        keyword = request.GET['keyword']
+        
+        if 'spoken' in request.GET:
+            comments = Comment.objects.filter(is_spoken=True, is_deleted=False)
+        else:
+            comments = Comment.objects.filter(is_deleted=False)
+        
+        if category == 'id':
+            comments = comments.filter(id=int(keyword))
+        elif category == 'nickname':
+            comments = comments.filter(nickname__contains=keyword, is_deleted=False)
+        elif category == 'content':
+            comments = comments.filter(content__contains=keyword, is_deleted=False)
+        else:
+            return HttpResponse(status=400)
+        
+        if 'last_comment_id' in request.GET:
+            comments = comments.filter(id__lt=int(last_comment_id))
+
+        comments = list(comments[:10].values())
+        return JsonResponse({'comments': comments})
+        
+    else:
+        return HttpResponse(status=400)
+
+
 def update_firebase_database(permalink, key, value):
     """
     Update Firebase database

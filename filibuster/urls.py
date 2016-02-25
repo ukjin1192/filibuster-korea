@@ -29,6 +29,10 @@ urlpatterns = [
 
     # Front-end page
     url(
+        r'^search/', 
+        TemplateView.as_view(template_name='search.html')
+    ),
+    url(
         r'^', 
         TemplateView.as_view(template_name='index.html')
     ),

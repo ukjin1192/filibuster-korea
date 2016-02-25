@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
+{% load compress %}
 {% load custom_filter %}
+{% load staticfiles %}
 
 {% block container %}
 <input type="hidden" id="firebase-repo-url" value="{{ 'FIREBASE_REPO_URL'|get_settings_variable }}" />
@@ -33,6 +35,56 @@
 		<h4>단상에 오르는 의원들의 입을 빌어</h4>
 		<h4>하고 싶은 이야기를 적어 주세요.</h4>
 		
+	</div>
+
+	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
+		<div class="visible-xs">
+			<h3 style="margin: 5px 0 0 0; line-height: 1.5em; font-weight: 700;">본회의장에 전달된<br/>당신의 목소리</h3>
+		</div>
+		<div class="hidden-xs">
+			<h3 style="margin: 5px 0 0 0; font-weight: 700;">본회의장에 전달된 당신의 목소리</h3>
+		</div>
+		
+		<div id="spoken-comment-list" style="width: 80%; max-width: 500px; margin: 10px auto 0 auto;"></div>
+	</div>
+
+	<div style="background-color: #76252B; padding: 10px 0 20px 0; color: white;">
+		<h3><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
+	</div>
+
+	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
+		
+		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
+			{% csrf_token %}
+			<input type="hidden" id="captcha-key" value="" />
+			<div class="input-group" id="captcha-group" style="margin-bottom: 10px;">
+				<span class="input-group-addon" id="captcha-image-container" style="padding: 0;">
+					<img src="" id="captcha-image" />
+				</span>
+				<span class="input-group-addon cursor-pointer" id="refresh-captcha">
+					<span class="glyphicon glyphicon-refresh"></span>
+				</span>
+				<input type="text" class="form-control" id="captcha-value" placeholder="왼쪽 문자를 입력해주세요" autocomplete="off" required style="height: 44px;" />
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" id="content" rows="8" maxlength="10000" placeholder="김제남 의원을 통해 하고 싶은 이야기 (최대 10,000자)"></textarea>
+			</div>
+			<div class="alert alert-info hidden" role="alert" id="success-message">
+				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
+				감사합니다. 당신의 목소리가 전달됐습니다.
+			</div>
+			<div class="alert alert-danger hidden" role="alert" id="fail-message">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
+				죄송합니다. 문자를 다시 입력해주세요.
+			</div>
+			<button type="submit" class="btn btn-danger btn-lg btn-block" style="background-color: #76252B; border: none;">게시하기</button>
+		</form>	
+	</div>
+
+	<div style="background-color: #76252B; color: white;">
 		<div id="share-btn-group">
 			{# Facebook #}
 			<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="share-btn">
@@ -55,53 +107,7 @@
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
 			</a>
 		</div>
-	</div>
-
-	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
-		<div class="visible-xs">
-			<h3 style="margin: 5px 0 0 0; line-height: 1.5em; font-weight: 700;">본회의장에 전달된<br/>당신의 목소리</h3>
-		</div>
-		<div class="hidden-xs">
-			<h3 style="margin: 5px 0 0 0; font-weight: 700;">본회의장에 전달된 당신의 목소리</h3>
-		</div>
 		
-		<div id="spoken-comment-list" style="width: 80%; max-width: 500px; margin: 10px auto 0 auto;"></div>
-	</div>
-
-	<div style="background-color: #76252B; height: 50px;"></div>
-
-	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
-		<h3 style="margin: 5px 0 0 0;"><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
-		
-		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
-			{% csrf_token %}
-			<input type="hidden" id="captcha-key" value="" />
-			<div class="input-group" id="captcha-group" style="margin-bottom: 10px;">
-				<span class="input-group-addon" id="captcha-image-container" style="padding: 0;">
-					<img src="" id="captcha-image" />
-				</span>
-				<span class="input-group-addon cursor-pointer" id="refresh-captcha">
-					<span class="glyphicon glyphicon-refresh"></span>
-				</span>
-				<input type="text" class="form-control" id="captcha-value" placeholder="왼쪽 문자를 입력해주세요" autocomplete="off" required style="height: 44px;" />
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-control" id="nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
-			</div>
-			<div class="form-group">
-				<textarea class="form-control" id="content" rows="8" maxlength="5000" placeholder="김제남 의원을 통해 하고 싶은 이야기 (최대 5000자)"></textarea>
-			</div>
-			<div class="alert alert-info hidden" role="alert" id="success-message">
-				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
-				감사합니다. 당신의 목소리가 전달됐습니다.
-			</div>
-			<div class="alert alert-danger hidden" role="alert" id="fail-message">
-				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
-				죄송합니다. 문자를 다시 입력해주세요.
-			</div>
-			<button type="submit" class="btn btn-danger btn-lg btn-block" style="background-color: #76252B; border: none;">게시하기</button>
-		</form>	
-
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/KavUBaV-jL4" frameborder="0" style="max-width: 100%;" allowfullscreen></iframe>
 	</div>
 
@@ -134,4 +140,10 @@
 	<h4><span class="comment-slide--speaker"></span> 의원을 통해</h4>
 	<h4>- <span class="comment-slide--id"></span>번째 주자</h4>
 </div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endcompress %}
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block container %}
+<div class="container-fit text-center">
+
+	<div class="container">
+		<div class="input-group">
+			<div class="input-group-btn">
+				<input tyle="hidden" id="category" value="" />
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span data-bind="label">검색 기준</span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">순서</a></li>
+					<li><a href="#">사용한 별명</a></li>
+					<li><a href="#">내용</a></li>
+				</ul>
+			</div>
+			<input type="text" class="form-control" id="keyword" placeholder="검색 키워드를 입력해주세요" />
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+{% endcompress %}
+{% endblock %}
