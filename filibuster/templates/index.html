@@ -58,7 +58,12 @@
 	</div>
 
 	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
-		<h3 style="margin: 5px 0 0 0;"><strong>우리의 말이 전해집니다</strong></h3>
+		<div class="visible-xs">
+			<h3 style="margin: 5px 0 0 0; line-height: 1.5em; font-weight: 700;">본회의장에 전달된<br/>당신의 목소리</h3>
+		</div>
+		<div class="hidden-xs">
+			<h3 style="margin: 5px 0 0 0; font-weight: 700;">본회의장에 전달된 당신의 목소리</h3>
+		</div>
 		
 		<div id="spoken-comment-list" style="width: 80%; max-width: 500px; margin: 10px auto 0 auto;"></div>
 	</div>
@@ -124,7 +129,9 @@
 
 <div class="comment-slide hidden" id="comment-slide-virtual-dom">
 	<img src="" class="comment-slide--image" style="max-height: 200px; margin: 10px auto;" />
-	<h4 class="comment-slide--content" style="font-weight: 700;"></h4>
-	<h5><span class="comment-slide--speaker"></span> 의원 - "<span class="comment-slide--id"></span>번째 주자"의 말을 인용</h5>
+	<div class="comment-slide--content" style="font-weight: 700; line-height: 1.5em; font-size: 1.5em;"></div>
+	<h4>2016년 2월 25일</h4>
+	<h4><span class="comment-slide--speaker"></span> 의원을 통해</h4>
+	<h4>- <span class="comment-slide--id"></span>번째 주자</h4>
 </div>
 {% endblock %}
