@@ -95,7 +95,7 @@ function getRandomSpokenComments() {
     comments.forEach(function(comment, index) {
       var contentMaxLength = 160;
       var $comment = $('#comment-slide-virtual-dom').clone().removeClass('hidden').removeAttr('id');
-      $comment.find('.comment-slide--image').attr('src', comment.image_url);
+      // $comment.find('.comment-slide--image').attr('src', comment.image_url);
       if (comment.content.length > contentMaxLength) {
         $comment.find('.comment-slide--content').text('"' + comment.content.substring(0, contentMaxLength) + '..."');
       } else { 
