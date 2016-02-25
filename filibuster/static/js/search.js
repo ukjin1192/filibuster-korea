@@ -44,7 +44,7 @@ $(document).on('click', '.dropdown-menu li', function(event) {
 
   if ($target.text() == '주자 번호') $('#category').val('id');
   else if ($target.text() == '별명') $('#category').val('nickname');
-  else if ($target.text() == '원고') $('#category').val('content');
+  else if ($target.text() == '원고 내용') $('#category').val('content');
   else if ($target.text() == '의원명') $('#category').val('speaker');
   else $('#category').val('nickname');
 
@@ -87,8 +87,11 @@ function getSearchedComments(category, keyword, lastCommentID) {
       
       $('#comment-list').append($comment);
     });
+
+    if (comments.length < 10) $('#see-more-comments').addClass('hidden');
   }).always(function() {
     $('#loading-icon').addClass('hidden');
+    $('#see-more-comments').button('reset');
   });
 }
 
@@ -98,6 +101,11 @@ $(document).on('click', '.go-to-main-container', function() {
   }, 1000);
 });
 
+$(document).on('click', '#see-more-comments', function() {
+  var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id'));
+  $('#see-more-comments').button('loading');
+  getSearchedComments($('#category').val(), $('#keyword').val(), lastCommentID);
+});
 
 $(document).on('submit', '#search-form', function(event) {
   event.preventDefault();
@@ -108,11 +116,6 @@ $(document).on('submit', '#search-form', function(event) {
 });
 
 $(window).scroll(function() {
-  if($(window).scrollTop() + $(window).height() == $(document).height()) {
-    var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id'));
-    getSearchedComments($('#category').val(), $('#keyword').val(), lastCommentID);
-  }
-
   // Automatically position search navigation bar
   if ($(window).scrollTop() > $('#search-navbar').offset().top) {
     $('#navbar-text').addClass('fixed-navbar');
@@ -150,7 +153,7 @@ $(window).load(function() {
         $('#category-text').text('별명');
       } else if (category == 'content') {
         $('#category').val('content');
-        $('#category-text').text('원고');
+        $('#category-text').text('원고 내용');
       } else if (category == 'speaker') {
         $('#category').val('speaker');
         $('#category-text').text('의원명');
@@ -168,6 +171,8 @@ $(window).load(function() {
         getSearchedComments($('#category').val(), keyword, -1);
       }
     }
+  } else {
+    getSearchedComments($('#category').val(), '', -1);
   }
 
   // Kakao talk sharing

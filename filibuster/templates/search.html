@@ -70,7 +70,7 @@
 
 	<div style="background-color: rgb(240, 237, 223);">
 		<div class="container">
-			<form class="input-group" id="search-form" style="margin-top: 30px;">
+			<form class="input-group" id="search-form" style="max-width: 700px; margin: 30px auto 0 auto;">
 				<div class="input-group-btn">
 					<input tyoe="hidden" id="category" value="nickname" />
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -79,7 +79,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">주자 번호</a></li>
 						<li><a href="#">별명</a></li>
-						<li><a href="#">원고</a></li>
+						<li><a href="#">원고 내용</a></li>
 						<li><a href="#">의원명</a></li>
 					</ul>
 				</div>
@@ -114,7 +114,9 @@
 				</a>
 			</div>
 			
-			<div id="comment-list"></div>
+			<div id="comment-list" style="max-width: 700px; margin: 0 auto;"></div>
+
+			<button type="button" class="btn btn-defaukt btn-lg btn-block" id="see-more-comments" data-loading-text="가져오는 중입니다" style="color: white; margin-bottom: 15px;">더 보기</button> 
 		</div>
 
 		<div class="visible-xs" style="position: relative;">
@@ -135,7 +137,7 @@
 
 <div class="comment hidden" data-comment-id="" id="comment-virtual-dom" style="padding: 10px; border-top: 1px solid white;">
 	<h1 class="comment-nickname" style="margin-bottom: 25px; font-weight: 700;"></h1>
-	<h4 class="comment-content" style="line-height: 1.5em;"></h4>
+	<h4 class="comment-content" style="line-height: 1.5em; text-align: left;"></h4>
 	<div style="background-color: rgb(224, 224, 224); padding: 1px;">
 		<h4 class="comment-created-at">2016년 2월 25일</h4>
 		<h4><span class="comment-speaker"></span> 의원을 통해서</h4>
