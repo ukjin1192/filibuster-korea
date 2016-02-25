@@ -150,6 +150,10 @@ $(document).on('submit', '#create-comment-form', function(event) {
   });
 });
 
+$(document).on('hover', '#comment-slide', function() {
+  
+});
+
 $(document).on('click', '#realtime-switch--on', function() {
   if($('#realtime-switch--off').find('input[type="radio"]').attr('checked')) {
     $('#realtime-switch--on').addClass('active').find('input[type="radio"]').attr('checked', true);
