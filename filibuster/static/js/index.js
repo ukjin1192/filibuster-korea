@@ -108,7 +108,7 @@ function getRandomSpokenComments() {
     
     $('#spoken-comment-list').slick({
       autoplay: true,
-      autoplaySpeed: 1500
+      autoplaySpeed: 5000
     });
   }).always(function() {
     $('#loading-icon').addClass('hidden');
