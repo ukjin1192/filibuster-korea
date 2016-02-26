@@ -139,6 +139,7 @@ $(document).on('submit', '#create-comment-form', function(event) {
   }).done(function(data) {
     if (data.state == 'success') {
       $('#nickname, #content').val('');
+      $('#my-comment-id').text(data.comment_id);
       $('#success-message').removeClass('hidden');
       getCaptcha();
     } else {

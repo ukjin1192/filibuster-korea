@@ -39,7 +39,7 @@ def create_comment(request):
         
         update_firebase_database('/comment', 'last_comment_id', comment.id)
         
-        return JsonResponse({'state': 'success', 'msg': 'Succeed to create comment'})
+        return JsonResponse({'state': 'success', 'msg': 'Succeed to create comment', 'comment_id': comment.id})
         
     else:
         return HttpResponse(status=400)
