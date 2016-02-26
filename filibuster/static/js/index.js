@@ -108,17 +108,8 @@ function getRandomSpokenComments() {
     });
     
     $('#spoken-comment-list').slick({
-      autoplay: true,
-      autoplaySpeed: 5000,
+      autoplay: false,
       adaptiveHeight: true
-    });
-    
-    $('#spoken-comment-list').on('inview', function(event, isInView) {
-      if (isInView) {
-        $('#spoken-comment-list').slick('slickPlay');
-      } else {
-        $('#spoken-comment-list').slick('slickPause');
-      }
     });
   }).always(function() {
     $('#loading-icon').addClass('hidden');
@@ -198,7 +189,7 @@ $(window).scroll(function() {
 });
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '#line-share, #kakaotalk-share', function() {
+$(document).on('click', '.line-share, #kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -249,9 +240,5 @@ $(window).load(function() {
     }
   });
   
-  $('#captcha-value, #nickname, #content').on('focus', function() {
-    $('#spoken-comment-list').slick('slickPause');
-  });
-
   getRandomSpokenComments();
 });
