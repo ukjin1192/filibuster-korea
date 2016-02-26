@@ -182,7 +182,7 @@ $(window).load(function() {
 
   kakaoBtns.forEach(function(kakaoBtn, index) {
     Kakao.Link.createTalkLinkButton({
-      container: $(this),
+      container: kakaoBtn,
       label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
       image: {
         src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
