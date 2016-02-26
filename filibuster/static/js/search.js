@@ -27,7 +27,7 @@ function d_timer(){
 }
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '.line-share, .kakaotalk-share', function() {
+$(document).on('click', '#line-share-1, #line-share-2, #kakaotalk-share-1, #kakaotalk-share-2', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -83,11 +83,10 @@ function getSearchedComments(category, keyword, lastCommentID) {
       $comment.find('.comment-nickname').text(comment.nickname + ' 님');
       $comment.find('.comment-content').text(comment.content);
       $comment.find('.comment-speaker').text(comment.speaker);
-      // $comment.find('.comment-created-at').text(comment.created_at);
       
       $('#comment-list').append($comment);
     });
-
+    
     if (comments.length < 10) $('#see-more-comments').addClass('hidden');
   }).always(function() {
     $('#loading-icon').addClass('hidden');
@@ -177,22 +176,30 @@ $(window).load(function() {
 
   // Kakao talk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
-
-  var kakaoBtns = $('.kakaotalk-share');
-
-  kakaoBtns.forEach(function(kakaoBtn, index) {
-    Kakao.Link.createTalkLinkButton({
-      container: kakaoBtn,
-      label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
-      image: {
-        src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
-        width: '960',
-        height: '480'
-      },
-      webButton: {
-        text: '둘러보기',
-        url: 'http://filibuster.me/'
-      }
-    });
+  Kakao.Link.createTalkLinkButton({
+    container: '#kakaotalk-share-1',
+    label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
+    image: {
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
+      width: '960',
+      height: '480'
+    },
+    webButton: {
+      text: '둘러보기',
+      url: 'http://filibuster.me/'
+    }
+  });
+  Kakao.Link.createTalkLinkButton({
+    container: '#kakaotalk-share-2',
+    label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
+    image: {
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
+      width: '960',
+      height: '480'
+    },
+    webButton: {
+      text: '둘러보기',
+      url: 'http://filibuster.me/'
+    }
   });
 });
