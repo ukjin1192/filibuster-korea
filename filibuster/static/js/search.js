@@ -177,17 +177,22 @@ $(window).load(function() {
 
   // Kakao talk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
-  Kakao.Link.createTalkLinkButton({
-    container: '.kakaotalk-share',
-    label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
-    image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
-      width: '960',
-      height: '480'
-    },
-    webButton: {
-      text: '둘러보기',
-      url: 'http://filibuster.me/'
-    }
+
+  var kakaoBtns = $('.kakaotalk-share');
+
+  kakaoBtns.forEach(function(kakaoBtn, index) {
+    Kakao.Link.createTalkLinkButton({
+      container: $(this),
+      label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
+      image: {
+        src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
+        width: '960',
+        height: '480'
+      },
+      webButton: {
+        text: '둘러보기',
+        url: 'http://filibuster.me/'
+      }
+    });
   });
 });
