@@ -248,12 +248,9 @@ $(window).load(function() {
       url: 'http://filibuster.me/'
     }
   });
-
-  $('#create-comment-form').on('inview', function(event, isInView) {
-    if (isInView) {
-      $('#spoken-comment-list').slick('slickPause');
-      console.log('foo');
-    }
+  
+  $('#captcha-value, #nickname, #content').on('focus', function() {
+    $('#spoken-comment-list').slick('slickPause');
   });
 
   getRandomSpokenComments();
