@@ -142,8 +142,8 @@ $(document).on('submit', '#create-comment-form', function(event) {
     data: {
       'captcha_key': $('#captcha-key').val(),
       'captcha_value': $('#captcha-value').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ''),
-      'nickname': $('#nickname').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ''),
-      'content': $('#content').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')
+      'nickname': $('#nickname').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n'),
+      'content': $('#content').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n')
     }
   }).done(function(data) {
     if (data.state == 'success') {
@@ -246,6 +246,13 @@ $(window).load(function() {
     webButton: {
       text: '둘러보기',
       url: 'http://filibuster.me/'
+    }
+  });
+
+  $('#create-comment-form').on('inview', function(event, isInView) {
+    if (isInView) {
+      $('#spoken-comment-list').slick('slickPause');
+      console.log('foo');
     }
   });
 
