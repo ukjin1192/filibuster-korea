@@ -27,7 +27,7 @@ function d_timer(){
 }
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '#line-share, #kakaotalk-share', function() {
+$(document).on('click', '.line-share, .kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -113,15 +113,6 @@ $(document).on('submit', '#search-form', function(event) {
   $('#comment-list').html('');
 
   getSearchedComments($('#category').val(), $('#keyword').val(), -1);
-});
-
-// Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '.line-share, .kakaotalk-share', function() {
-  // Detect desktop browser
-  if (!('ontouchstart' in window)) {
-    alert("모바일에서만 가능합니다");
-  }
-  return false;
 });
 
 $(window).scroll(function() {
