@@ -2,17 +2,8 @@
  * Color variables
  * =============== */
 
-$blue-color: #004879;
-$light-blue-color: lighten($blue-color, 3%);
-$lighter-blue-color: lighten($blue-color, 10%);
-$dark-blue-color: darken($blue-color, 3%);
-$darker-blue-color: darken($blue-color, 10%);
-
-$grey-color: #AEAEAE;
-$light-grey-color: lighten($grey-color, 10%);
-$lighter-grey-color: lighten($grey-color, 22%);
-$dark-grey-color: darken($grey-color, 10%);
-$darker-grey-color: darken($grey-color, 45%);
+$red-color: #76252B;
+$gold-color: #D2AF6D;
 
 /* ======================
  * Transparency variables
@@ -57,7 +48,6 @@ html, body {
 body {
 	// Ease effect when body DOM loads
 	opacity: 0;
-	background-color: $lighter-grey-color;
 
 	// Disable double-tap-to-zoom in IE 10, 11 for fast-click
 	-ms-touch-action: manipulation;
@@ -79,10 +69,6 @@ a, a:focus, a:hover, a:active, a:visited {
  * Basic attribute
  * =============== */
 
-.position-relative {
-	position: relative;
-}
-
 .full-width {
 	width: 100%;
 }
@@ -103,34 +89,106 @@ a, a:focus, a:hover, a:active, a:visited {
 	padding: 0;
 }
 
-/* ==============
- * Common element
- * ============== */
+/* =========
+ * Main page 
+ * ========= */
 
-#loading-icon  {
-	position: fixed;
-	width: 60px;
-	height: 60px;
-	top: 50%;
-	left: 50%;
-	margin-top: -30px;
-	margin-left: -30px;
-  border-radius: 80px;
-  box-shadow: 0 6px 0 0 $lighter-blue-color;
-	z-index: 9999;
-  -webkit-animation: loading-anim 1s linear infinite;
-  -moz-animation: loading-anim 1s linear infinite;
-  -ms-animation: loading-anim 1s linear infinite;
-  -o-animation: loading-anim 1s linear infinite;
-  animation: loading-anim 1s linear infinite;
+.intro {
 
-	@media screen and (min-width: $screen-md-min) {
-		width: 120px;
-		height: 120px;
-		top: 50%;
-		left: 50%;
-		margin-top: -60px;
-		margin-left: -60px;
+	.intro-image {
+		width: 100%;
+		max-height: 500px;
+	}
+
+	.intro-context {
+		position: absolute; 
+		left: 0;
+		width: 100%; 
+		margin: 0 auto; 
+		font-weight: 700;
+		color: white; 
+		z-index: 10; 
+		
+		@media screen and (max-width: $screen-xxs-max) {
+			top: 5px; 
+		}
+		@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+			top: 10px; 
+		}
+		@media screen and (min-width: $screen-sm-min) {
+			top: 30px; 
+		}
+		
+		.intro-context--roof {
+			
+			@media screen and (max-width: $screen-xxs-max) {
+				width: 70%;
+			}
+			@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+				width: 75%;
+			}
+			@media screen and (min-width: $screen-sm-min) {
+				width: 80%;
+				max-width: 700px;
+			}
+		}
+		
+		.intro-context--title {
+			width: 80%; 
+			margin: 0 auto;
+			
+			@media screen and (max-width: $screen-xxs-max) {
+				padding: 5px; 
+				border-top: 3px solid white; 
+				border-bottom: 3px solid white; 
+				font-size: 2.3em; 
+			}
+			@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+				padding: 6px; 
+				border-top: 4px solid white; 
+				border-bottom: 4px solid white; 
+				font-size: 2.5em; 
+			}
+			@media screen and (min-width: $screen-sm-min) {
+				max-width: 500px; 
+				padding: 15px; 
+				border-top: 9px solid white; 
+				border-bottom: 9px solid white; 
+				font-size: 3.5em; 
+			}
+		}
+		
+		.intro-context--subtitle {
+			width: 80%; 
+			margin: 10px auto; 
+			
+			@media screen and (max-width: $screen-xxs-max) {
+				font-size: 1.5em;
+			}
+			@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+				font-size: 1.5em;
+			}
+			@media screen and (min-width: $screen-sm-min) {
+				max-width: 500px; 
+				font-size: 2.0em;
+			}
+		}
+		
+		.intro-context--timer {
+			width: 80%; 
+			margin: 10px auto; 
+			
+			@media screen and (max-width: $screen-xxs-max) {
+				font-size: 1.5em;
+			}
+			@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+				font-size: 1.5em;
+			}
+			@media screen and (min-width: $screen-sm-min) {
+				max-width: 500px; 
+				font-size: 2.0em;
+			}
+		}
 	}
 }
 
@@ -171,6 +229,37 @@ a, a:focus, a:hover, a:active, a:visited {
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+
+/* ============
+ * Loading icon
+ * ============ */
+
+#loading-icon  {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	top: 50%;
+	left: 50%;
+	margin-top: -30px;
+	margin-left: -30px;
+  border-radius: 80px;
+  box-shadow: 0 6px 0 0 $gold-color;
+	z-index: 9999;
+  -webkit-animation: loading-anim 1s linear infinite;
+  -moz-animation: loading-anim 1s linear infinite;
+  -ms-animation: loading-anim 1s linear infinite;
+  -o-animation: loading-anim 1s linear infinite;
+  animation: loading-anim 1s linear infinite;
+
+	@media screen and (min-width: $screen-md-min) {
+		width: 120px;
+		height: 120px;
+		top: 50%;
+		left: 50%;
+		margin-top: -60px;
+		margin-left: -60px;
+	}
 }
 
 /* ===============================

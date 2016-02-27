@@ -24,7 +24,7 @@ function d_timer(){
   dy = " 일"
 
   var d_value = h_interval + hr + m_interval + min + secondsRound + sec;
-  $('.due-timer').text(d_value);
+  $('.intro-context--timer').text(d_value);
   newtime = window.setTimeout("d_timer();", 1000);
 }
 
