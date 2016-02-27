@@ -53,6 +53,10 @@ def get_comments(request):
         first_comment_id = int(request.GET['first_comment_id'])
         last_comment_id = int(request.GET['last_comment_id'])
         
+        # Set maximum number of comments per request
+        if last_comment_id - 100 > first_comment_id:
+            first_comment_id = last_comment_id - 100
+        
         comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id, is_deleted=False).values())
         
         return JsonResponse({'comments': comments})
