@@ -398,6 +398,7 @@ a, a:focus, a:hover, a:active, a:visited {
 	.desk-header--image__lg {
 		width: 100%; 
 		margin: 0 auto; 
+		max-height: 800px;
 		z-index: 5;
 	}
 
@@ -570,7 +571,9 @@ a, a:focus, a:hover, a:active, a:visited {
 }
 
 #see-more-comments {
-	margin-bottom: 15px;
+	max-width: 700px;
+	margin: 15px auto 0 auto;
+	font-weight: 700;
 	color: white; 
 }
 
@@ -583,6 +586,7 @@ a, a:focus, a:hover, a:active, a:visited {
 
 	.desk-footer--image {
 		width: 100%; 
+		max-height: 300px;
 		margin: 0 auto; 
 		z-index: 5;
 	}
@@ -590,7 +594,7 @@ a, a:focus, a:hover, a:active, a:visited {
 	.desk-footer--btn {
 		position: absolute; 
 		left: 50%; 
-		margin-left: -67px; 
+		margin-left: -77px; 
 		color: $gold-color; 
 		background-color: $red-color;
 		font-weight: 700;
