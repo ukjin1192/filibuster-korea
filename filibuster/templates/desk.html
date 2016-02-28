@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block container %}
+<div class="container-fit">
+
+	<div class="desk-header">
+		<div class="visible-xs">
+			<img src="{{ 'CDN_URL'|get_settings_variable }}/header_xs.jpg" class="desk-header--image__xs" />
+		</div>
+		<div class="hidden-xs">
+			<img src="{{ 'CDN_URL'|get_settings_variable }}/header_lg.jpg" class="desk-header--image__lg" />
+		</div>
+			
+		<div class="desk-header--container">
+			<div class="desk-header--subtitle">임시국회 폐회까지</div>
+			<div class="desk-header--timer"></div>
+			<div class="desk-header--title">
+				필리버스터 편집실
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="desk-context">
+			<div class="desk-context--title">
+				당신이 쓴 연설문,<br/>
+				국회 본회의장에서 읽히고<br/>
+				있습니다.
+			</div>
+			<div class="desk-context--link">
+				<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="desk-navbar">
+		<div class="desk-navbar--title">필리버스터 편집실</div>
+	</div>
+
+	<div class="desk-main">
+		<div class="container">
+			<form class="input-group" id="search-form">
+				<div class="input-group-btn">
+					<input tyoe="hidden" id="category" value="nickname" />
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span data-bind="label" id="category-text">별명</span> <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">주자 번호</a></li>
+						<li><a href="#">별명</a></li>
+						<li><a href="#">연설문 내용</a></li>
+						<li><a href="#">의원명</a></li>
+					</ul>
+				</div>
+				<input type="text" class="form-control" id="keyword" placeholder="검색 키워드를 입력해주세요" required />
+				<div class="input-group-btn">
+					<button type="submit" class="btn btn-default" id="search-btn">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</div>
+			</form>
+			
+			<div class="social-media--btn-group">
+				{# Facebook #}
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
+				</a>
+				{# Twitter #}
+				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
+				</a>
+				{# Google+ #}
+				<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+				</a>
+				{# LINE #}
+				{% comment %}
+				<a href="" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+				</a>
+				{% endcomment %}
+				{# Kakao talk #}
+				<a href="javascript:;" class="social-media--btn" id="kakaotalk-share-1">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+				</a>
+			</div>
+			
+			<div id="spoken-comment-list"></div>
+		
+			<button type="button" class="btn btn-defaukt btn-lg btn-block" id="see-more-comments" data-loading-text="가져오는 중입니다">
+				더 보기
+			</button> 
+			
+			<div class="social-media--btn-group">
+				{# Facebook #}
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
+				</a>
+				{# Twitter #}
+				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
+				</a>
+				{# Google+ #}
+				<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+				</a>
+				{# LINE #}
+				{% comment %}
+				<a href="" target="_blank" class="social-media--btn">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+				</a>
+				{% endcomment %}
+				{# Kakao talk #}
+				<a href="javascript:;" class="social-media--btn" id="kakaotalk-share-2">
+					<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+				</a>
+			</div>
+		</div>
+		
+		<div class="desk-footer">
+			<div class="visible-xs">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/footer_xs.jpg" class="desk-footer--image" />
+			</div>
+			<div class="hidden-xs">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/footer_lg.jpg" class="desk-footer--image" />
+			</div>
+			
+			<a href="/" role="button" class="btn btn-default btn-lg desk-footer--btn">
+				연설문 쓰러 가기
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="comment hidden" data-comment-id="" id="comment-virtual-dom">
+	<h1 class="comment-nickname"></h1>
+	<h4 class="comment-content"></h4>
+	<div class="comment-additional-info">
+		<h4 class="comment-spoken-at">2016년 2월 25일</h4>
+		<h4><span class="comment-speaker"></span> 의원을 통해서</h4>
+	</div>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/desk.js' %}"></script>
+{% endcompress %}
+{% endblock %}

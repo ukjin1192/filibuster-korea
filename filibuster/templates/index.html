@@ -7,13 +7,14 @@
 {% block container %}
 <input type="hidden" id="firebase-repo-url" value="{{ 'FIREBASE_REPO_URL'|get_settings_variable }}" />
 
-<div class="container-fit text-center">
+<div class="container-fit">
 
 	<div class="intro">
 		<img src="{{ 'CDN_URL'|get_settings_variable }}/assembly.jpg" class="intro-image"/>
 		
 		<div class="intro-context">
 			<img src="{{ 'CDN_URL'|get_settings_variable }}/assembly_roof.svg" class="intro-context--roof" />
+			
 			<div class="intro-context--title">
 				필리버스터 릴레이
 			</div>
@@ -26,93 +27,104 @@
 		</div>
 	</div>
 
-	<div style="background-color: #76252B; color: #D2AF6D; padding: 20px 10px; font-weight: bold;">
-		<h4>테러방지법 직권상정에 대한</h4>
-		<h4>필리버스터가 이어지고 있습니다.</h4>
-		<h4>단상에 오르는 의원들의 입을 빌어</h4>
-		<h4>하고 싶은 이야기를 적어 주세요.</h4>
+	<div class="description">
+		테러방지법 직권상정에 대한<br/>
+		필리버스터가 이어지고 있습니다.<br/>
+		단상에 오르는 의원들의 입을 빌어<br/>
+		하고 싶은 이야기를 적어 주세요.
 	</div>
 
-	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
-		<div class="visible-xs">
-			<h3 style="margin: 5px 0 0 0; line-height: 1.5em; font-weight: 700;">본회의장에 전달된<br/>당신의 목소리</h3>
-		</div>
-		<div class="hidden-xs">
-			<h3 style="margin: 5px 0 0 0; font-weight: 700;">본회의장에 전달된 당신의 목소리</h3>
+	<div class="spoken-comment">
+		<div class="spoken-comment--title">
+			본회의장에 전달된
+			<div class="visible-xs"></div>
+			당신의 목소리
 		</div>
 		
-		<a href="/search/" role="button" class="btn btn-default btn-lg" style="font-weight: 700; margin: 15px 0 10px 0;">
+		<a href="/desk/" role="button" class="spoken-comment--link btn btn-default btn-lg">
 			편집실 가서 읽기
 		</a>
 		
-		<div id="spoken-comment-list" style="width: 80%; max-width: 500px; margin: 10px auto 0 auto;"></div>
+		<div class="spoken-comment--list"></div>
 	</div>
 
-	<div style="background-color: #76252B; padding: 10px 0 20px 0; color: white;">
-		<h3><strong>당신은 <span id="new-comment-id"></span>번째 주자입니다</strong></h3>
+	<div class="user-info">
+		<div class="user-info--title">
+			당신은 <span id="new-comment-id"></span>번째 주자입니다
+		</div>
 	</div>
 
-	<div style="background-color: #D2AF6D; color: #76252B; padding: 10px;">
-		
-		<form id="create-comment-form" style="max-width: 500px; margin: 20px auto;">
+	<div id="comment-form--container">
+		<form id="comment-form">
 			{% csrf_token %}
+			
 			<input type="hidden" id="captcha-key" value="" />
-			<div class="input-group" id="captcha-group" style="margin-bottom: 10px;">
-				<span class="input-group-addon" id="captcha-image-container" style="padding: 0;">
+			
+			<div class="input-group" id="captcha-group">
+				<span class="input-group-addon" id="captcha-image--container">
 					<img src="" id="captcha-image" />
 				</span>
-				<span class="input-group-addon cursor-pointer" id="refresh-captcha">
+				<span class="input-group-addon" id="captcha-refresh">
 					<span class="glyphicon glyphicon-refresh"></span>
 				</span>
-				<input type="text" class="form-control" id="captcha-value" placeholder="왼쪽 문자를 입력해주세요" autocomplete="off" required style="height: 44px;" />
+				<input type="text" class="form-control" id="captcha-value" placeholder="왼쪽 문자를 입력해주세요" autocomplete="off" required  />
 			</div>
+			
 			<div class="form-group">
-				<input type="text" class="form-control" id="nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
+				<input type="text" class="form-control" id="comment-form--nickname" maxlength="10" placeholder="사용할 별명 (최대 10자)" autocomplete="off" required />
 			</div>
+			
 			<div class="form-group">
-				<textarea class="form-control" id="content" rows="8" maxlength="10000" placeholder="단상에 있는 의원을 통해 하고 싶은 이야기 (최대 10,000자)"></textarea>
+				<textarea class="form-control" id="comment-form--content" rows="8" maxlength="10000" placeholder="단상에 있는 의원을 통해 하고 싶은 이야기 (최대 10,000자)"></textarea>
 			</div>
+			
 			<div class="alert alert-info hidden" role="alert" id="success-message">
 				<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 
 				감사합니다. 당신의 목소리가 <span id="my-comment-id"></span>번째로 전달됐습니다.
 			</div>
+			
 			<div class="alert alert-danger hidden" role="alert" id="fail-message">
 				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 
 				죄송합니다. 문자를 다시 입력해주세요.
 			</div>
-			<button type="submit" class="btn btn-danger btn-lg btn-block" style="background-color: #76252B; border: none;">게시하기</button>
+			
+			<button type="submit" class="btn btn-danger btn-lg btn-block" id="comment-form--submit" data-loading-text="잠시만 기다려주세요">
+				게시하기
+			</button>
 		</form>	
-	</div>
+	</div>	
 
-	<div style="background-color: #76252B; color: white;">
-		<div id="share-btn-group">
+	<div class="social-media">
+		<div class="social-media--btn-group">
 			{# Facebook #}
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="share-btn">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
 			</a>
 			{# Twitter #}
-			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 쓰러 가기 &url=http://www.필리버스터.com" target="_blank" class="share-btn" id="twitter-share">
+			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 쓰러 가기 &url=http://www.필리버스터.com" target="_blank" class="social-media--btn" id="twitter-share">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
 			</a>
 			{# Google+ #}
-			<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="share-btn">
+			<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
 			</a>
 			{# LINE #}
-			<a href="http://line.me/R/msg/text/?%5B%ED%95%84%EB%A6%AC%EB%B2%84%EC%8A%A4%ED%84%B0%20%EB%A6%B4%EB%A0%88%EC%9D%B4%5D%20%EB%82%B4%EA%B0%80%20%EC%93%B0%EB%A9%B4%20%EA%B5%AD%ED%9A%8C%EC%9D%98%EC%9B%90%EC%9D%B4%20%EC%9D%BD%EB%8A%94%EB%8B%A4.%20%ED%95%84%EB%A6%AC%EB%B2%84%EC%8A%A4%ED%84%B0%20%EC%97%B0%EC%84%A4%EB%AC%B8%20%EC%93%B0%EB%9F%AC%20%EA%B0%80%EA%B8%B0%20http%3A%2F%2Fwww.%ED%95%84%EB%A6%AC%EB%B2%84%EC%8A%A4%ED%84%B0.me%0Ahttp%3A%2F%2F192.168.99.100%3A32768%2F" target="_blank" class="share-btn line-share">
+			{% comment %}
+			<a href="" target="_blank" class="social-media--btn" id="line-share">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
 			</a>
+			{% endcomment %}
 			{# Kakao talk #}
-			<a href="javascript:;" class="share-btn" id="kakaotalk-share">
+			<a href="javascript:;" class="social-media--btn" id="kakaotalk-share">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
 			</a>
 		</div>
 		
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/KavUBaV-jL4" frameborder="0" style="max-width: 100%;" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/KavUBaV-jL4" class="social-media--youtube" frameborder="0" allowfullscreen></iframe>
 	</div>
 
-	<div style="background-color: #76252B; color: white; border-bottom: 2px solid white; padding: 10px 0px;" id="switch-container">
-		<div class="btn-group" data-toggle="buttons" id="realtime-switch-group">
+	<div id="realtime-switch--container">
+		<div class="btn-group" data-toggle="buttons" id="realtime-switch--group">
 			<label class="btn btn-danger active" id="realtime-switch--on">
 				<input type="radio" name="options" autocomplete="off" checked /> 댓글 자동 스크롤
 			</label>
@@ -122,26 +134,20 @@
 		</div>
 	</div>
 
-	<div id="comment-list" style="background-color: #76252B; color: white;"></div>
+	<div id="recent-comment--list"></div>
 </div>
 
-<div class="comment hidden" data-comment-id="" id="comment-virtual-dom" style="padding: 20px 10px; border-bottom: 1px solid white;">
-	<h4 class="comment-nickname" style="margin-bottom: 25px;"></h4>
-	<h4 class="comment-content" style="line-height: 1.5em; text-align: left; max-width: 700px; margin: 0 auto; white-space: pre-wrap;"></h4>
-	<div class="comment-speaker hidden"></div>
-	<div class="comment-created-at hidden"></div>
-	<div class="comment-updated-at hidden"></div>
+<div class="comment hidden" data-comment-id="" id="comment-virtual-dom">
+	<div class="comment-nickname"></div>
+	<div class="comment-content"></div>
 </div>
 
-<div class="comment-slide hidden" id="comment-slide-virtual-dom">
-	<a href="/search/">
-		{% comment %}
-		<img src="" class="comment-slide--image" style="max-height: 200px; margin: 10px auto;" />
-		{% endcomment %}
-		<div class="comment-slide--content" style="font-weight: 700; line-height: 1.5em; font-size: 1.5em; white-space: pre-wrap;"></div>
+<div class="comment hidden" id="slide-comment--virtual-dom">
+	<a href="/desk/">
+		<div class="comment-content"></div>
 		<h4>2016년 2월 25일</h4>
-		<h4><span class="comment-slide--speaker"></span> 의원을 통해</h4>
-		<h4>- <span class="comment-slide--id"></span>번째 주자</h4>
+		<h4><span class="comment-speaker"></span> 의원을 통해</h4>
+		<h4>- <span class="comment-id"></span>번째 주자</h4>
 	</a>
 </div>
 {% endblock %}

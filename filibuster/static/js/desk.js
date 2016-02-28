@@ -1,33 +1,24 @@
-function d_timer(){
-  // set k_time
-  d = new Date();
-  utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-  now = new Date(utc + (3600000*9));
+function fillOutDueTimer(){
+  // Get now
+  var utcNow = new Date();
+  var now = new Date(utcNow.getTime() + (utcNow.getTimezoneOffset() * 60000) + (3600000*9));
 
-  //set d_day
-  d_day = new Date("Mar 10 2016 23:59:59"); // set march 10 2016
+  // Set due date as 2016/03/10
+  dueDate = new Date('Mar 10 2016 23:59:59');
 
-  hours = (d_day - now) / 1000 / 60 / 60 ; 
-  h_interval = Math.floor(hours);
-  minutes = (d_day - now) / 1000 /60 - (60 * h_interval);
-  m_interval = Math.floor(minutes);
-  seconds = (d_day - now) / 1000 - (60 * 60 * h_interval) -
-  (60 * m_interval); 
-  secondsRound = Math.round(seconds);
+  var hours = Math.floor((dueDate - now) / 1000 / 60 / 60);
+  var minutes = Math.floor((dueDate - now) / 1000 /60 - (60 * hours));
+  var seconds = Math.round((dueDate - now) / 1000 - (60 * 60 * hours) - (60 * minutes));
 
-  // variable for display
-  sec = "초"
-  min = "분 "
-  hr = "시간 "
-  dy = " 일"
-
-  var d_value = h_interval + hr + m_interval + min + secondsRound + sec;
-  $('.due-timer').text(d_value);
-  newtime = window.setTimeout("d_timer();", 1000);
+  // Set text of timer
+  $('.desk-header--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
+  
+  // Update timer every seconds
+  window.setTimeout('fillOutDueTimer();', 1000);
 }
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '#line-share-1, #line-share-2, #kakaotalk-share-1, #kakaotalk-share-2', function() {
+$(document).on('click', '#kakaotalk-share-1, #kakaotalk-share-2', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -84,7 +75,7 @@ function getSearchedComments(category, keyword, lastCommentID) {
       $comment.find('.comment-content').text(comment.content);
       $comment.find('.comment-speaker').text(comment.speaker);
       
-      $('#comment-list').append($comment);
+      $('#spoken-comment-list').append($comment);
     });
     
     if (comments.length < 10) $('#see-more-comments').addClass('hidden');
@@ -94,14 +85,14 @@ function getSearchedComments(category, keyword, lastCommentID) {
   });
 }
 
-$(document).on('click', '.go-to-main-container', function() {
+$(document).on('click', '.desk-context--link', function() {
   $('html, body').animate({
-    scrollTop: $('#search-navbar').offset().top
+    scrollTop: $('.desk-navbar').offset().top
   }, 1000);
 });
 
 $(document).on('click', '#see-more-comments', function() {
-  var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id'));
+  var lastCommentID = parseInt($('#spoken-comment-list .comment').last().attr('data-comment-id'));
   $('#see-more-comments').button('loading');
   getSearchedComments($('#category').val(), $('#keyword').val(), lastCommentID);
 });
@@ -109,17 +100,17 @@ $(document).on('click', '#see-more-comments', function() {
 $(document).on('submit', '#search-form', function(event) {
   event.preventDefault();
 
-  $('#comment-list').html('');
+  $('#spoken-comment-list').html('');
 
   getSearchedComments($('#category').val(), $('#keyword').val(), -1);
 });
 
 $(window).scroll(function() {
   // Automatically position search navigation bar
-  if ($(window).scrollTop() > $('#search-navbar').offset().top) {
-    $('#navbar-text').addClass('fixed-navbar');
+  if ($(window).scrollTop() > $('.desk-navbar').offset().top) {
+    $('.desk-navbar--title').addClass('fixed');
   } else {
-    $('#navbar-text').removeClass('fixed-navbar');
+    $('.desk-navbar--title').removeClass('fixed');
   }
 });
 
@@ -127,13 +118,13 @@ $(window).load(function() {
   $('#loading-icon').addClass('hidden');
 
   // Ease effect when body DOM loads
-  $("body").animate({ opacity: 1 }, 700);
+  $('body').animate({opacity: 1}, 700);
 
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
 
-  // Due timer
-  d_timer(); 
+  // Fill out due timer
+  fillOutDueTimer(); 
 
   var parameter = location.href.split('?')[1];
   if (parameter != null) {
@@ -174,7 +165,7 @@ $(window).load(function() {
     getSearchedComments($('#category').val(), '', -1);
   }
 
-  // Kakao talk sharing
+  // Kakaotalk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share-1',

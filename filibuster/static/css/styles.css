@@ -33,27 +33,15 @@ a, a:focus, a:hover, a:active, a:visited {
   color: inherit;
   outline: 0; }
 
-/* ===============
- * Basic attribute
- * =============== */
-.full-width {
-  width: 100%; }
-
-.cursor-pointer {
-  cursor: pointer; }
-
-.space {
-  height: 20px; }
-
 /* ==================
  * Override bootstrap 
  * ================== */
 .container-fit {
   padding: 0; }
 
-/* =========
- * Main page 
- * ========= */
+/* =========================
+ * Main page - Intro section 
+ * ========================= */
 .intro .intro-image {
   width: 100%;
   max-height: 500px; }
@@ -64,6 +52,7 @@ a, a:focus, a:hover, a:active, a:visited {
   margin: 0 auto;
   font-weight: 700;
   color: white;
+  text-align: center;
   z-index: 10; }
   @media screen and (max-width: 320px) {
     .intro .intro-context {
@@ -133,32 +122,331 @@ a, a:focus, a:hover, a:active, a:visited {
         max-width: 500px;
         font-size: 2.0em; } }
 
-/* =======
- * Comment
- * ======= */
-.comment .comment-content {
-  white-space: pre-wrap; }
+/* =======================
+ * Main page - Description 
+ * ======================= */
+.description {
+  padding: 20px 0;
+  line-height: 1.6em;
+  background-color: #76252B;
+  font-weight: 700;
+  color: #D2AF6D;
+  text-align: center; }
+  @media screen and (max-width: 320px) {
+    .description {
+      font-size: 1.1em; } }
+  @media screen and (min-width: 321px) and (max-width: 767px) {
+    .description {
+      font-size: 1.2em; } }
+  @media screen and (min-width: 768px) {
+    .description {
+      font-size: 1.3em; } }
 
-#share-btn-group, .share-btn-group {
+/* ===============================
+ * Main page - Spoken comment list 
+ * =============================== */
+.spoken-comment {
+  background-color: #D2AF6D;
+  font-weight: 700;
+  color: #76252B;
+  text-align: center; }
+  @media screen and (max-width: 767px) {
+    .spoken-comment {
+      padding: 10px; } }
+  @media screen and (min-width: 768px) {
+    .spoken-comment {
+      padding: 20px; } }
+  @media screen and (max-width: 767px) {
+    .spoken-comment .spoken-comment--title {
+      font-size: 1.8em; } }
+  @media screen and (min-width: 768px) {
+    .spoken-comment .spoken-comment--title {
+      font-size: 2.5em; } }
+  .spoken-comment .spoken-comment--link {
+    margin: 15px 0 10px 0;
+    border: none;
+    background-color: #76252B;
+    color: white; }
+  .spoken-comment .spoken-comment--list {
+    width: 80%;
+    max-width: 500px;
+    margin: 10px auto 0 auto; }
+    .spoken-comment .spoken-comment--list .comment .comment-content {
+      line-height: 1.5em;
+      white-space: pre-wrap;
+      font-weight: 700; }
+      @media screen and (max-width: 767px) {
+        .spoken-comment .spoken-comment--list .comment .comment-content {
+          font-size: 1.4em; } }
+      @media screen and (min-width: 768px) {
+        .spoken-comment .spoken-comment--list .comment .comment-content {
+          font-size: 1.8em; } }
+
+/* ============================
+ * Main page - User information 
+ * ============================= */
+.user-info {
+  padding: 15px 0;
+  background-color: #76252B;
+  font-weight: 700;
+  color: white;
+  text-align: center; }
+  @media screen and (max-width: 320px) {
+    .user-info {
+      font-size: 1.8em; } }
+  @media screen and (min-width: 321px) and (max-width: 767px) {
+    .user-info {
+      font-size: 1.9em; } }
+  @media screen and (min-width: 768px) {
+    .user-info {
+      font-size: 3.0em; } }
+
+/* ========================
+ * Main page - Comment form 
+ * ======================== */
+#comment-form--container {
+  background-color: #D2AF6D;
+  color: #76252B; }
+  #comment-form--container #comment-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px; }
+    #comment-form--container #comment-form #captcha-group {
+      margin-bottom: 10px; }
+    #comment-form--container #comment-form #captcha-image--container {
+      padding: 0; }
+    #comment-form--container #comment-form #captcha-refresh {
+      cursor: pointer; }
+    #comment-form--container #comment-form #captcha-value {
+      height: 44px; }
+    #comment-form--container #comment-form #comment-form--submit {
+      background-color: #76252B;
+      border: none; }
+
+/* ========================
+ * Main page - Social media
+ * ======================== */
+.social-media {
+  background-color: #76252B;
+  color: white;
+  text-align: center; }
+  .social-media .social-media--youtube {
+    max-width: 100%; }
+
+/* ===================================
+ * Main page - Realtime switch buttons
+ * =================================== */
+#realtime-switch--container {
+  padding: 10px 0px;
+  border-bottom: 1px solid white;
+  background-color: #76252B;
+  color: white;
+  text-align: center; }
+  #realtime-switch--container #realtime-switch--group.fixed {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    margin-left: -118px; }
+
+/* ===============================
+ * Main page - Recent comment list
+ * =============================== */
+#recent-comment--list {
+  background-color: #76252B;
+  color: white; }
+  #recent-comment--list .comment {
+    padding: 20px 10px;
+    border-bottom: 1px solid white; }
+    #recent-comment--list .comment .comment-nickname {
+      margin-bottom: 25px;
+      font-size: 1.3em;
+      text-align: center; }
+    #recent-comment--list .comment .comment-content {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5em;
+      font-size: 1.3em;
+      text-align: left;
+      white-space: pre-wrap; }
+
+/* ==================
+ * Desk page - Header 
+ * ================== */
+.desk-header .desk-header--image__xs {
+  width: 100%;
+  margin: 0 auto;
+  z-index: 5; }
+.desk-header .desk-header--image__lg {
+  width: 100%;
+  margin: 0 auto;
+  z-index: 5; }
+.desk-header .desk-header--container {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  z-index: 10; }
+  @media screen and (max-width: 767px) {
+    .desk-header .desk-header--container {
+      top: 12px; } }
+  @media screen and (min-width: 768px) {
+    .desk-header .desk-header--container {
+      top: 60px; } }
+  .desk-header .desk-header--container .desk-header--subtitle {
+    margin-top: 20px;
+    font-weight: 700; }
+    @media screen and (max-width: 767px) {
+      .desk-header .desk-header--container .desk-header--subtitle {
+        font-size: 2.0em; } }
+    @media screen and (min-width: 768px) {
+      .desk-header .desk-header--container .desk-header--subtitle {
+        font-size: 2.5em; } }
+  .desk-header .desk-header--container .desk-header--timer {
+    margin-bottom: 20px;
+    font-weight: 700; }
+    @media screen and (max-width: 767px) {
+      .desk-header .desk-header--container .desk-header--timer {
+        font-size: 2.0em; } }
+    @media screen and (min-width: 768px) {
+      .desk-header .desk-header--container .desk-header--timer {
+        font-size: 2.5em; } }
+  .desk-header .desk-header--container .desk-header--title {
+    padding: 15px 0;
+    background-color: #34495E;
+    font-weight: 700;
+    color: white; }
+    @media screen and (max-width: 767px) {
+      .desk-header .desk-header--container .desk-header--title {
+        font-size: 2.5em; } }
+    @media screen and (min-width: 768px) {
+      .desk-header .desk-header--container .desk-header--title {
+        font-size: 3.0em; } }
+
+/* ===================
+ * Desk page - Context
+ * =================== */
+.desk-context .desk-context--title {
+  text-align: left;
+  font-weight: 700;
+  color: white; }
+  @media screen and (max-width: 320px) {
+    .desk-context .desk-context--title {
+      margin-top: -150px;
+      font-size: 1.9em; } }
+  @media screen and (min-width: 321px) and (max-width: 767px) {
+    .desk-context .desk-context--title {
+      margin-top: -150px;
+      font-size: 2.0em; } }
+  @media screen and (min-width: 768px) {
+    .desk-context .desk-context--title {
+      margin-top: -180px;
+      font-size: 2.5em; } }
+.desk-context .desk-context--link {
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  z-index: 10; }
+  @media screen and (max-width: 767px) {
+    .desk-context .desk-context--link {
+      margin-top: -15px;
+      font-size: 2.0em; } }
+  @media screen and (min-width: 768px) {
+    .desk-context .desk-context--link {
+      margin-top: -30px;
+      font-size: 2.5em; } }
+
+/* ==========================
+ * Desk page - Navigation bar
+ * ========================== */
+.desk-navbar {
+  width: 100%;
+  height: 55px;
+  text-align: center; }
+  .desk-navbar .desk-navbar--title {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #34495E;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: white;
+    z-index: 100; }
+    .desk-navbar .desk-navbar--title.fixed {
+      position: fixed;
+      top: 0;
+      left: 0; }
+
+/* =======================
+ * Desk page - Search form
+ * ======================= */
+.desk-main {
+  background-color: #F0EDDF; }
+  .desk-main #search-form {
+    max-width: 700px;
+    margin: 30px auto 0 auto; }
+
+/* ===============================
+ * Desk page - Spoken comment list
+ * =============================== */
+#spoken-comment-list {
+  max-width: 700px;
+  margin: 0 auto; }
+  #spoken-comment-list .comment {
+    padding: 10px;
+    border-top: 1px solid white; }
+    #spoken-comment-list .comment .comment-nickname {
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-align: center; }
+    #spoken-comment-list .comment .comment-content {
+      line-height: 1.5em;
+      white-space: pre-wrap; }
+    #spoken-comment-list .comment .comment-additional-info {
+      padding: 1px;
+      background-color: #E0E0E0;
+      text-align: center; }
+
+#see-more-comments {
+  margin-bottom: 15px;
+  color: white; }
+
+/* ==================
+ * Desk page - Footer
+ * ================== */
+.desk-footer {
+  position: relative; }
+  .desk-footer .desk-footer--image {
+    width: 100%;
+    margin: 0 auto;
+    z-index: 5; }
+  .desk-footer .desk-footer--btn {
+    position: absolute;
+    left: 50%;
+    margin-left: -67px;
+    color: #D2AF6D;
+    background-color: #76252B;
+    font-weight: 700;
+    z-index: 10; }
+    @media screen and (max-width: 767px) {
+      .desk-footer .desk-footer--btn {
+        top: 25px; } }
+    @media screen and (min-width: 768px) {
+      .desk-footer .desk-footer--btn {
+        top: 50px; } }
+
+/* =========================
+ * Social media share button
+ * ========================= */
+.social-media--btn-group {
   padding: 25px 0;
   text-align: center; }
-  #share-btn-group .share-btn, .share-btn-group .share-btn {
+  .social-media--btn-group .social-media--btn {
     display: inline;
     padding: 7px; }
-    #share-btn-group .share-btn img, .share-btn-group .share-btn img {
+    .social-media--btn-group .social-media--btn img {
       width: 12%;
       max-width: 50px; }
-
-.fixed-switch {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  margin-left: -118px; }
-
-.fixed-navbar {
-  position: fixed;
-  top: 0;
-  left: 0; }
 
 /* ============
  * Loading icon
@@ -172,7 +460,7 @@ a, a:focus, a:hover, a:active, a:visited {
   margin-top: -30px;
   margin-left: -30px;
   border-radius: 80px;
-  box-shadow: 0 6px 0 0 #D2AF6D;
+  box-shadow: 0 6px 0 0 white;
   z-index: 9999;
   -webkit-animation: loading-anim 1s linear infinite;
   -moz-animation: loading-anim 1s linear infinite;

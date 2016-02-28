@@ -1,31 +1,22 @@
 var firebaseRepoURL, firebaseConnection;
 
-function d_timer(){
-  // set k_time
-  d = new Date();
-  utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-  now = new Date(utc + (3600000*9));
+function fillOutDueTimer(){
+  // Get now
+  var utcNow = new Date();
+  var now = new Date(utcNow.getTime() + (utcNow.getTimezoneOffset() * 60000) + (3600000*9));
 
-  //set d_day
-  d_day = new Date("Mar 10 2016 23:59:59"); // set march 10 2016
+  // Set due date as 2016/03/10
+  dueDate = new Date('Mar 10 2016 23:59:59');
 
-  hours = (d_day - now) / 1000 / 60 / 60 ; 
-  h_interval = Math.floor(hours);
-  minutes = (d_day - now) / 1000 /60 - (60 * h_interval);
-  m_interval = Math.floor(minutes);
-  seconds = (d_day - now) / 1000 - (60 * 60 * h_interval) -
-  (60 * m_interval); 
-  secondsRound = Math.round(seconds);
+  var hours = Math.floor((dueDate - now) / 1000 / 60 / 60);
+  var minutes = Math.floor((dueDate - now) / 1000 /60 - (60 * hours));
+  var seconds = Math.round((dueDate - now) / 1000 - (60 * 60 * hours) - (60 * minutes));
 
-  // variable for display
-  sec = "초"
-  min = "분 "
-  hr = "시간 "
-  dy = " 일"
-
-  var d_value = h_interval + hr + m_interval + min + secondsRound + sec;
-  $('.intro-context--timer').text(d_value);
-  newtime = window.setTimeout("d_timer();", 1000);
+  // Set text of timer
+  $('.intro-context--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
+  
+  // Update timer every seconds
+  window.setTimeout('fillOutDueTimer();', 1000);
 }
 
 // Prevent CSRF token problem before sending reqeust with ajax
@@ -68,12 +59,9 @@ function getComments(firstCommentID, lastCommentID, position) {
       $comment.attr('data-comment-id', comment.id);
       $comment.find('.comment-nickname').text(comment.id + '번째 주자 - ' + comment.nickname + ' 님');
       $comment.find('.comment-content').text(comment.content);
-      $comment.find('.comment-speaker').text(comment.speaker);
-      $comment.find('.comment-created-at').text(comment.created_at);
-      $comment.find('.comment-updated-at').text(comment.updated_at);
       
-      if (position == 'prepend') $('#comment-list').prepend($comment);
-      else $('#comment-list').append($comment); 
+      if (position == 'prepend') $('#recent-comment--list').prepend($comment);
+      else $('#recent-comment--list').append($comment); 
     });
     
     // Update new comment ID
@@ -94,36 +82,33 @@ function getRandomSpokenComments() {
     
     comments.forEach(function(comment, index) {
       var contentMaxLength = 160;
-      var $comment = $('#comment-slide-virtual-dom').clone().removeClass('hidden').removeAttr('id');
-      // $comment.find('.comment-slide--image').attr('src', comment.image_url);
+      var $comment = $('#slide-comment--virtual-dom').clone().removeClass('hidden').removeAttr('id');
       if (comment.content.length > contentMaxLength) {
-        $comment.find('.comment-slide--content').text('"' + comment.content.substring(0, contentMaxLength) + '..."');
+        $comment.find('.comment-content').text('"' + comment.content.substring(0, contentMaxLength) + '..."');
       } else { 
-        $comment.find('.comment-slide--content').text('"' + comment.content + '"');
+        $comment.find('.comment-content').text('"' + comment.content + '"');
       }
-      $comment.find('.comment-slide--speaker').text(comment.speaker);
-      $comment.find('.comment-slide--id').text(comment.id);
+      $comment.find('.comment-speaker').text(comment.speaker);
+      $comment.find('.comment-id').text(comment.id);
       
-      $('#spoken-comment-list').append($comment);
+      $('.spoken-comment--list').append($comment);
     });
     
-    $('#spoken-comment-list').slick({
-      autoplay: false,
-      adaptiveHeight: true
-    });
+    $('.spoken-comment--list').slick({adaptiveHeight: true});
   }).always(function() {
     $('#loading-icon').addClass('hidden');
   });
 }
 
-$(document).on('click', '#refresh-captcha', getCaptcha);
+$(document).on('click', '#captcha-refresh', getCaptcha);
 
-$(document).on('submit', '#create-comment-form', function(event) {
+$(document).on('submit', '#comment-form', function(event) {
   event.preventDefault();
 
   $('#loading-icon').removeClass('hidden');
   $('#captcha-group').removeClass('has-error');
   $('#success-message, #fail-message').addClass('hidden');
+  $('#comment-form--submit').button('loading');
 
   setCSRFToken();
 
@@ -133,12 +118,12 @@ $(document).on('submit', '#create-comment-form', function(event) {
     data: {
       'captcha_key': $('#captcha-key').val(),
       'captcha_value': $('#captcha-value').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, ''),
-      'nickname': $('#nickname').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n'),
-      'content': $('#content').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n')
+      'nickname': $('#comment-form--nickname').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n'),
+      'content': $('#comment-form--content').val().replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').replace(/(\r\n|\r|\n){2}/g, '$1').replace(/(\r\n|\r|\n){3,}/g, '$1\n')
     }
   }).done(function(data) {
     if (data.state == 'success') {
-      $('#nickname, #content').val('');
+      $('#comment-form--nickname, #comment-form--content, #captcha-value').val('');
       $('#my-comment-id').text(data.comment_id);
       $('#success-message').removeClass('hidden');
       getCaptcha();
@@ -147,16 +132,17 @@ $(document).on('submit', '#create-comment-form', function(event) {
       $('#fail-message').removeClass('hidden');
     }
   }).always(function() {
+    $('#comment-form--submit').button('reset')
     $('#loading-icon').addClass('hidden');
   });
 });
 
-$(document).on('hover', '.comment-slide', function() {
-  $(this).find('.comment-slide--content').css('text-decoration', 'underline');
+$(document).on('hover', '.spoken-comment--list .comment', function() {
+  $(this).find('.comment-content').css('text-decoration', 'underline');
 });
 
-$(document).on('mouseleave', '.comment-slide', function() {
-  $(this).find('.comment-slide--content').css('text-decoration', 'none');
+$(document).on('mouseleave', '.spoken-comment--list .comment', function() {
+  $(this).find('.comment-content').css('text-decoration', 'none');
 });
 
 $(document).on('click', '#realtime-switch--on', function() {
@@ -177,20 +163,20 @@ $(document).on('click', '#realtime-switch--off', function() {
 
 $(window).scroll(function() {
   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-    var lastCommentID = parseInt($('#comment-list .comment').last().attr('data-comment-id')) - 1;
+    var lastCommentID = parseInt($('#recent-comment--list .comment').last().attr('data-comment-id')) - 1;
     if (lastCommentID > 0) getComments(Math.max(lastCommentID - 9, 1), lastCommentID, 'append');
   }
 
    // Automatically position realtime switch
-  if ($(window).scrollTop() > $('#switch-container').offset().top) {
-    $('#realtime-switch-group').addClass('fixed-switch');
+  if ($(window).scrollTop() > $('#realtime-switch--container').offset().top) {
+    $('#realtime-switch--group').addClass('fixed');
   } else {
-    $('#realtime-switch-group').removeClass('fixed-switch');
+    $('#realtime-switch--group').removeClass('fixed');
   }
 });
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '.line-share, #kakaotalk-share', function() {
+$(document).on('click', '#line-share, #kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -202,12 +188,13 @@ $(window).load(function() {
   firebaseRepoURL = $('#firebase-repo-url').val();
   firebaseConnection = new Firebase(firebaseRepoURL + 'comment/');
 
+  // Fill out captcha key and image
   getCaptcha();
 
   $('#loading-icon').addClass('hidden');
 
   // Ease effect when body DOM loads
-  $("body").animate({ opacity: 1 }, 700);
+  $('body').animate({opacity: 1}, 700);
 
   firebaseConnection.child('last_comment_id/').once('value', function(snapshot) {
     var lastCommentID = parseInt(snapshot.val());
@@ -215,17 +202,20 @@ $(window).load(function() {
   });
 
   firebaseConnection.on('child_changed', function(snapshot) {
-    var originalLastCommentID = parseInt($('#comment-list .comment').first().attr('data-comment-id'));
+    var originalLastCommentID = parseInt($('#recent-comment--list .comment').first().attr('data-comment-id'));
     if (snapshot.key() == 'last_comment_id') getComments(originalLastCommentID, parseInt(snapshot.val()), 'prepend');
   });
 
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
 
-  // Due timer
-  d_timer(); 
+  // Fill out due timer
+  fillOutDueTimer(); 
 
-  // Kakao talk sharing
+  // Get random spoken comments
+  getRandomSpokenComments();
+
+  // Kakaotalk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
@@ -240,6 +230,4 @@ $(window).load(function() {
       url: 'http://filibuster.me/'
     }
   });
-  
-  getRandomSpokenComments();
 });
