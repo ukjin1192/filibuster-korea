@@ -114,7 +114,7 @@ class Comment(models.Model):
         null = True
     )
     spoken_at = models.DateField(
-        verbose_name = _('Created datetime'),
+        verbose_name = _('Spoken date'),
         blank = True,
         null = True
     )
