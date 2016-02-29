@@ -78,6 +78,7 @@ function getSearchedComments(category, keyword, lastCommentID) {
     });
     
     if (comments.length < 10) $('#see-more-comments').addClass('hidden');
+    else $('#see-more-comments').removeClass('hidden');
   }).always(function() {
     $('#loading-icon').addClass('hidden');
     $('#see-more-comments').button('reset');
