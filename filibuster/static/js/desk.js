@@ -1,20 +1,4 @@
-// Update due timer
-function updateDueTimer() {
-
-  var now = moment();
-  var due = moment([2016, 2, 1, 9, 0, 0]);
-
-  var duration = moment.duration(due.diff(now));
-
-  var hours = Math.floor(duration.asHours());
-  var minutes = Math.floor(duration.asMinutes()) - hours * 60;
-  var seconds = Math.floor(duration.asSeconds()) - hours * 3600 - minutes * 60;
-
-  // Set text of timer
-  $('.desk-header--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
-}
-
-// Alert that kakaotalk and line messenger sharing is only available at mobile
+// Alert that kakaotalk messenger sharing is only available at mobile
 $(document).on('click', '#kakaotalk-share-1, #kakaotalk-share-2', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
@@ -133,10 +117,6 @@ $(window).load(function() {
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
 
-  // Update due timer every seconds
-  moment.locale('ko');
-  setInterval(updateDueTimer, 1000);
-
   var permalink = location.href.split('?')[1];
   if (permalink != null) {
     var regexMatching = permalink.match(/(\w+)=(\w+)/);
@@ -179,11 +159,11 @@ $(window).load(function() {
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share-1',
-    label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
+    label: '[필리버스터 릴레이] 국회의원이 읽은 내 연설문 보러 가기 ',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
-      width: '960',
-      height: '480'
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
+      width: '800',
+      height: '421'
     },
     webButton: {
       text: '둘러보기',
@@ -192,11 +172,11 @@ $(window).load(function() {
   });
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share-2',
-    label: '[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요!',
+    label: '[필리버스터 릴레이] 국회의원이 읽은 내 연설문 보러 가기 ',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
-      width: '960',
-      height: '480'
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
+      width: '800',
+      height: '421'
     },
     webButton: {
       text: '둘러보기',

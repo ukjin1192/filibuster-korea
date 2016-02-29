@@ -20,14 +20,8 @@
   <meta name="description" content="필리버스터 한국 (Filibuster Korea)" />
   <meta name="keywords" content="필리버스터, Filibuster" />
 
-  {# Facebook Open Graph Tag #}
-  <meta property="og:title" content="필리버스터 릴레이" />
-  <meta property="og:site_name" content="필리버스터" />
-  <meta property="og:url" content="http://filibuster.me/" />
-  <meta property="og:description" content="최근 시민 필리버스터 페이지를 방해한 댓글들을 모았습니다. 앞으로 6시간! 진정한 시민들의 참여를 기다립니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-new2.png" />
-  <meta property="fb:app_id" content="192025411163419" />
+  {# Social media meta tags #}
+  {% block social_media_meta_tags %}{% endblock %}
 
   {# Favicon #}
   <link rel="apple-touch-icon" sizes="57x57" href="{{ 'CDN_URL'|get_settings_variable }}/apple-touch-icon-57x57.png">

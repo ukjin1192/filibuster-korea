@@ -189,8 +189,8 @@ $(document).on('click', '#back-to-top', function(event) {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
-// Alert that kakaotalk and line messenger sharing is only available at mobile
-$(document).on('click', '#line-share, #kakaotalk-share', function() {
+// Alert that kakaotalk messenger sharing is only available at mobile
+$(document).on('click', '#kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
@@ -234,11 +234,11 @@ $(window).load(function() {
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
-    label: '[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 쓰러 가기',
+    label: '[필리버스터 릴레이] 내가 쓰는 필리버스터 연설문',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new.jpg',
-      width: '960',
-      height: '480'
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-index.png',
+      width: '800',
+      height: '421'
     },
     webButton: {
       text: '둘러보기',

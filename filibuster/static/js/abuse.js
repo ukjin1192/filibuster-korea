@@ -39,7 +39,7 @@ $(document).on('click', '#back-to-top', function(event) {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
-// Alert that kakaotalk and line messenger sharing is only available at mobile
+// Alert that kakaotalk messenger sharing is only available at mobile
 $(document).on('click', '#kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
@@ -64,15 +64,15 @@ $(window).load(function() {
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
-    label: '[필리버스터 릴레이] 최근 시민 필리버스터 페이지를 방해한 댓플들을 모았습니다. 앞으로 6시간! 진정한 시민들의 참여를 기다립니다.',
+    label: '[필리버스터 릴레이] 시민 필리버스터 페이지를 방해한 댓플들을 모았습니다',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new2.png',
-      width: '960',
-      height: '480'
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-abuse.png',
+      width: '527',
+      height: '326'
     },
     webButton: {
       text: '둘러보기',
-      url: 'http://filibuster.me/'
+      url: 'http://filibuster.me/abuse/'
     }
   });
 });

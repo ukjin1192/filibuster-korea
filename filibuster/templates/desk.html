@@ -4,6 +4,28 @@
 {% load custom_filter %}
 {% load staticfiles %}
 
+{% block social_media_meta_tags %}
+<meta property="fb:app_id" content="192025411163419" />
+<meta property="fb:locale" content="ko_KR" />
+
+<meta property="og:title" content="국회의원이 읽은 내 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me/desk/" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-desk.jpg" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/jpeg" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="국회의원이 읽은 내 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-desk.jpg" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% endblock %}
+
 {% block container %}
 <div class="container-fit">
 
@@ -16,12 +38,6 @@
 		</div>
 			
 		<div class="desk-header--container">
-			<div class="desk-header--subtitle">
-				이종걸 원내대표 기자회견까지
-			</div>
-			
-			<div class="desk-header--timer">&nbsp;</div>
-			
 			<div class="desk-header--title">
 				필리버스터 편집실
 			</div>
@@ -32,8 +48,8 @@
 		<div class="desk-context">
 			<div class="desk-context--title">
 				당신이 쓴 연설문,<br/>
-				국회 본회의장에서 읽히고<br/>
-				있습니다.
+				국회 본회의장에서<br/>
+				읽혔습니다
 			</div>
 			<div class="desk-context--link">
 				<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
@@ -91,15 +107,15 @@
 			
 			<div class="social-media--btn-group">
 				{# Facebook #}
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
 				</a>
 				{# Twitter #}
-				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
 				</a>
 				{# Google+ #}
-				<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
+				<a href="https://plus.google.com/share?url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
 				</a>
 				{# LINE #}
@@ -122,15 +138,15 @@
 			
 			<div class="social-media--btn-group">
 				{# Facebook #}
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
 				</a>
 				{# Twitter #}
-				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
 				</a>
 				{# Google+ #}
-				<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
+				<a href="https://plus.google.com/share?url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
 					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
 				</a>
 				{# LINE #}

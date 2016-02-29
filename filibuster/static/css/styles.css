@@ -294,24 +294,6 @@ a, a:focus, a:hover, a:active, a:visited {
   @media screen and (min-width: 768px) {
     .desk-header .desk-header--container {
       top: 60px; } }
-  .desk-header .desk-header--container .desk-header--subtitle {
-    margin-top: 20px;
-    font-weight: 700; }
-    @media screen and (max-width: 767px) {
-      .desk-header .desk-header--container .desk-header--subtitle {
-        font-size: 2.0em; } }
-    @media screen and (min-width: 768px) {
-      .desk-header .desk-header--container .desk-header--subtitle {
-        font-size: 2.5em; } }
-  .desk-header .desk-header--container .desk-header--timer {
-    margin-bottom: 20px;
-    font-weight: 700; }
-    @media screen and (max-width: 767px) {
-      .desk-header .desk-header--container .desk-header--timer {
-        font-size: 2.0em; } }
-    @media screen and (min-width: 768px) {
-      .desk-header .desk-header--container .desk-header--timer {
-        font-size: 2.5em; } }
   .desk-header .desk-header--container .desk-header--title {
     padding: 15px 0;
     background-color: #34495E;

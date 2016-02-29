@@ -4,6 +4,28 @@
 {% load custom_filter %}
 {% load staticfiles %}
 
+{% block social_media_meta_tags %}
+<meta property="fb:app_id" content="192025411163419" />
+<meta property="fb:locale" content="ko_KR" />
+
+<meta property="og:title" content="시민 필리버스터 릴레이 방해 댓글 모음" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me/abuse/" />
+<meta property="og:description" content="시민 필리버스터 페이지를 방해한 댓플들을 모았습니다" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-abuse.png" />
+<meta property="og:image:width" content="527" />
+<meta property="og:image:height" content="326" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="시민 필리버스터 릴레이 방해 댓글 모음" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-abuse.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="527">
+<meta property="twitter:image:width" content="326">
+{% endblock %}
+
 {% block container %}
 <input type="hidden" id="firebase-repo-url" value="{{ 'FIREBASE_REPO_URL'|get_settings_variable }}" />
 
@@ -27,7 +49,7 @@
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
 			</a>
 			{# Twitter #}
-			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 최근 시민 필리버스터 페이지를 방해한 댓플들을 모았습니다. 앞으로 6시간! 진정한 시민들의 참여를 기다립니다. &url=http://filibuster.me/abuse/" target="_blank" class="social-media--btn" id="twitter-share">
+			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 최근 시민 필리버스터 페이지를 방해한 댓플들을 모았습니다 &url=http://filibuster.me/abuse/" target="_blank" class="social-media--btn">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
 			</a>
 			{# Google+ #}
