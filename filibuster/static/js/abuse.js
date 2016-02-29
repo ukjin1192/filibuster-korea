@@ -65,7 +65,7 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[악플버스터 릴레이] 최근 시민 필리버스터 페이지를 교란한 악플들을 모았습니다. 앞으로 6시간! 진정한 시민들의 참여를 기다립니다.',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-abuse.png',
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-new2.png',
       width: '960',
       height: '480'
     },
