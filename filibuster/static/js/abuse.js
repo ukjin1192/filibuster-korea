@@ -16,6 +16,7 @@ function getAbusingComments(lastCommentID) {
       $comment.attr('data-comment-id', comment.id);
       $comment.find('.comment-nickname').text(comment.id + '번째 주자인 척 하신 ' + comment.nickname + ' 님');
       $comment.find('.comment-content').text(comment.content);
+      if (comment.ip_address != null) $comment.find('.comment-ip-address').text('IP : ' + comment.ip_address);
       
       $('#abusing-comment--list').append($comment); 
     });
