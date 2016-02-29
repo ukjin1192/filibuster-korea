@@ -328,20 +328,21 @@ a, a:focus, a:hover, a:active, a:visited {
  * Desk page - Context
  * =================== */
 .desk-context .desk-context--title {
+  max-width: 700px;
   text-align: left;
   font-weight: 700;
   color: white; }
   @media screen and (max-width: 320px) {
     .desk-context .desk-context--title {
-      margin-top: -150px;
+      margin: -150px auto 0 auto;
       font-size: 1.9em; } }
   @media screen and (min-width: 321px) and (max-width: 767px) {
     .desk-context .desk-context--title {
-      margin-top: -150px;
+      margin: -150px auto 0 auto;
       font-size: 2.0em; } }
   @media screen and (min-width: 768px) {
     .desk-context .desk-context--title {
-      margin-top: -180px;
+      margin: -180px auto 0 auto;
       font-size: 2.5em; } }
 .desk-context .desk-context--link {
   width: 100%;

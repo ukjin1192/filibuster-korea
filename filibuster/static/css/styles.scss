@@ -464,20 +464,21 @@ a, a:focus, a:hover, a:active, a:visited {
 .desk-context {
 
 	.desk-context--title {
+		max-width: 700px;
 		text-align: left; 
 		font-weight: 700; 
 		color: white; 
 		
 		@media screen and (max-width: $screen-xxs-max) {
-			margin-top: -150px;
+			margin: -150px auto 0 auto;
 			font-size: 1.9em; 
 		}
 		@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
-			margin-top: -150px;
+			margin: -150px auto 0 auto;
 			font-size: 2.0em; 
 		}
 		@media screen and (min-width: $screen-sm-min) {
-			margin-top: -180px;
+			margin: -180px auto 0 auto;
 			font-size: 2.5em;
 		}
 	}
