@@ -138,14 +138,16 @@ $(window).load(function() {
   moment.locale('ko');
   setInterval(updateDueTimer, 1000);
 
-  var parameter = location.href.split('?')[1];
-  if (parameter != null) {
-    var categoryMatching = parameter.match(/category=(\w+)/);
-    var keywordMatching = parameter.match(/keyword=(\w+)/);
+  var permalink = location.href.split('?')[1];
+  if (permalink != null) {
+    var regexMatching = permalink.match(/(\w+)=(\w+)/);
     var category, keyword;
+
+    console.log(regexMatching.length);
     
-    if (categoryMatching != undefined && categoryMatching.length > 1) {
-      category = categoryMatching[1];
+    if (regexMatching != undefined && regexMatching.length == 3) { 
+      category = regexMatching[1];
+      keyword = regexMatching[2];
       
       if (category == 'id') {
         $('#category').val('id');
@@ -163,10 +165,7 @@ $(window).load(function() {
         $('#category').val('nickname');
         $('#category-text').text('별명');
       } 
-    } 
      
-    if (keywordMatching != undefined && keywordMatching.length > 1) {
-      keyword = keywordMatching[1];
       $('#keyword').val(keyword);
       
       if (keyword.length > 0) {

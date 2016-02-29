@@ -87,7 +87,7 @@ function getSpokenComments() {
     comments.forEach(function(comment, index) {
       var contentMaxLength = 160;
       var $comment = $('#slide-comment--virtual-dom').clone().removeClass('hidden').removeAttr('id');
-      $comment.find('a').attr('href', '/desk/?category=id&keyword=' + comment.id);
+      $comment.find('a').attr('href', '/desk/?id=' + comment.id);
       if (comment.content.length > contentMaxLength) {
         $comment.find('.comment-content').text('"' + comment.content.substring(0, contentMaxLength) + '..."');
       } else { 
