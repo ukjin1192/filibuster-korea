@@ -37,6 +37,10 @@ urlpatterns = [
         TemplateView.as_view(template_name='pick.html')
     ),
     url(
+        r'^staff/', 
+        TemplateView.as_view(template_name='staff.html')
+    ),
+    url(
         r'^', 
         TemplateView.as_view(template_name='index.html')
     ),

@@ -21,4 +21,8 @@ urlpatterns = patterns(
         regex=r'^comments/pick/$',
         view='get_picked_comments'
     ),
+    url(
+        regex=r'^comments/delete/$',
+        view='delete_comments'
+    ),
 )

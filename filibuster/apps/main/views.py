@@ -3,6 +3,7 @@
 
 from captcha.models import CaptchaStore
 from django.conf import settings
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models.functions import Length
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect 
@@ -22,7 +23,9 @@ firebase_obj = firebase.FirebaseApplication(FIREBASE_REPO_URL, authentication)
 @csrf_protect
 @require_http_methods(['POST'])
 def create_comment(request):
-
+    """
+    Create comment if captcha input is valid
+    """
     if all(x in request.POST for x in ['nickname', 'content', 'captcha_key', 'captcha_value']):
         
         # Human validation by captcha form
@@ -55,6 +58,9 @@ def create_comment(request):
 
 @require_http_methods(['GET'])
 def get_recent_comments(request):
+    """
+    Get recent comments from first comment ID to last comment ID
+    """
 
     if all(x in request.GET for x in ['first_comment_id', 'last_comment_id']):
         
@@ -75,7 +81,9 @@ def get_recent_comments(request):
 
 @require_http_methods(['GET'])
 def get_searched_comments(request):
-
+    """
+    Get searched comments with category and keyword
+    """
     if all(x in request.GET for x in ['category', 'keyword']):
         
         category = request.GET['category']
@@ -112,7 +120,9 @@ def get_searched_comments(request):
 
 @require_http_methods(['GET'])
 def get_picked_comments(request):
-
+    """
+    Get picked comments with category
+    """
     if all(x in request.GET for x in ['category']):
         
         category = request.GET['category']
@@ -128,6 +138,33 @@ def get_picked_comments(request):
             return HttpResponse(status=400)
         
         return JsonResponse({'comments': comments})
+        
+    else:
+        return HttpResponse(status=400)
+
+
+@login_required
+@user_passes_test(lambda u: u.is_admin)
+def delete_comments(request):
+    """
+    Delete comments with appropriate category and keyword
+    """
+    if all(x in request.GET for x in ['category', 'keyword']):
+        
+        category = request.GET['category']
+        keyword = request.GET['keyword']
+        
+        if category == 'id':
+            Comment.objects.filter(id=int(keyword)).update(is_deleted=True)
+        elif category == 'ip_address':
+            Comment.objects.filter(ip_address=keyword).update(is_deleted=True)
+        elif category == 'keyword':
+            # Comment.objects.filter(nickname__contains=keyword).update(is_deleted=True)
+            Comment.objects.filter(content__contains=keyword).update(is_deleted=True)
+        else:
+            return HttpResponse(status=400)
+        
+        return HttpResponse(status=200)
         
     else:
         return HttpResponse(status=400)
