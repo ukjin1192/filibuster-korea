@@ -71,6 +71,7 @@ function getSearchedComments(category, keyword, lastCommentID) {
       $comment.attr('data-comment-id', comment.id);
       $comment.find('.comment-nickname').text(comment.nickname + ' 님');
       $comment.find('.comment-content').text(comment.content);
+      $comment.find('.comment-spoken-at').text(moment(new Date(comment.spoken_at)).format('YYYY년 MMMM Do'));
       $comment.find('.comment-speaker').text(comment.speaker);
       
       $('#spoken-comment-list').append($comment);

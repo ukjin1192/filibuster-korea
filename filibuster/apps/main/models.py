@@ -113,6 +113,11 @@ class Comment(models.Model):
         blank = True,
         null = True
     )
+    spoken_at = models.DateField(
+        verbose_name = _('Created datetime'),
+        blank = True,
+        null = True
+    )
     created_at = models.DateTimeField(
         verbose_name = _('Created datetime'),
         auto_now_add = True,
