@@ -64,7 +64,7 @@ $(window).load(function() {
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
-    label: '[필리버스터 릴레이] 시민 필리버스터 페이지를 방해한 댓플들을 모았습니다',
+    label: '[필리버스터 릴레이] 시민 필리버스터 페이지를 방해한 댓글들을 모았습니다',
     image: {
       src: 'http://d1es9gk2quk02b.cloudfront.net/share-abuse.png',
       width: '527',
