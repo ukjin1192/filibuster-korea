@@ -1,7 +1,8 @@
 #!usr/bin/python
 # -*- coding:utf-8 -*-
 
-import csv
+import io
+from backports import csv
 from captcha.models import CaptchaStore
 from django.conf import settings
 from django.db.models.functions import Length
@@ -130,15 +131,12 @@ def get_picked_comments(request):
 @require_http_methods(['GET'])
 def get_csv(request):
 
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
 
-    writer = csv.writer(response)
-
-    for comment in Comment.objects.all():
-        writer.writerow([comment.id, comment.nickname, comment.content, comment.created_at])
-
-    return response
+    with io.open('data.csv', 'w', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        for comment in Comment.objects.all():
+            writer.writerow([comment.id, comment.nickname, comment.content, comment.created_at])
+    return HttpResponse()
 
 
 def update_firebase_database(permalink, key, value):
