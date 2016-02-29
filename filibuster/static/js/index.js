@@ -6,14 +6,20 @@ function updateDueTimer(){
   var now = moment();
   var due = moment([2016, 2, 1, 9, 0, 0]);
 
-  var duration = moment.duration(due.diff(now));
+  var diff = due.diff(now); 
 
-  var hours = Math.floor(duration.asHours());
-  var minutes = Math.floor(duration.asMinutes()) - hours * 60;
-  var seconds = Math.floor(duration.asSeconds()) - hours * 3600 - minutes * 60;
-
-  // Set text of timer
-  $('.intro-context--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
+  if (diff > 0) {
+    var duration = moment.duration(diff);
+    
+    var hours = Math.floor(duration.asHours());
+    var minutes = Math.floor(duration.asMinutes()) - hours * 60;
+    var seconds = Math.floor(duration.asSeconds()) - hours * 3600 - minutes * 60;
+    
+    // Set text of timer
+    $('.intro-context--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
+  } else {
+    $('.intro-context--timer').text("0시간 0분 0초");
+  }
 }
 
 // Prevent CSRF token problem before sending reqeust with ajax
