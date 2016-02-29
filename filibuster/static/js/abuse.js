@@ -66,9 +66,9 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[필리버스터 릴레이] 시민 필리버스터 페이지를 방해한 댓글들을 모았습니다',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-abusing.png',
-      width: '527',
-      height: '326'
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share-abuse1.png',
+      width: '801',
+      height: '421'
     },
     webButton: {
       text: '둘러보기',
