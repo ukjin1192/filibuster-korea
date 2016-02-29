@@ -1,20 +1,18 @@
-function fillOutDueTimer(){
-  // Get now
-  var utcNow = new Date();
-  var now = new Date(utcNow.getTime() + (utcNow.getTimezoneOffset() * 60000) + (3600000*9));
+// Update due timer
+function updateDueTimer(){
 
-  // Set due date as 2016/03/10
-  dueDate = new Date('Mar 10 2016 23:59:59');
+  var now = moment();
+  // 2016/03/10 23:59:%9
+  var due = moment([2016, 2, 10, 23, 59, 59]);
 
-  var hours = Math.floor((dueDate - now) / 1000 / 60 / 60);
-  var minutes = Math.floor((dueDate - now) / 1000 /60 - (60 * hours));
-  var seconds = Math.round((dueDate - now) / 1000 - (60 * 60 * hours) - (60 * minutes));
+  var duration = moment.duration(due.diff(now));
+
+  var hours = Math.floor(duration.asHours());
+  var minutes = Math.floor(duration.asMinutes()) - hours * 60;
+  var seconds = Math.floor(duration.asSeconds()) - hours * 3600 - minutes * 60;
 
   // Set text of timer
   $('.desk-header--timer').text(hours + "시간 " + minutes + "분 " + seconds + "초");
-  
-  // Update timer every seconds
-  window.setTimeout('fillOutDueTimer();', 1000);
 }
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile
@@ -123,8 +121,9 @@ $(window).load(function() {
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
 
-  // Fill out due timer
-  fillOutDueTimer(); 
+  // Update due timer every seconds
+  moment.locale('ko');
+  setInterval(updateDueTimer, 1000);
 
   var parameter = location.href.split('?')[1];
   if (parameter != null) {
