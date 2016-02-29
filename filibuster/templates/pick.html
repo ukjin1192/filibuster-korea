@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block container %}
+<div class="container">
+	<div class="text-center">
+		<h1>국민들이 직접 작성한 연설문 중 선별된 것을 볼 수 있습니다</h1>
+		<h4 class="help-block">이전 의원들이 이미 읽은 내용은 제외되어 있습니다</h4>
+		<h4 class="help-block">랜덤으로 100개만 가져옵니다</h4>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2 class="text-center">3000자 이상의 연설문</h2>
+			<div id="length-pick-list"></div>
+		</div>
+		{% comment %}
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<h2 class="text-center">제작자 추천</h2>
+			<div id="editor-pick-list"></div>
+		</div>
+		{% endcomment %}
+	</div>
+</div>
+
+<div class="comment hidden" data-comment-id="" id="comment-virtual-dom" style="border-bottom: 1px solid black;">
+	<h3 class="comment-nickname" style="text-align: center;"></h3>
+	<h4 class="comment-content"></h4>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/pick.js' %}"></script>
+{% endcompress %}
+{% endblock %}

@@ -33,6 +33,10 @@ urlpatterns = [
         TemplateView.as_view(template_name='desk.html')
     ),
     url(
+        r'^pick/', 
+        TemplateView.as_view(template_name='pick.html')
+    ),
+    url(
         r'^', 
         TemplateView.as_view(template_name='index.html')
     ),
