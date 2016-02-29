@@ -60,7 +60,6 @@ $(window).load(function() {
   getAbusingComments(99999);
 
   // Kakaotalk sharing
-  /*
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
@@ -75,5 +74,4 @@ $(window).load(function() {
       url: 'http://filibuster.me/'
     }
   });
-  */
 });
