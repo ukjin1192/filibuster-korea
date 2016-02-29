@@ -2,8 +2,7 @@
 function updateDueTimer() {
 
   var now = moment();
-  // 2016/03/10 23:59:59
-  var due = moment([2016, 2, 10, 23, 59, 59]);
+  var due = moment([2016, 2, 1, 9, 0, 0]);
 
   var duration = moment.duration(due.diff(now));
 
