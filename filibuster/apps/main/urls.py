@@ -18,10 +18,6 @@ urlpatterns = patterns(
         view='get_searched_comments'
     ),
     url(
-        regex=r'^comments/pick/$',
-        view='get_picked_comments'
-    ),
-    url(
         regex=r'^comments/abusing/$',
         view='get_abusing_comments'
     ),

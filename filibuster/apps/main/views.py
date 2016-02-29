@@ -4,7 +4,6 @@
 from captcha.models import CaptchaStore
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.db.models.functions import Length
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect 
 from django.views.decorators.http import require_http_methods
@@ -112,31 +111,6 @@ def get_searched_comments(request):
             comments = comments.filter(id__lt=int(request.GET['last_comment_id']))
         
         comments = list(comments[:10].values())
-        return JsonResponse({'comments': comments})
-        
-    else:
-        return HttpResponse(status=400)
-
-
-@require_http_methods(['GET'])
-def get_picked_comments(request):
-    """
-    Get picked comments with category
-    """
-    if all(x in request.GET for x in ['category']):
-        
-        category = request.GET['category']
-        
-        if category == 'length':
-            comments = list(Comment.objects.annotate(content_length=Length('content')).\
-                    filter(is_deleted=False, is_spoken=False, content_length__gte=3000).\
-                    order_by('?')[:100].values())
-        elif category == 'editor':
-            comments =list(Comment.objects.filter(is_deleted=False, is_spoken=False, is_picked=True).\
-                    order_by('?')[:100].values())
-        else:
-            return HttpResponse(status=400)
-        
         return JsonResponse({'comments': comments})
         
     else:
