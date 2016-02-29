@@ -92,9 +92,11 @@ def search_comment(request):
             except:
                 return HttpResponse(status=400)
         elif category == 'nickname':
-            comments = comments.filter(nickname__contains=keyword, is_deleted=False)
+            comments = comments.filter(nickname__contains=keyword)
         elif category == 'content':
-            comments = comments.filter(content__contains=keyword, is_deleted=False)
+            comments = comments.filter(content__contains=keyword)
+        elif category == 'speaker':
+            comments = comments.filter(speaker__contains=keyword)
         else:
             return HttpResponse(status=400)
         

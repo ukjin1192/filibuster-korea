@@ -384,9 +384,12 @@ a, a:focus, a:hover, a:active, a:visited {
  * ======================= */
 .desk-main {
   background-color: #F0EDDF; }
+  .desk-main .desk-main--alert-message {
+    margin-top: 20px;
+    text-align: center; }
   .desk-main #search-form {
     max-width: 700px;
-    margin: 30px auto 0 auto; }
+    margin: 20px auto 0 auto; }
 
 /* ===============================
  * Desk page - Spoken comment list
