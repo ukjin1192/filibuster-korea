@@ -646,6 +646,24 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
+/* ==================
+ * Back to top button
+ * ================== */
+
+#back-to-top {
+	position: fixed; 
+	display: inline; 
+	bottom: 15px; 
+	right: 15px; 
+	padding: 5px 7px 0 5px; 
+	font-size: 1.4em;
+	border: 1px solid $grey-color; 
+	background-color: white; 
+	color: $grey-color; 
+	cursor: pointer;
+	z-index: 100;
+}
+
 /* ============
  * Loading icon
  * ============ */

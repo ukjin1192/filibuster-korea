@@ -4,7 +4,7 @@ var firebaseRepoURL, firebaseConnection;
 function updateDueTimer(){
 
   var now = moment();
-  // 2016/03/10 23:59:%9
+  // 2016/03/10 23:59:59
   var due = moment([2016, 2, 10, 23, 59, 59]);
 
   var duration = moment.duration(due.diff(now));
@@ -167,12 +167,21 @@ $(window).scroll(function() {
     if (lastCommentID > 0) getComments(Math.max(lastCommentID - 9, 1), lastCommentID, 'append');
   }
 
-   // Automatically position realtime switch
+   // Automatically set position of realtime switch
   if ($(window).scrollTop() > $('#realtime-switch--container').offset().top) {
     $('#realtime-switch--group').addClass('fixed');
+    $('#back-to-top').removeClass('hidden');
   } else {
     $('#realtime-switch--group').removeClass('fixed');
+    $('#back-to-top').addClass('hidden');
   }
+});
+
+// Scroll to top if user clicked 'back to top'
+$(document).on('click', '#back-to-top', function(event) {
+  event.preventDefault();
+  
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
 // Alert that kakaotalk and line messenger sharing is only available at mobile

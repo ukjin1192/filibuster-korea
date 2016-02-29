@@ -462,6 +462,22 @@ a, a:focus, a:hover, a:active, a:visited {
       width: 12%;
       max-width: 50px; }
 
+/* ==================
+ * Back to top button
+ * ================== */
+#back-to-top {
+  position: fixed;
+  display: inline;
+  bottom: 15px;
+  right: 15px;
+  padding: 5px 7px 0 5px;
+  font-size: 1.4em;
+  border: 1px solid #E0E0E0;
+  background-color: white;
+  color: #E0E0E0;
+  cursor: pointer;
+  z-index: 100; }
+
 /* ============
  * Loading icon
  * ============ */

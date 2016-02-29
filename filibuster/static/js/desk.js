@@ -2,7 +2,7 @@
 function updateDueTimer() {
 
   var now = moment();
-  // 2016/03/10 23:59:%9
+  // 2016/03/10 23:59:59
   var due = moment([2016, 2, 10, 23, 59, 59]);
 
   var duration = moment.duration(due.diff(now));
@@ -110,10 +110,19 @@ $(window).scroll(function() {
   if ($(window).scrollTop() > $('.desk-navbar').offset().top) {
     $('.desk-navbar--container').addClass('fixed');
     $('.desk-navbar--home-link').removeClass('hidden');
+    $('#back-to-top').removeClass('hidden');
   } else {
     $('.desk-navbar--container').removeClass('fixed');
     $('.desk-navbar--home-link').addClass('hidden');
+    $('#back-to-top').addClass('hidden');
   }
+});
+
+// Scroll to top if user clicked 'back to top'
+$(document).on('click', '#back-to-top', function(event) {
+  event.preventDefault();
+  
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
 $(window).load(function() {
