@@ -47,7 +47,7 @@ def create_comment(request):
 
 
 @require_http_methods(['GET'])
-def get_comments(request):
+def get_recent_comments(request):
 
     if all(x in request.GET for x in ['first_comment_id', 'last_comment_id']):
         
@@ -67,14 +67,7 @@ def get_comments(request):
 
 
 @require_http_methods(['GET'])
-def get_random_spoken_comments(request):
-
-    comments = list(Comment.objects.filter(is_spoken=True, is_deleted=False).order_by('?')[:5].values())
-    return JsonResponse({'comments': comments})
-
-
-@require_http_methods(['GET'])
-def search_comment(request):
+def get_searched_comments(request):
 
     if all(x in request.GET for x in ['category', 'keyword']):
         
@@ -111,7 +104,7 @@ def search_comment(request):
 
 
 @require_http_methods(['GET'])
-def pick_comment(request):
+def get_picked_comments(request):
 
     if all(x in request.GET for x in ['category']):
         

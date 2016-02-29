@@ -40,7 +40,7 @@ $(document).on('click', '.dropdown-menu li', function(event) {
   return false;
 });
 
-function getSearchedComments(category, keyword, lastCommentID) {
+function getSpokenComments(category, keyword, lastCommentID) {
   $('#loading-icon').removeClass('hidden');
 
   var data = {};
@@ -94,7 +94,7 @@ $(document).on('click', '.desk-context--link', function() {
 $(document).on('click', '#see-more-comments', function() {
   var lastCommentID = parseInt($('#spoken-comment-list .comment').last().attr('data-comment-id'));
   $('#see-more-comments').button('loading');
-  getSearchedComments($('#category').val(), $('#keyword').val(), lastCommentID);
+  getSpokenComments($('#category').val(), $('#keyword').val(), lastCommentID);
 });
 
 $(document).on('submit', '#search-form', function(event) {
@@ -102,7 +102,7 @@ $(document).on('submit', '#search-form', function(event) {
 
   $('#spoken-comment-list').html('');
 
-  getSearchedComments($('#category').val(), $('#keyword').val(), -1);
+  getSpokenComments($('#category').val(), $('#keyword').val(), -1);
 });
 
 $(window).scroll(function() {
@@ -170,11 +170,11 @@ $(window).load(function() {
       $('#keyword').val(keyword);
       
       if (keyword.length > 0) {
-        getSearchedComments($('#category').val(), keyword, -1);
+        getSpokenComments($('#category').val(), keyword, -1);
       }
     }
   } else {
-    getSearchedComments($('#category').val(), '', -1);
+    getSpokenComments($('#category').val(), '', -1);
   }
 
   // Kakaotalk sharing

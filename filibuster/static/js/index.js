@@ -69,12 +69,18 @@ function getComments(firstCommentID, lastCommentID, position) {
   });
 }
 
-function getRandomSpokenComments() {
+// Get spoken comments with recent order
+function getSpokenComments() {
   $('#loading-icon').removeClass('hidden');
 
   $.ajax({
-    url: '/api/comments/spoken/',
+    url: '/api/comments/search/',
     type: 'GET',
+    data: {
+      'spoken': true,
+      'category': 'nickname',
+      'keyword': ''
+    }
   }).done(function(data) {
     var comments = data.comments;
     
@@ -222,8 +228,8 @@ $(window).load(function() {
   moment.locale('ko');
   setInterval(updateDueTimer, 1000);
 
-  // Get random spoken comments
-  getRandomSpokenComments();
+  // Get spoken comments with recent order
+  getSpokenComments();
 
   // Kakaotalk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');

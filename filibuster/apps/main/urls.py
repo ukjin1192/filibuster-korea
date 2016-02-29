@@ -11,18 +11,14 @@ urlpatterns = patterns(
     ),
     url(
         regex=r'^comments/list/$',
-        view='get_comments'
-    ),
-    url(
-        regex=r'^comments/spoken/$',
-        view='get_random_spoken_comments'
+        view='get_recent_comments'
     ),
     url(
         regex=r'^comments/search/$',
-        view='search_comment'
+        view='get_searched_comments'
     ),
     url(
         regex=r'^comments/pick/$',
-        view='pick_comment'
+        view='get_picked_comments'
     ),
 )
