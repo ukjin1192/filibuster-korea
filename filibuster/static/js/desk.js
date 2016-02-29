@@ -1,5 +1,5 @@
 // Update due timer
-function updateDueTimer(){
+function updateDueTimer() {
 
   var now = moment();
   // 2016/03/10 23:59:%9
