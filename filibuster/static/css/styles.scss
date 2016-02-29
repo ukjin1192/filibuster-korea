@@ -510,7 +510,8 @@ a, a:focus, a:hover, a:active, a:visited {
 	height: 55px;
 	text-align: center;
 
-	.desk-navbar--title {
+	.desk-navbar--container {
+		
 		width: 100%; 
 		padding: 10px 0; 
 		background-color: $blue-color; 
@@ -523,6 +524,17 @@ a, a:focus, a:hover, a:active, a:visited {
 			position: fixed;
 			top: 0;
 			left: 0;
+		}
+		
+		.desk-navbar--title {
+			max-width: 700px;
+			margin: 0 auto;
+			
+			.desk-navbar--home-link {
+				// Make clickable area bigger
+				margin: -10px;
+				padding: 10px;
+			}
 		}
 	}
 }

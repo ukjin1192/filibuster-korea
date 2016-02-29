@@ -106,11 +106,13 @@ $(document).on('submit', '#search-form', function(event) {
 });
 
 $(window).scroll(function() {
-  // Automatically position search navigation bar
+  // Automatically set position of navigation bar
   if ($(window).scrollTop() > $('.desk-navbar').offset().top) {
-    $('.desk-navbar--title').addClass('fixed');
+    $('.desk-navbar--container').addClass('fixed');
+    $('.desk-navbar--home-link').removeClass('hidden');
   } else {
-    $('.desk-navbar--title').removeClass('fixed');
+    $('.desk-navbar--container').removeClass('fixed');
+    $('.desk-navbar--home-link').addClass('hidden');
   }
 });
 
