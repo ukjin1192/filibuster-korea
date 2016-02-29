@@ -35,7 +35,14 @@ def create_comment(request):
         except:
             return JsonResponse({'state': 'fail', 'msg': 'Captcha input is not valid'})
         
-        comment = Comment(nickname=request.POST['nickname'], content=request.POST['content'])
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        
+        if x_forwarded_for:
+            ip_address = x_forwarded_for.split(',')[0]
+        else:
+            ip_address = request.META.get('REMOTE_ADDR')
+        
+        comment = Comment(nickname=request.POST['nickname'], content=request.POST['content'], ip_address=ip_address)
         comment.save()
         
         update_firebase_database('/comment', 'last_comment_id', comment.id)

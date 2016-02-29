@@ -99,6 +99,11 @@ class Comment(models.Model):
     content = models.TextField(
         verbose_name = _('Content'),
     ) 
+    ip_address = models.GenericIPAddressField(
+        verbose_name = _('IP address'),
+        blank = True,
+        null = True
+    )
     is_deleted = models.BooleanField(
         verbose_name = _('Deleted or not'),
         default = False
