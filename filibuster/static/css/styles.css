@@ -208,7 +208,7 @@ a, a:focus, a:hover, a:active, a:visited {
   background-color: #D2AF6D;
   color: #76252B; }
   #comment-form--container #comment-form {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px; }
     #comment-form--container #comment-form #captcha-group {
