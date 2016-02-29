@@ -143,6 +143,21 @@ def get_picked_comments(request):
         return HttpResponse(status=400)
 
 
+@require_http_methods(['GET'])
+def get_abusing_comments(request):
+    """
+    Get abusing comments with recent order
+    """
+    if 'last_comment_id' in request.GET:
+        comments = list(Comment.objects.filter(is_deleted=True, id__lt=int(request.GET['last_comment_id']))[:10].values())
+    else:
+        comments = list(Comment.objects.filter(is_deleted=True)[:10].values())
+
+    count = Comment.objects.filter(is_deleted=True).count()
+
+    return JsonResponse({'comments': comments, 'count': count})
+
+
 @login_required
 @user_passes_test(lambda u: u.is_admin)
 def delete_comments(request):

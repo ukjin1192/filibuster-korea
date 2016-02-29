@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block container %}
+<input type="hidden" id="firebase-repo-url" value="{{ 'FIREBASE_REPO_URL'|get_settings_variable }}" />
+
+<div class="container-fit">
+
+	<div style="background-color: #D2AF6D; text-align: center; padding: 30px 0;">
+		<h2 style="font-weight: 700;"><span id="abusing-comment-count"></span>개 전시 중!</h2>
+		<img src="{{ 'CDN_URL'|get_settings_variable }}/abuse_head.jpg" style="max-width: 200px; margin: 0 0 -90px 0;" />
+	</div>
+
+	<div style="background-color: #E0E0E0; text-align: center; padding: 50px 0 0 0;">
+		<h1 style="font-weight: 700;">악플버스터 릴레이</h1>
+		<img src="{{ 'CDN_URL'|get_settings_variable }}/abuse_body.jpg" style="max-width: 400px;" />
+		
+		<div class="social-media--btn-group">
+			{# Facebook #}
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.필리버스터.com" target="_blank" class="social-media--btn">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
+			</a>
+			{# Twitter #}
+			<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이] 내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 쓰러 가기 &url=http://www.필리버스터.com" target="_blank" class="social-media--btn" id="twitter-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
+			</a>
+			{# Google+ #}
+			<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank" class="social-media--btn">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+			</a>
+			{# LINE #}
+			{% comment %}
+			<a href="" target="_blank" class="social-media--btn" id="line-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+			</a>
+			{% endcomment %}
+			{# Kakao talk #}
+			<a href="javascript:;" class="social-media--btn" id="kakaotalk-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+			</a>
+		</div>
+	</div>
+
+	<div style="background-color: #D2AF6D; padding: 20px 10px;">
+		<div style="max-width: 600px; margin: 0 auto; font-size: 1.5em; font-weight: 700;">
+			시민 필리버스터 페이지의 트래픽 하락을 우려해주신 악플러 여러분들의 열화와 같은 성원에 힘입어 악성댓글 릴레이 페이지를 열었습니다.
+		</div>	
+	</div>	
+
+	<div style="background-color: #E0E0E0; padding: 20px 10px;" id="abusing-comment--list">
+	</div>
+</div>
+
+<div class="comment hidden" data-comment-id="" id="comment-virtual-dom" style="max-width: 600px; margin: 20px auto; border-bottom: 2px solid white;">
+	<div class="comment-nickname" style="font-weight: 700; text-align: center; font-size: 1.7em; margin-bottom: 20px;"></div>
+	<div class="comment-content" style="font-weitght: 500; text-align: left; font-size: 1.3em; line-height: 1.5em; margin-bottom: 20px;"></div>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/abuse.js' %}"></script>
+{% endcompress %}
+{% endblock %}
