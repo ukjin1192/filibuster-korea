@@ -411,10 +411,10 @@ a, a:focus, a:hover, a:active, a:visited {
 		z-index: 10; 
 		
 		@media screen and (max-width: $screen-xs-max) {
-			top: 12px; 
+			top: 110px; 
 		}
 		@media screen and (min-width: $screen-sm-min) {
-			top: 60px; 
+			top: 170px; 
 		}
 		
 		.desk-header--title {

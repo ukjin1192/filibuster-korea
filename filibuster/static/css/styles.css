@@ -290,10 +290,10 @@ a, a:focus, a:hover, a:active, a:visited {
   z-index: 10; }
   @media screen and (max-width: 767px) {
     .desk-header .desk-header--container {
-      top: 12px; } }
+      top: 110px; } }
   @media screen and (min-width: 768px) {
     .desk-header .desk-header--container {
-      top: 60px; } }
+      top: 170px; } }
   .desk-header .desk-header--container .desk-header--title {
     padding: 15px 0;
     background-color: #34495E;
