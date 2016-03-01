@@ -4,7 +4,7 @@ var firebaseRepoURL, firebaseConnection;
 function updateDueTimer(){
 
   var now = moment();
-  var due = moment([2016, 2, 1, 9, 0, 0]);
+  var due = moment([2016, 2, 10, 23, 59, 59]);
 
   var diff = due.diff(now); 
 
