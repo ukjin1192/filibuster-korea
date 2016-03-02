@@ -42,8 +42,8 @@ $(document).on('click', '#back-to-top', function(event) {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
-// Alert that kakaotalk messenger sharing is only available at mobile
-$(document).on('click', '#kakaotalk-share', function() {
+// Alert that line and kakaotalk messenger sharing is only available at mobile
+$(document).on('click', '#line-share, #kakaotalk-share', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");

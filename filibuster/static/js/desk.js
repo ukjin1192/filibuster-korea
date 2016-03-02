@@ -1,5 +1,5 @@
-// Alert that kakaotalk messenger sharing is only available at mobile
-$(document).on('click', '#kakaotalk-share-1, #kakaotalk-share-2', function() {
+// Alert that line and kakaotalk messenger sharing is only available at mobile
+$(document).on('click', '#line-share-1, #line-share-2, #kakaotalk-share-1, #kakaotalk-share-2', function() {
   // Detect desktop browser
   if (!('ontouchstart' in window)) {
     alert("모바일에서만 가능합니다");
