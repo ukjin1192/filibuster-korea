@@ -38,7 +38,6 @@ def create_comment(request):
             return JsonResponse({'state': 'fail', 'msg': 'Captcha input is not valid'})
         
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        
         if x_forwarded_for:
             ip_address = x_forwarded_for.split(',')[0]
         else:
@@ -70,7 +69,7 @@ def get_recent_comments(request):
         if last_comment_id - 100 > first_comment_id:
             first_comment_id = last_comment_id - 100
         
-        comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id, is_deleted=False).values())
+        comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id, is_deleted=False).values('id', 'nickname', 'content', 'created_at'))
         
         return JsonResponse({'comments': comments})
         
@@ -110,7 +109,7 @@ def get_searched_comments(request):
         if 'last_comment_id' in request.GET:
             comments = comments.filter(id__lt=int(request.GET['last_comment_id']))
         
-        comments = list(comments[:10].values())
+        comments = list(comments[:10].values('id', 'nickname', 'content', 'speaker', 'spoken_at', 'created_at'))
         return JsonResponse({'comments': comments})
         
     else:
@@ -123,9 +122,18 @@ def get_abusing_comments(request):
     Get abusing comments with recent order
     """
     if 'last_comment_id' in request.GET:
-        comments = list(Comment.objects.filter(is_deleted=True, id__lt=int(request.GET['last_comment_id']))[:10].values())
+        comments = list(Comment.objects.filter(is_deleted=True, id__lt=int(request.GET['last_comment_id']))[:10].\
+                values('id', 'nickname', 'content', 'ip_address', 'created_at'))
     else:
-        comments = list(Comment.objects.filter(is_deleted=True)[:10].values())
+        comments = list(Comment.objects.filter(is_deleted=True)[:10].\
+                values('id', 'nickname', 'content', 'ip_address', 'created_at'))
+
+    for comment in comments:
+        if comment['ip_address'] != None:
+            ip_address = comment['ip_address']
+            ip_address = ip_address.split('.')
+            ip_address[-2] = '**'
+            comment['ip_address'] = '.'.join(ip_address)
 
     count = Comment.objects.filter(is_deleted=True).count()
 
