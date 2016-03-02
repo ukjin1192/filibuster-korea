@@ -17,7 +17,7 @@ function getAbusingComments(lastCommentID) {
     comments.forEach(function(comment, index) {
       var $comment = $('#comment-virtual-dom').clone().removeClass('hidden').removeAttr('id');
       $comment.attr('data-comment-id', comment.id);
-      $comment.find('.comment-nickname').text(comment.id + '번째 주자인 척 하신 ' + comment.nickname + ' 님');
+      $comment.find('.comment-nickname').text(comment.id + '번째 주자인 척 하신 "' + comment.nickname + '" 님');
       $comment.find('.comment-content').text(comment.content);
       if (comment.ip_address != null) $comment.find('.comment-ip-address').text('IP : ' + comment.ip_address);
       
