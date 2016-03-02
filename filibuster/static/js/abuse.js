@@ -1,14 +1,17 @@
+// Get abusing comments
 function getAbusingComments(lastCommentID) {
+  if (lastCommentID === undefined) var data = {};
+  else if (isNaN(lastCommentID)) return;
+  else var data = {'last_comment_id': lastCommentID};
+
   $('#loading-icon').removeClass('hidden');
 
   $.ajax({
     url: '/api/comments/abusing/',
     type: 'GET',
-    data: {
-      'last_comment_id': lastCommentID
-    }
+    data: data
   }).done(function(data) {
-    $('#abusing-comment-count').text(data.count);
+    $('#count-abusing-comments').text(data.count);
     var comments = data.comments;
     
     comments.forEach(function(comment, index) {
@@ -58,7 +61,7 @@ $(window).load(function() {
   FastClick.attach(document.body);
 
   // Get abusing comments
-  getAbusingComments(99999);
+  getAbusingComments();
 
   // Kakaotalk sharing
   Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
