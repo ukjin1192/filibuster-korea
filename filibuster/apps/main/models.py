@@ -108,10 +108,6 @@ class Comment(models.Model):
         verbose_name = _('Deleted or not'),
         default = False
     )
-    is_picked = models.BooleanField(
-        verbose_name = _('Editor\'s pick'),
-        default = False
-    )
     is_spoken = models.BooleanField(
         verbose_name = _('Spoken or not'),
         default = False
