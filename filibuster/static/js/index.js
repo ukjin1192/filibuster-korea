@@ -68,7 +68,7 @@ function getComments(firstCommentID, lastCommentID, position) {
     });
     
     // Update new comment ID
-    if (position == 'prepend') $('#new-comment-id').text(lastCommentID + 1);
+    // if (position == 'prepend') $('#new-comment-id').text(lastCommentID + 1);
   }).always(function() {
     $('#loading-icon').addClass('hidden');
   });
@@ -230,8 +230,8 @@ $(window).load(function() {
   FastClick.attach(document.body);
 
   // Update due timer every seconds
-  moment.locale('ko');
-  setInterval(updateDueTimer, 1000);
+  // moment.locale('ko');
+  // setInterval(updateDueTimer, 1000);
 
   // Get spoken comments with recent order
   getSpokenComments();
