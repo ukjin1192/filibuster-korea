@@ -704,6 +704,105 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
+/* ============
+ * Closing page
+ * ============ */
+
+#header {
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	display: block; 
+	width: 100%; 
+	padding: 10px 0;
+	background-color: black; 
+	font-weight: 700; 
+	font-size: 2.0em; 
+	color: white;
+	text-align: center; 
+	z-index: 10; 
+}
+
+#footer {
+	position: fixed; 
+	bottom: 0; 
+	left: 0; 
+	display: block; 
+	width: 100%; 
+	padding-bottom: 10px; 
+	text-align: center; 
+	cursor: pointer;
+	z-index: 10; 
+
+	#footer-help-message {
+		display: inline-block; 
+		margin-bottom: 20px; 
+		border-bottom: 1px dotted $grey-color; 
+		font-size: 1.1em; 
+		font-style: italic; 
+		color: grey; 
+	}
+
+	.glyphicon {
+		font-weight: 700; 
+		font-size: 2.0em;
+	}
+}
+
+#fullpage {
+	text-align: center;
+
+	#microphone-icon {
+		width: 23%;
+		max-width: 200px; 
+		margin-bottom: 20px;
+	}
+	
+	#bullhorn-icon {
+		margin-bottom: 20px;
+		font-size: 4.0em; 
+	}
+
+	.section-sm {
+		margin-bottom: 20px;
+		font-size: 2.0em; 
+		font-weight: 700; 
+	}
+
+	.section-lg {
+		font-size: 5.5em; 
+		font-weight: 700;
+	}
+}
+
+#social-media--btn-group__fixed {
+	position: fixed; 
+	bottom: 15px; 
+	right: 15px; 
+	z-index: 1000;
+  
+	button {
+		width: 48px; 
+		height: 48px;
+		padding: 9px 9px 7px 12px; 
+		border-radius: 50%; 
+		
+		.glyphicon {
+			font-size: 1.5em;
+		}
+	}
+
+	li {
+		margin: 10px 0; 
+		font-size: 1.2em;
+		
+		img {
+			width: 30px; 
+			margin-right: 10px;
+		}
+	}
+}
+
 /* =========================
  * Social media share button
  * ========================= */
@@ -856,4 +955,30 @@ a, a:focus, a:hover, a:active, a:visited {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* ==========================
+ * Blinking cursor - Typed.js
+ * ========================== */
+
+.typed-cursor{
+	opacity: 1;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+}
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
 }

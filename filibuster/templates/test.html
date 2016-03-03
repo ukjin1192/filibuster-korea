@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block social_media_meta_tags %}
+<meta property="fb:app_id" content="192025411163419" />
+<meta property="fb:locale" content="ko_KR" />
+
+<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me/" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% endblock %}
+
+{% block container %}
+<div id="header">
+	<a href="/test/">필리버스터 릴레이</a>
+</div>
+
+<div id="footer">
+	<div id="footer-help-message" style="opacity: 0;">
+		스크롤 또는 클릭해서 다음 페이지 보기
+	</div>
+	<br/>
+	<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+</div>
+
+<div id="fullpage">
+	<div class="section">
+		<div class="container">
+			<div class="section-sm">
+				국회 필리버스터
+			</div>
+			<div class="section-lg">
+				192시간<br/>
+				53분<br/>
+				24초<span class="typed-cursor">|</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<img src="{{ 'CDN_URL'|get_settings_variable }}/mic.svg" id="microphone-icon" />
+			<div class="section-lg">
+				<span id="speaker-list">세계<span class="typed-cursor">|</span></span>
+			</div>
+			<div class="section-lg">
+				기록
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div class="section-sm">
+				시민 필리버스터
+			</div>
+			<div class="section-lg">
+				<span id="total-comments"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<span class="glyphicon glyphicon-bullhorn" aria-hidden="true" id="bullhorn-icon"></span>
+			<div class="section-lg">
+				<span id="nickname-list"></span>
+			</div>
+			<div class="section-lg">
+				기록
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container">
+			<div style="font-size: 2.3em; font-weight: 700; font-style: italic; padding: 20px 0; text-align: left;">
+				국회 연설은 끝났지만, 우리가 전하고자 했던 얘기는 끝나지 않았습니다.<br/><br/>
+				침묵하지 않는 시민이 세상을 바꿉니다.
+			</div>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="container" id="menu-carousel">
+			<div style="background-color: grey; min-height: 60px;">
+				Slide 1
+			</div>
+			<div style="background-color: grey; min-height: 60px;">
+				Slide 2
+			</div>
+			<div style="background-color: grey; min-height: 60px;">
+				Slide 3
+			</div>
+			<div style="background-color: grey; min-height: 60px;">
+				Slide 3
+			</div>
+			<div style="background-color: grey; min-height: 60px;">
+				Slide 3
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="dropup" id="social-media--btn-group__fixed">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+		<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right">
+		<li><a href=""><img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg" />페이스북</a></li>
+		<li><a href=""><img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />트위터</a></li>
+		<li><a href=""><img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />구글+</a></li>
+		<li><a href=""><img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />라인</a></li>
+		<li><a href=""><img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />카카오톡</a></li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+{% endcompress %}
+{% endblock %}
