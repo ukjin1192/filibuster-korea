@@ -531,11 +531,10 @@ a, a:focus, a:hover, a:active, a:visited {
   z-index: 10; }
   #footer #footer-help-message {
     display: inline-block;
-    margin-bottom: 20px;
-    border-bottom: 1px dotted #E0E0E0;
+    margin-bottom: 10px;
     font-size: 1.1em;
     font-style: italic;
-    color: grey; }
+    color: #949494; }
   #footer .glyphicon {
     font-weight: 700;
     font-size: 2.0em; }
@@ -549,6 +548,12 @@ a, a:focus, a:hover, a:active, a:visited {
   #fullpage #bullhorn-icon {
     margin-bottom: 20px;
     font-size: 4.0em; }
+  #fullpage #main-message {
+    padding: 20px 0;
+    font-size: 2.3em;
+    font-weight: 700;
+    font-style: italic;
+    text-align: left; }
   #fullpage .section-sm {
     margin-bottom: 20px;
     font-size: 2.0em;
@@ -556,23 +561,30 @@ a, a:focus, a:hover, a:active, a:visited {
   #fullpage .section-lg {
     font-size: 5.5em;
     font-weight: 700; }
+  #fullpage #page-list .panel {
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.4em; }
+    #fullpage #page-list .panel a {
+      display: block;
+      padding: 15px; }
 
-#social-media--btn-group__fixed {
+#social-media-share {
   position: fixed;
   bottom: 15px;
   right: 15px;
   z-index: 1000; }
-  #social-media--btn-group__fixed button {
+  #social-media-share button {
     width: 48px;
     height: 48px;
     padding: 9px 9px 7px 12px;
     border-radius: 50%; }
-    #social-media--btn-group__fixed button .glyphicon {
+    #social-media-share button .glyphicon {
       font-size: 1.5em; }
-  #social-media--btn-group__fixed li {
+  #social-media-share li {
     margin: 10px 0;
     font-size: 1.2em; }
-    #social-media--btn-group__fixed li img {
+    #social-media-share li img {
       width: 30px;
       margin-right: 10px; }
 

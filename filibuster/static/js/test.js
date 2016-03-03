@@ -51,32 +51,26 @@ $(window).load(function() {
 					typeSpeed: 100
 				});
 			}
-			
-			// Show info message for navigation
-			timeoutFunc = setTimeout(function() {
-				$('#footer-help-message').animate({opacity: 1}, 700);
-			}, 2000);
 		},
 		
 		onLeave: function(index, nextIndex, direction){
 			var leavingSection = $(this);
-			
+      
 			clearTimeout(timeoutFunc);
-			$('#footer-help-message').animate({opacity: 0}, 700);
-			
-			if (index == 6) $('#footer').removeClass('hidden');
-			else if (nextIndex == 6) $('#footer').addClass('hidden');
+			$('#footer').animate({opacity: 0}, 700);
+      
+			if (nextIndex != 6) {
+        // Show info message about navigation to next section
+        timeoutFunc = setTimeout(function() {
+          $('#footer').animate({opacity: 1}, 700);
+        }, 2500);
+      }
 		}
 	});
 
-	$('#menu-carousel').slick({
-		slidesToShow: 3,
-	});
-
-  /*
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
-    label: '[필리버스터 릴레이] 국회의원이 읽은 내 연설문 보러 가기 ',
+    label: '[가나다] 라마바',
     image: {
       src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
       width: '800',
@@ -87,5 +81,4 @@ $(window).load(function() {
       url: 'http://filibuster.me/'
     }
   });
-  */
 });

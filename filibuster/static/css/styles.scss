@@ -736,11 +736,10 @@ a, a:focus, a:hover, a:active, a:visited {
 
 	#footer-help-message {
 		display: inline-block; 
-		margin-bottom: 20px; 
-		border-bottom: 1px dotted $grey-color; 
+		margin-bottom: 10px; 
 		font-size: 1.1em; 
 		font-style: italic; 
-		color: grey; 
+		color: $dark-grey-color; 
 	}
 
 	.glyphicon {
@@ -763,6 +762,14 @@ a, a:focus, a:hover, a:active, a:visited {
 		font-size: 4.0em; 
 	}
 
+	#main-message {
+		padding: 20px 0; 
+		font-size: 2.3em; 
+		font-weight: 700; 
+		font-style: italic; 
+		text-align: left;
+	}
+
 	.section-sm {
 		margin-bottom: 20px;
 		font-size: 2.0em; 
@@ -773,9 +780,23 @@ a, a:focus, a:hover, a:active, a:visited {
 		font-size: 5.5em; 
 		font-weight: 700;
 	}
+
+	#page-list {
+		
+		.panel {
+			margin-bottom: 5px;
+			font-weight: 700;
+			font-size: 1.4em;
+			
+			a {
+				display: block;
+				padding: 15px;
+			}
+		}
+	}
 }
 
-#social-media--btn-group__fixed {
+#social-media-share {
 	position: fixed; 
 	bottom: 15px; 
 	right: 15px; 
