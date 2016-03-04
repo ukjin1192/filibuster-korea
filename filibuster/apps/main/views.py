@@ -82,6 +82,7 @@ def get_searched_comments(request):
     Get searched comments with category and keyword
     """
     if all(x in request.GET for x in ['category', 'keyword']):
+        comments = Comment.objects.all()
         
         category = request.GET['category']
         keyword = request.GET['keyword']
