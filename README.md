@@ -1,6 +1,3 @@
-# Political survey
-
-
 ## Project goal
 
 Crowd sourcing site for filibuster Korea speech
