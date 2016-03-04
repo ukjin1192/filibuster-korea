@@ -20,13 +20,19 @@ $(window).load(function() {
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
 
-	var timeoutFunc;
+	var showNavigationMessage;
 
 	$('#fullpage').fullpage({
 		anchors: ['1', '2', '3', '4', '5', '6'],
 		animateAnchor: true,
 		controlArrows: true,
 		recordHistory: true,
+    
+    afterRender: function() {
+      showNavigationMessage = setTimeout(function() {
+        $('#footer').animate({opacity: 1}, 700);
+      }, 2500);
+    },
 		
 		afterLoad: function(anchorLink, index){
 			var loadedSection = $(this);
@@ -56,18 +62,20 @@ $(window).load(function() {
 		onLeave: function(index, nextIndex, direction){
 			var leavingSection = $(this);
       
-			clearTimeout(timeoutFunc);
+			clearTimeout(showNavigationMessage);
 			$('#footer').animate({opacity: 0}, 700);
       
 			if (nextIndex != 6) {
         // Show info message about navigation to next section
-        timeoutFunc = setTimeout(function() {
+        showNavigationMessage = setTimeout(function() {
           $('#footer').animate({opacity: 1}, 700);
         }, 2500);
       }
 		}
 	});
 
+  // Kakaotalk sharing
+  Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
   Kakao.Link.createTalkLinkButton({
     container: '#kakaotalk-share',
     label: '[가나다] 라마바',

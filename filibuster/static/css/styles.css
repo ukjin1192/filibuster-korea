@@ -512,10 +512,10 @@ a, a:focus, a:hover, a:active, a:visited {
   display: block;
   width: 100%;
   padding: 10px 0;
-  background-color: black;
+  background-color: #4f191d;
   font-weight: 700;
   font-size: 2.0em;
-  color: white;
+  color: #D2AF6D;
   text-align: center;
   z-index: 10; }
 
@@ -534,38 +534,44 @@ a, a:focus, a:hover, a:active, a:visited {
     margin-bottom: 10px;
     font-size: 1.1em;
     font-style: italic;
-    color: #949494; }
+    color: #E0E0E0; }
   #footer .glyphicon {
     font-weight: 700;
-    font-size: 2.0em; }
+    font-size: 2.0em;
+    color: white; }
 
-#fullpage {
-  text-align: center; }
-  #fullpage #microphone-icon {
+#fullpage .section {
+  text-align: center;
+  background-color: #76252B;
+  color: white; }
+  #fullpage .section #microphone-icon {
     width: 23%;
     max-width: 200px;
     margin-bottom: 20px; }
-  #fullpage #bullhorn-icon {
+  #fullpage .section #bullhorn-icon {
     margin-bottom: 20px;
-    font-size: 4.0em; }
-  #fullpage #main-message {
+    font-size: 4.0em;
+    color: white; }
+  #fullpage .section #main-message {
     padding: 20px 0;
     font-size: 2.3em;
     font-weight: 700;
     font-style: italic;
     text-align: left; }
-  #fullpage .section-sm {
+  #fullpage .section .section-sm {
     margin-bottom: 20px;
     font-size: 2.0em;
     font-weight: 700; }
-  #fullpage .section-lg {
+  #fullpage .section .section-lg {
     font-size: 5.5em;
     font-weight: 700; }
-  #fullpage #page-list .panel {
+  #fullpage .section #page-list .panel {
     margin-bottom: 5px;
+    border: none;
     font-weight: 700;
-    font-size: 1.4em; }
-    #fullpage #page-list .panel a {
+    font-size: 1.4em;
+    background-color: #862a31; }
+    #fullpage .section #page-list .panel a {
       display: block;
       padding: 15px; }
 
@@ -578,9 +584,11 @@ a, a:focus, a:hover, a:active, a:visited {
     width: 48px;
     height: 48px;
     padding: 9px 9px 7px 12px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    background-color: #E0E0E0; }
     #social-media-share button .glyphicon {
-      font-size: 1.5em; }
+      font-size: 1.5em;
+      color: #76252B; }
   #social-media-share li {
     margin: 10px 0;
     font-size: 1.2em; }

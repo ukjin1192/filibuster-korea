@@ -3,6 +3,8 @@
  * =============== */
 
 $red-color: #76252B;
+$light-red-color: lighten($red-color, 4%);
+$dark-red-color: darken($red-color, 10%);
 $gold-color: #D2AF6D;
 $blue-color: #34495E;
 $ivory-color: #F0EDDF; 
@@ -715,10 +717,10 @@ a, a:focus, a:hover, a:active, a:visited {
 	display: block; 
 	width: 100%; 
 	padding: 10px 0;
-	background-color: black; 
+	background-color: $dark-red-color; 
 	font-weight: 700; 
 	font-size: 2.0em; 
-	color: white;
+	color: $gold-color;
 	text-align: center; 
 	z-index: 10; 
 }
@@ -739,58 +741,67 @@ a, a:focus, a:hover, a:active, a:visited {
 		margin-bottom: 10px; 
 		font-size: 1.1em; 
 		font-style: italic; 
-		color: $dark-grey-color; 
+		color: $grey-color; 
 	}
 
 	.glyphicon {
 		font-weight: 700; 
 		font-size: 2.0em;
+		color: white;
 	}
 }
 
 #fullpage {
-	text-align: center;
 
-	#microphone-icon {
-		width: 23%;
-		max-width: 200px; 
-		margin-bottom: 20px;
-	}
-	
-	#bullhorn-icon {
-		margin-bottom: 20px;
-		font-size: 4.0em; 
-	}
-
-	#main-message {
-		padding: 20px 0; 
-		font-size: 2.3em; 
-		font-weight: 700; 
-		font-style: italic; 
-		text-align: left;
-	}
-
-	.section-sm {
-		margin-bottom: 20px;
-		font-size: 2.0em; 
-		font-weight: 700; 
-	}
-
-	.section-lg {
-		font-size: 5.5em; 
-		font-weight: 700;
-	}
-
-	#page-list {
+	.section {
+		text-align: center;
+		background-color: $red-color; 
+		color: white;
 		
-		.panel {
-			margin-bottom: 5px;
+		#microphone-icon {
+			width: 23%;
+			max-width: 200px; 
+			margin-bottom: 20px;
+		}
+		
+		#bullhorn-icon {
+			margin-bottom: 20px;
+			font-size: 4.0em; 
+			color: white;
+		}
+		
+		#main-message {
+			padding: 20px 0; 
+			font-size: 2.3em; 
+			font-weight: 700; 
+			font-style: italic; 
+			text-align: left;
+		}
+		
+		.section-sm {
+			margin-bottom: 20px;
+			font-size: 2.0em; 
+			font-weight: 700; 
+		}
+		
+		.section-lg {
+			font-size: 5.5em; 
 			font-weight: 700;
-			font-size: 1.4em;
+		}
+		
+		#page-list {
 			
-			a {
-				display: block;
-				padding: 15px;
+			.panel {
+				margin-bottom: 5px;
+				border: none;
+				font-weight: 700;
+				font-size: 1.4em;
+				background-color: $light-red-color;
+				
+				a {
+					display: block;
+					padding: 15px;
+				}
 			}
 		}
 	}
@@ -807,9 +818,11 @@ a, a:focus, a:hover, a:active, a:visited {
 		height: 48px;
 		padding: 9px 9px 7px 12px; 
 		border-radius: 50%; 
+		background-color: $grey-color;
 		
 		.glyphicon {
 			font-size: 1.5em;
+			color: $red-color;
 		}
 	}
 
