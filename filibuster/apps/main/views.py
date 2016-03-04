@@ -86,11 +86,6 @@ def get_searched_comments(request):
         category = request.GET['category']
         keyword = request.GET['keyword']
         
-        if 'spoken' in request.GET:
-            comments = Comment.objects.filter(is_spoken=True)
-        else:
-            comments = Comment.objects.all()
-        
         if category == 'id':
             try:
                 comments = comments.filter(id=int(keyword))
