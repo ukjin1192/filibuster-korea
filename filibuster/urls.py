@@ -33,10 +33,6 @@ urlpatterns = [
         TemplateView.as_view(template_name='desk.html')
     ),
     url(
-        r'^abuse/', 
-        TemplateView.as_view(template_name='abuse.html')
-    ),
-    url(
         r'^test/', 
         TemplateView.as_view(template_name='test.html')
     ),

@@ -115,30 +115,6 @@ def get_searched_comments(request):
         return HttpResponse(status=400)
 
 
-@require_http_methods(['GET'])
-def get_abusing_comments(request):
-    """
-    Get abusing comments with recent order
-    """
-    if 'last_comment_id' in request.GET:
-        comments = list(Comment.objects.filter(is_deleted=True, id__lt=int(request.GET['last_comment_id']))[:10].\
-                values('id', 'nickname', 'content', 'ip_address', 'created_at'))
-    else:
-        comments = list(Comment.objects.filter(is_deleted=True)[:10].\
-                values('id', 'nickname', 'content', 'ip_address', 'created_at'))
-
-    for comment in comments:
-        if comment['ip_address'] != None:
-            ip_address = comment['ip_address']
-            ip_address = ip_address.split('.')
-            ip_address[-2] = '**'
-            comment['ip_address'] = '.'.join(ip_address)
-
-    count = Comment.objects.filter(is_deleted=True).count()
-
-    return JsonResponse({'comments': comments, 'count': count})
-
-
 def update_firebase_database(permalink, key, value):
     """
     Update Firebase database

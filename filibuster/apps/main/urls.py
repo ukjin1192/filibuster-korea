@@ -17,8 +17,4 @@ urlpatterns = patterns(
         regex=r'^comments/search/$',
         view='get_searched_comments'
     ),
-    url(
-        regex=r'^comments/abusing/$',
-        view='get_abusing_comments'
-    ),
 )

@@ -108,8 +108,12 @@ class Comment(models.Model):
         verbose_name = _('Deleted or not'),
         default = False
     )
+    is_abusing = models.BooleanField(
+        verbose_name = _('Abusing'),
+        default = False
+    )
     is_spoken = models.BooleanField(
-        verbose_name = _('Spoken or not'),
+        verbose_name = _('Spoken'),
         default = False
     )
     speaker = models.CharField(
