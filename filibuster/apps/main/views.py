@@ -3,6 +3,7 @@
 
 from captcha.models import CaptchaStore
 from django.conf import settings
+from django.db.models.functions import Length
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect 
 from django.views.decorators.http import require_http_methods
@@ -54,61 +55,70 @@ def create_comment(request):
 
 
 @require_http_methods(['GET'])
-def get_recent_comments(request):
+def get_comments(request):
     """
-    Get recent comments from first comment ID to last comment ID
+    Get comments with (1) ordering (2) filtering (3) number of comments options
     """
+    comments = Comment.objects.all()
 
-    if all(x in request.GET for x in ['first_comment_id', 'last_comment_id']):
-        
-        first_comment_id = int(request.GET['first_comment_id'])
-        last_comment_id = int(request.GET['last_comment_id'])
-        
-        # Set maximum number of comments per request
-        if last_comment_id - 100 > first_comment_id:
-            first_comment_id = last_comment_id - 100
-        
-        comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id).values('id', 'nickname', 'content', 'created_at'))
-        
-        return JsonResponse({'comments': comments})
-        
-    else:
-        return HttpResponse(status=400)
-
-
-@require_http_methods(['GET'])
-def get_searched_comments(request):
-    """
-    Get searched comments with category and keyword
-    """
-    if all(x in request.GET for x in ['category', 'keyword']):
-        comments = Comment.objects.all()
-        
-        category = request.GET['category']
-        keyword = request.GET['keyword']
-        
-        if category == 'id':
-            try:
-                comments = comments.filter(id=int(keyword))
-            except:
-                return HttpResponse(status=400)
-        elif category == 'nickname':
-            comments = comments.filter(nickname__contains=keyword)
-        elif category == 'content':
-            comments = comments.filter(content__contains=keyword)
-        elif category == 'speaker':
-            comments = comments.filter(speaker__contains=keyword)
+    #try:
+    # Ordering
+    if 'ordering' in request.GET:
+        if request.GET['ordering'] == 'desc':
+            comments = comments.order_by('-id')
+        elif request.GET['ordering'] == 'random':
+            comments = comments.order_by('?')
         else:
-            return HttpResponse(status=400)
-        
-        if 'last_comment_id' in request.GET:
-            comments = comments.filter(id__lt=int(request.GET['last_comment_id']))
-        
-        comments = list(comments[:10].values('id', 'nickname', 'content', 'speaker', 'spoken_at', 'created_at'))
-        return JsonResponse({'comments': comments})
-        
+            comments = comments.order_by('id')
     else:
-        return HttpResponse(status=400)
+        comments = comments.order_by('id')
+    
+    # Filtering options
+    if 'id' in request.GET:
+        comments = comments.filter(id=request.GET['id'])
+    if 'nickname' in request.GET:
+        comments = comments.filter(nickname__contains=request.GET['nickname'])
+    if 'content' in request.GET:
+        comments = comments.filter(content__contains=request.GET['content'])
+    if 'is_spoken' in request.GET:
+        comments = comments.annotate(speaker_length=Length('speaker')).filter(speaker_length__gt=0)
+    if 'speaker' in request.GET:
+        comments = Comment.objects.filter(speaker=request.GET['speaker'])
+    if 'is_abusing' in request.GET:
+        objects.annotate(text_len=Length('text')).filter(
+                    text_len__gt=10)
+        comments = Comment.objects.filter(is_abusing=True)
+    if 'first_comment_id' in request.GET:
+        comments = comments.filter(id__gte=int(request.GET['first_comment_id'])) 
+    if 'last_comment_id' in request.GET:
+        comments = comments.filter(id__lte=int(request.GET['last_comment_id'])) 
+    if 'originally_last_comment_id' in request.GET:
+        if 'ordering' in request.GET and request.GET['ordering'] == 'desc':
+            comments = comments.filter(id__lt=int(request.GET['originally_last_comment_id'])) 
+        else:
+            comments = comments.filter(id__gt=int(request.GET['originally_last_comment_id'])) 
+
+    # Number of comments
+    number_of_comments = getattr(settings, 'MAX_COMMENTS_PER_QUERYSET')
+    if 'number_of_comments' in request.GET:
+        number_of_comments = min(int(request.GET['number_of_comments']), getattr(settings, 'MAX_COMMENTS_PER_QUERYSET'))
+    comments = comments[:number_of_comments]
+    
+    # Serialize data
+    comments = list(comments.values('id', 'nickname', 'content', 'ip_address', 'speaker', 'spoken_at', 'created_at'))
+
+    # Encrypt IP address
+    for comment in comments:
+        if comment['ip_address'] != None:
+            ip_address = comment['ip_address']
+            ip_address = ip_address.split('.')
+            ip_address[-1] = '**'
+            comment['ip_address'] = '.'.join(ip_address)
+    
+    return JsonResponse({'comments': comments})
+            
+    #except:
+    #    return HttpResponse(status=400)
 
 
 def update_firebase_database(permalink, key, value):

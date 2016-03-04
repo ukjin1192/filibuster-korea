@@ -27,23 +27,14 @@ function getSpokenComments(category, keyword, lastCommentID) {
   $('#loading-icon').removeClass('hidden');
 
   var data = {};
-  if (lastCommentID > 0) {
-    data = {
-      'category': category,
-      'keyword': keyword,
-      'spoken': true,
-      'last_comment_id': lastCommentID
-    };
-  } else {
-    data = {
-      'category': category,
-      'keyword': keyword,
-      'spoken': true,
-    };
-  }
+
+  data['ordering'] = 'desc';
+  data['is_spoken'] = true;
+  if (keyword != '') data[category] = keyword;
+  if (lastCommentID > 0) data['originally_last_comment_id'] = lastCommentID;
 
   $.ajax({
-    url: '/api/comments/search/',
+    url: '/api/comments/list/',
     type: 'GET',
     data: data
   }).done(function(data) {
@@ -82,9 +73,7 @@ $(document).on('click', '#see-more-comments', function() {
 
 $(document).on('submit', '#search-form', function(event) {
   event.preventDefault();
-
   $('#spoken-comment-list').html('');
-
   getSpokenComments($('#category').val(), $('#keyword').val(), -1);
 });
 
@@ -121,8 +110,6 @@ $(window).load(function() {
   if (permalink != null) {
     var regexMatching = permalink.match(/(\w+)=(\w+)/);
     var category, keyword;
-
-    console.log(regexMatching.length);
     
     if (regexMatching != undefined && regexMatching.length == 3) { 
       category = regexMatching[1];

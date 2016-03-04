@@ -138,3 +138,6 @@ CACHE_TTL = 60 * 60 * 24 * 7    # 7 days
 
 # CDN URL
 CDN_URL = config.get('aws', 'cloudfront_url')
+
+# Custom variables
+MAX_COMMENTS_PER_QUERYSET = 10

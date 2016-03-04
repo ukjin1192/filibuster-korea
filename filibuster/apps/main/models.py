@@ -132,7 +132,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')
-        ordering = ['-id']
+        ordering = ['id']
 
     def __unicode__(self):
         return unicode(self.id) or u''

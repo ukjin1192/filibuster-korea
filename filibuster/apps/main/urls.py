@@ -11,10 +11,6 @@ urlpatterns = patterns(
     ),
     url(
         regex=r'^comments/list/$',
-        view='get_recent_comments'
-    ),
-    url(
-        regex=r'^comments/search/$',
-        view='get_searched_comments'
+        view='get_comments'
     ),
 )

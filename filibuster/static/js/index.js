@@ -48,6 +48,7 @@ function getComments(firstCommentID, lastCommentID, position) {
     url: '/api/comments/list/',
     type: 'GET',
     data: {
+      'ordering': 'desc',
       'first_comment_id': firstCommentID,
       'last_comment_id': lastCommentID
     }
@@ -79,12 +80,11 @@ function getSpokenComments() {
   $('#loading-icon').removeClass('hidden');
 
   $.ajax({
-    url: '/api/comments/search/',
+    url: '/api/comments/list/',
     type: 'GET',
     data: {
-      'spoken': true,
-      'category': 'nickname',
-      'keyword': ''
+      'ordering': 'random',
+      'is_spoken': true
     }
   }).done(function(data) {
     var comments = data.comments;
