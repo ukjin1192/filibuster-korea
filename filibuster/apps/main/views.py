@@ -68,7 +68,7 @@ def get_recent_comments(request):
         if last_comment_id - 100 > first_comment_id:
             first_comment_id = last_comment_id - 100
         
-        comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id, is_deleted=False).values('id', 'nickname', 'content', 'created_at'))
+        comments = list(Comment.objects.filter(id__gte=first_comment_id, id__lte=last_comment_id).values('id', 'nickname', 'content', 'created_at'))
         
         return JsonResponse({'comments': comments})
         
@@ -87,9 +87,9 @@ def get_searched_comments(request):
         keyword = request.GET['keyword']
         
         if 'spoken' in request.GET:
-            comments = Comment.objects.filter(is_spoken=True, is_deleted=False)
+            comments = Comment.objects.filter(is_spoken=True)
         else:
-            comments = Comment.objects.filter(is_deleted=False)
+            comments = Comment.objects.all()
         
         if category == 'id':
             try:

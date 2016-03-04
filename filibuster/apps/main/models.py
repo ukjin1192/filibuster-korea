@@ -104,10 +104,6 @@ class Comment(models.Model):
         blank = True,
         null = True
     )
-    is_deleted = models.BooleanField(
-        verbose_name = _('Deleted or not'),
-        default = False
-    )
     is_abusing = models.BooleanField(
         verbose_name = _('Abusing'),
         default = False
