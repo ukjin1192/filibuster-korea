@@ -21,8 +21,4 @@ urlpatterns = patterns(
         regex=r'^comments/abusing/$',
         view='get_abusing_comments'
     ),
-    url(
-        regex=r'^comments/delete/$',
-        view='delete_comments'
-    ),
 )
