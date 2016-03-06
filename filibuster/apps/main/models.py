@@ -104,10 +104,6 @@ class Comment(models.Model):
         blank = True,
         null = True
     )
-    is_abusing = models.BooleanField(
-        verbose_name = _('Abusing'),
-        default = False
-    )
     category_choices = (
         ('civil_complaint', _('Civil complaint')),
         ('law_book', _('Law book')),

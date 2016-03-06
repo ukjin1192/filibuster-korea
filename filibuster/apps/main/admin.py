@@ -12,7 +12,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nickname', 'content', 'ip_address', 'is_abusing', 'category', 'speaker', 'spoken_at', 'created_at', 'updated_at')
+    list_display = ('id', 'nickname', 'content', 'ip_address', 'category', 'speaker', 'spoken_at', 'created_at', 'updated_at')
     search_fields = ('id', 'nickname', 'content', 'ip_address', 'category', 'speaker')
     ordering = ('-id', )
 
