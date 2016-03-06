@@ -108,6 +108,23 @@ class Comment(models.Model):
         verbose_name = _('Abusing'),
         default = False
     )
+    category_choices = (
+        ('civil_complaint', _('Civil complaint')),
+        ('law_book', _('Law book')),
+        ('story', _('Story')),
+        ('quotation', _('Quotation')),
+        ('resident_abroad', _('Resident abroad')),
+        ('letter', _('Letter')),
+        ('foreign_case', _('Foreign case')),
+        ('abusing', _('Abusing')),
+    )
+    category = models.CharField(
+        verbose_name = _('Category'),
+        max_length = 20,
+        choices = category_choices,
+        blank = True,
+        null = True
+    )    
     speaker = models.CharField(
         verbose_name = _('Speaker'),
         max_length = 10,
