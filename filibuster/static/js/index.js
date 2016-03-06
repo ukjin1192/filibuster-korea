@@ -84,7 +84,7 @@ function getSpokenComments() {
     type: 'GET',
     data: {
       'ordering': 'random',
-      'is_spoken': true
+      'category': 'spoken'
     }
   }).done(function(data) {
     var comments = data.comments;

@@ -29,7 +29,7 @@ function getSpokenComments(category, keyword, lastCommentID) {
   var data = {};
 
   data['ordering'] = 'desc';
-  data['is_spoken'] = true;
+  data['category'] = 'spoken';
   if (keyword != '') data[category] = keyword;
   if (lastCommentID > 0) data['originally_last_comment_id'] = lastCommentID;
 

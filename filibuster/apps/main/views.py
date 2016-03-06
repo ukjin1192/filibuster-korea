@@ -80,8 +80,9 @@ def get_comments(request):
             comments = comments.filter(nickname__contains=request.GET['nickname'])
         if 'content' in request.GET:
             comments = comments.filter(content__contains=request.GET['content'])
-        if 'is_spoken' in request.GET:
-            comments = comments.filter(category='spoken')
+        if 'category' in request.GET and request.GET['category'] in \
+            ['civil_complaint', 'law_book', 'story', 'quotation', 'resident_abroad', 'letter', 'foreign_case', 'spoken', 'abusing']:
+            comments = comments.filter(category=request.GET['category'])
         if 'speaker' in request.GET:
             comments = Comment.objects.filter(speaker=request.GET['speaker'])
         if 'first_comment_id' in request.GET:
