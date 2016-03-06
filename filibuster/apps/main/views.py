@@ -81,7 +81,7 @@ def get_comments(request):
         if 'content' in request.GET:
             comments = comments.filter(content__contains=request.GET['content'])
         if 'is_spoken' in request.GET:
-            comments = comments.annotate(speaker_length=Length('speaker')).filter(speaker_length__gt=0)
+            comments = comments.filter(category='spoken')
         if 'speaker' in request.GET:
             comments = Comment.objects.filter(speaker=request.GET['speaker'])
         if 'first_comment_id' in request.GET:

@@ -112,6 +112,7 @@ class Comment(models.Model):
         ('resident_abroad', _('Resident abroad')),
         ('letter', _('Letter')),
         ('foreign_case', _('Foreign case')),
+        ('spoken', _('Spoken')),
         ('abusing', _('Abusing')),
     )
     category = models.CharField(
