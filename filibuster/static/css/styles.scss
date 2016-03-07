@@ -16,7 +16,6 @@ $dark-grey-color: darken($grey-color, 30%);
  * ====================== */
 
 $full-transparent: rgba(0, 0, 0, 0);
-$almost-transparent: rgba(0, 0, 0, 0.3);
 $half-transparent: rgba(0, 0, 0, 0.5);
 
 /* ======================
@@ -606,14 +605,12 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
-/* ============
- * Closing page
- * ============ */
 
-#header {
-	position: fixed; 
-	top: 0; 
-	left: 0; 
+/* ======
+ * Header
+ * ====== */
+
+.header {
 	display: block; 
 	width: 100%; 
 	padding: 10px 0;
@@ -623,35 +620,36 @@ a, a:focus, a:hover, a:active, a:visited {
 	color: $gold-color;
 	text-align: center; 
 	z-index: 10; 
+
+	&.header--fixed {
+		position: fixed; 
+		top: 0; 
+		left: 0; 
+	}
 }
 
-#footer {
-	position: fixed; 
-	bottom: 0; 
-	left: 0; 
+/* ======
+ * Footer
+ * ====== */
+
+.footer {
 	display: block; 
 	width: 100%; 
-	padding-bottom: 10px; 
-	text-align: center; 
-	cursor: pointer;
-	z-index: 10; 
+	padding: 15px 0;
+	background-color: $gold-color; 
+	font-weight: 700; 
+	text-align:center;
 
-	#footer-help-message {
-		display: inline-block; 
-		margin-bottom: 10px; 
-		font-size: 1.1em; 
-		font-style: italic; 
-		color: $grey-color; 
-	}
-
-	.glyphicon {
-		font-weight: 700; 
-		font-size: 2.0em;
-		color: white;
+	.footer__license {
+		width: 100px;
 	}
 }
 
-#fullpage {
+/* ==========================
+ * Landing page - fullpage.js
+ * ========================== */
+
+.fullpage-container {
 
 	.section {
 		text-align: center;
@@ -670,44 +668,141 @@ a, a:focus, a:hover, a:active, a:visited {
 			color: white;
 		}
 		
-		#main-message {
+		.section__phrase {
 			padding: 20px 0; 
 			font-size: 2.3em; 
 			font-weight: 700; 
 			font-style: italic; 
 			text-align: left;
+			
+			@media screen and (min-width: $screen-md-min) {
+				text-align: center;
+			}
 		}
 		
-		.section-sm {
+		.section__contents--sm {
 			margin-bottom: 20px;
 			font-size: 2.0em; 
 			font-weight: 700; 
 		}
 		
-		.section-lg {
+		.section__contents--lg {
 			font-size: 5.5em; 
 			font-weight: 700;
 		}
+	}
+}
+
+/* =====================
+ * Landing page - Footer
+ * ===================== */
+
+.landing-page__footer {
+	position: fixed; 
+	bottom: 0; 
+	left: 0; 
+	display: block; 
+	width: 100%; 
+	padding-bottom: 10px; 
+	text-align: center; 
+	cursor: pointer;
+	z-index: 10; 
+
+	.footer__help-message {
+		display: inline-block; 
+		margin-bottom: 10px; 
+		font-size: 1.1em; 
+		font-style: italic; 
+		color: $grey-color; 
+	}
+
+	.footer__chevron {
+		font-weight: 700; 
+		font-size: 2.0em;
+		color: white;
+	}
+}
+
+/* ==================
+ * Menu page - Footer
+ * ================== */
+
+.menu__list {
+	background-color: $red-color;
+
+	.menu__description {
+		padding: 10px 0;
+		font-weight: 500; 
+		font-size: 1.35em;
+		color: white;
+		text-align: center;
 		
-		#page-list {
+		@media screen and (min-width: $screen-sm-min) {
+			padding: 20px 0;
+		}
+	}
+
+	.menu {
+		position: relative;
+		padding: 0;
+		
+		.menu__image {
+			max-width: 100%;
+			width: 100%;
+		}
+		
+		.menu__title {
+			position: absolute;
+			top: 15px;
+			left: 15px;
+			display: inline;
+			font-weight: 700;
+			font-size: 1.5em;
+			color: white;
+		}
+	}
+
+	.menu--bg {
+		padding: 0;
+		text-align: center;
+		
+		@media screen and (min-width: $screen-sm-min) {
+			margin: 30px 0;
+			border: 5px solid white;
+			border-radius: 10px;
+		}
+		
+		.menu__title {
+			margin: 15px 0 0 15px;
+			font-size: 1.5em;
+			color: white;
+			text-align: left;
 			
-			.panel {
-				margin-bottom: 5px;
-				border: none;
-				font-weight: 700;
-				font-size: 1.4em;
-				background-color: $light-red-color;
-				
-				a {
-					display: block;
-					padding: 15px;
-				}
+			@media screen and (min-width: $screen-sm-min) {
+				font-size: 1.8em;
+				text-align: center;
+			}
+		}
+		
+		.menu__glyphicon {
+			margin: 10px 0 0 0;
+			max-width: 100%;
+			width: 100%;
+			font-size: 6.0em;
+			color: white;
+			
+			@media screen and (min-width: $screen-sm-min) {
+				margin: 20px 0 30px 10px;
 			}
 		}
 	}
 }
 
-#social-media-share {
+/* ========================
+ * Social media share group
+ * ======================== */
+
+#social-media__share-group {
 	position: fixed; 
 	bottom: 15px; 
 	right: 15px; 

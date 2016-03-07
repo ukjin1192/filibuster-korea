@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block social_media_meta_tags %}
+<meta property="fb:app_id" content="192025411163419" />
+<meta property="fb:locale" content="ko_KR" />
+
+<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me/menu/" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% endblock %}
+
+{% block container %}
+<div class="header">
+	<a href="/">필리버스터 릴레이</a>
+</div>
+
+<div class="menu__list">
+	<div class="container">
+		<div class="menu__description">
+			8일간의 기록을 기념하고자 
+			<div class="visible-xs"></div>
+			여러분의 소중한 말씀을 엮었습니다.
+		</div>
+		<div class="row">
+			<a href="/praise/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">주목과 찬사</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/praise.jpg" class="menu__image" />
+			</a>
+			<a href="/records/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">국회 속기록</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/records.jpg" class="menu__image" />
+			</a>
+			<a href="/story/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">사연</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/story.jpg" class="menu__image" />
+			</a>
+			<a href="/foreign_case/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">해외 사례</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/foreign_case.jpg" class="menu__image" />
+			</a>
+			<a href="/quotation/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">인용</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/quotation.jpg" class="menu__image" />
+			</a>
+			<a href="/resident_abroad/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">재외국민</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/resident_abroad.jpg" class="menu__image" />
+			</a>
+			<a href="/letter/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">편지</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/letter.jpg" class="menu__image" />
+			</a>
+			<a href="/law_book/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">법전</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/law_book.jpg" class="menu__image" />
+			</a>
+			<a href="/civil_complaint/" class="col-xs-6 col-sm-4 col-md-4 col-lg-4 menu">
+				<div class="menu__title">민원</div>
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/menu/civil_complaint.jpg" class="menu__image" />
+			</a>
+			<a href="/search/" class="col-xs-6 col-sm-12 col-md-12 col-lg-12 menu--bg">
+				<div class="menu__title">직접 검색하기</div>
+				<span class="glyphicon glyphicon-search menu__glyphicon" aria-hidden="true"></span>
+			</a>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<img src="{{ 'CDN_URL'|get_settings_variable }}/assets/cc_license.png" class="footer__license" />
+</div>
+
+<div class="dropup" id="social-media__share-group">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+		<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right">
+		<li>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/menu/" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg" />
+				페이스북
+			</a>
+		</li>
+		<li>
+			<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me/menu/" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
+				트위터
+			</a>
+		</li>
+		<li>
+			<a href="https://plus.google.com/share?url=http://filibuster.me/menu" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+				구글+
+			</a>
+		</li>
+		<li>
+			<a href="line://msg/text/[가나다] 라마바 http://filibuster.me/menu" id="line-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+				라인
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" id="kakaotalk-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+				카카오톡
+			</a>
+		</li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+{% endcompress %}
+{% endblock %}

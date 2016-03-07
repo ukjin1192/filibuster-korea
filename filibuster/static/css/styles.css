@@ -431,13 +431,10 @@ a, a:focus, a:hover, a:active, a:visited {
       .desk-footer .desk-footer--btn {
         top: 50px; } }
 
-/* ============
- * Closing page
- * ============ */
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* ======
+ * Header
+ * ====== */
+.header {
   display: block;
   width: 100%;
   padding: 10px 0;
@@ -447,8 +444,60 @@ a, a:focus, a:hover, a:active, a:visited {
   color: #D2AF6D;
   text-align: center;
   z-index: 10; }
+  .header.header--fixed {
+    position: fixed;
+    top: 0;
+    left: 0; }
 
-#footer {
+/* ======
+ * Footer
+ * ====== */
+.footer {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  background-color: #D2AF6D;
+  font-weight: 700;
+  text-align: center; }
+  .footer .footer__license {
+    width: 100px; }
+
+/* ==========================
+ * Landing page - fullpage.js
+ * ========================== */
+.fullpage-container .section {
+  text-align: center;
+  background-color: #76252B;
+  color: white; }
+  .fullpage-container .section #microphone-icon {
+    width: 23%;
+    max-width: 200px;
+    margin-bottom: 20px; }
+  .fullpage-container .section #bullhorn-icon {
+    margin-bottom: 20px;
+    font-size: 4.0em;
+    color: white; }
+  .fullpage-container .section .section__phrase {
+    padding: 20px 0;
+    font-size: 2.3em;
+    font-weight: 700;
+    font-style: italic;
+    text-align: left; }
+    @media screen and (min-width: 992px) {
+      .fullpage-container .section .section__phrase {
+        text-align: center; } }
+  .fullpage-container .section .section__contents--sm {
+    margin-bottom: 20px;
+    font-size: 2.0em;
+    font-weight: 700; }
+  .fullpage-container .section .section__contents--lg {
+    font-size: 5.5em;
+    font-weight: 700; }
+
+/* =====================
+ * Landing page - Footer
+ * ===================== */
+.landing-page__footer {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -458,70 +507,93 @@ a, a:focus, a:hover, a:active, a:visited {
   text-align: center;
   cursor: pointer;
   z-index: 10; }
-  #footer #footer-help-message {
+  .landing-page__footer .footer__help-message {
     display: inline-block;
     margin-bottom: 10px;
     font-size: 1.1em;
     font-style: italic;
     color: #E0E0E0; }
-  #footer .glyphicon {
+  .landing-page__footer .footer__chevron {
     font-weight: 700;
     font-size: 2.0em;
     color: white; }
 
-#fullpage .section {
-  text-align: center;
-  background-color: #76252B;
-  color: white; }
-  #fullpage .section #microphone-icon {
-    width: 23%;
-    max-width: 200px;
-    margin-bottom: 20px; }
-  #fullpage .section #bullhorn-icon {
-    margin-bottom: 20px;
-    font-size: 4.0em;
-    color: white; }
-  #fullpage .section #main-message {
-    padding: 20px 0;
-    font-size: 2.3em;
-    font-weight: 700;
-    font-style: italic;
-    text-align: left; }
-  #fullpage .section .section-sm {
-    margin-bottom: 20px;
-    font-size: 2.0em;
-    font-weight: 700; }
-  #fullpage .section .section-lg {
-    font-size: 5.5em;
-    font-weight: 700; }
-  #fullpage .section #page-list .panel {
-    margin-bottom: 5px;
-    border: none;
-    font-weight: 700;
-    font-size: 1.4em;
-    background-color: #862a31; }
-    #fullpage .section #page-list .panel a {
-      display: block;
-      padding: 15px; }
+/* ==================
+ * Menu page - Footer
+ * ================== */
+.menu__list {
+  background-color: #76252B; }
+  .menu__list .menu__description {
+    padding: 10px 0;
+    font-weight: 500;
+    font-size: 1.35em;
+    color: white;
+    text-align: center; }
+    @media screen and (min-width: 768px) {
+      .menu__list .menu__description {
+        padding: 20px 0; } }
+  .menu__list .menu {
+    position: relative;
+    padding: 0; }
+    .menu__list .menu .menu__image {
+      max-width: 100%;
+      width: 100%; }
+    .menu__list .menu .menu__title {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      display: inline;
+      font-weight: 700;
+      font-size: 1.5em;
+      color: white; }
+  .menu__list .menu--bg {
+    padding: 0;
+    text-align: center; }
+    @media screen and (min-width: 768px) {
+      .menu__list .menu--bg {
+        margin: 30px 0;
+        border: 5px solid white;
+        border-radius: 10px; } }
+    .menu__list .menu--bg .menu__title {
+      margin: 15px 0 0 15px;
+      font-size: 1.5em;
+      color: white;
+      text-align: left; }
+      @media screen and (min-width: 768px) {
+        .menu__list .menu--bg .menu__title {
+          font-size: 1.8em;
+          text-align: center; } }
+    .menu__list .menu--bg .menu__glyphicon {
+      margin: 10px 0 0 0;
+      max-width: 100%;
+      width: 100%;
+      font-size: 6.0em;
+      color: white; }
+      @media screen and (min-width: 768px) {
+        .menu__list .menu--bg .menu__glyphicon {
+          margin: 20px 0 30px 10px; } }
 
-#social-media-share {
+/* ========================
+ * Social media share group
+ * ======================== */
+#social-media__share-group {
   position: fixed;
   bottom: 15px;
   right: 15px;
   z-index: 1000; }
-  #social-media-share button {
+  #social-media__share-group button {
     width: 48px;
     height: 48px;
     padding: 9px 9px 7px 12px;
     border-radius: 50%;
     background-color: #E0E0E0; }
-    #social-media-share button .glyphicon {
+    #social-media__share-group button .glyphicon {
       font-size: 1.5em;
       color: #76252B; }
-  #social-media-share li {
+  #social-media__share-group li {
     margin: 10px 0;
     font-size: 1.2em; }
-    #social-media-share li img {
+    #social-media__share-group li img {
       width: 30px;
       margin-right: 10px; }
 
