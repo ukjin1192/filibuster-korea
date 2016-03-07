@@ -10,7 +10,7 @@
 
 <meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
 <meta property="og:site_name" content="필리버스터 릴레이" />
-<meta property="og:url" content="http://filibuster.me/" />
+<meta property="og:url" content="http://filibuster.me" />
 <meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
@@ -27,25 +27,17 @@
 {% endblock %}
 
 {% block container %}
-<div id="header">
-	<a href="/test/">필리버스터 릴레이</a>
+<div class="header header--fixed">
+	<a href="/">필리버스터 릴레이</a>
 </div>
 
-<div id="footer" style="opacity: 0;">
-	<div id="footer-help-message">
-		다음 페이지로 가기
-	</div>
-	<br/>
-	<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-</div>
-
-<div id="fullpage">
+<div class="fullpage-container">
 	<div class="section">
 		<div class="container">
-			<div class="section-sm">
+			<div class="section__contents--sm">
 				국회 필리버스터
 			</div>
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				192시간<br/>
 				53분<br/>
 				24초<span class="typed-cursor">|</span>
@@ -56,10 +48,10 @@
 	<div class="section">
 		<div class="container">
 			<img src="{{ 'CDN_URL'|get_settings_variable }}/mic_white.svg" id="microphone-icon" />
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				<span id="speaker-list">세계<span class="typed-cursor">|</span></span>
 			</div>
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				기록
 			</div>
 		</div>
@@ -67,10 +59,10 @@
 
 	<div class="section">
 		<div class="container">
-			<div class="section-sm">
+			<div class="section__contents--sm">
 				시민 필리버스터
 			</div>
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				<span id="total-comments"></span>
 			</div>
 		</div>
@@ -79,10 +71,10 @@
 	<div class="section">
 		<div class="container">
 			<span class="glyphicon glyphicon-bullhorn" aria-hidden="true" id="bullhorn-icon"></span>
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				<span id="nickname-list"></span>
 			</div>
-			<div class="section-lg">
+			<div class="section__contents--lg">
 				기록
 			</div>
 		</div>
@@ -90,7 +82,7 @@
 
 	<div class="section">
 		<div class="container">
-			<div id="main-message">
+			<div class="section__phrase">
 				국회 연설은 끝났지만, 우리가 전하고자 했던 얘기는 끝나지 않았습니다.
 				<br/><br/>
 				침묵하지 않는 시민이 세상을 바꿉니다.
@@ -98,25 +90,19 @@
 		</div>
 	</div>
 
-	<div class="section">
-		<div class="container" id="page-list">
-			<div class="panel panel-default">
-				<a href="#">잠언집</a>
-			</div>
-			<div class="panel panel-default">
-				<a href="#">국회 속기록</a>
-			</div>
-			<div class="panel panel-default">
-				<a href="#">논설문</a>
-			</div>
-			<div class="panel panel-default">
-				<a href="#"># 지금</a>
-			</div>
-		</div>
-	</div>
+	{# Empty section is required to fire appropriate events #}
+	<div class="section"></div>
 </div>
 
-<div class="dropup" id="social-media-share">
+<div class="landing-page__footer" style="opacity: 0;">
+	<div class="footer__help-message">
+		다음 페이지로 가기
+	</div>
+	<br/>
+	<span class="glyphicon glyphicon-chevron-down footer__chevron" aria-hidden="true"></span>
+</div>
+
+<div class="dropup" id="social-media__share-group">
 	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
 		<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
   </button>
