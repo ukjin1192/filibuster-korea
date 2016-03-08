@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block container %}
+<div class="page__title">
+	주목과 찬사
+</div>
+
+<div class="container" style="font-size: 1.5em; font-weight: 500; color: white; text-align: center; min-height: 500px; padding: 100px 0;">
+	죄송합니다. 준비중입니다. 24시간안에 완성될 예정입니다.
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+{% endcompress %}
+{% endblock %}
