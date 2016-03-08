@@ -5,7 +5,7 @@ $(window).load(function() {
     container: '#kakaotalk-share',
     label: '[가나다] 라마바',
     image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
+      src: 'http://d1es9gk2quk02b.cloudfront.net/share/share-desk.jpg',
       width: '800',
       height: '421'
     },

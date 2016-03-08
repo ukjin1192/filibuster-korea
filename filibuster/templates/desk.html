@@ -5,85 +5,12 @@
 {% load staticfiles %}
 
 {% block social_media_meta_tags %}
-<meta property="fb:app_id" content="192025411163419" />
-<meta property="fb:locale" content="ko_KR" />
-
-<meta property="og:title" content="국회의원이 읽은 내 연설문" />
-<meta property="og:site_name" content="필리버스터 릴레이" />
-<meta property="og:url" content="http://filibuster.me/desk/" />
-<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-desk.jpg" />
-<meta property="og:image:width" content="800" />
-<meta property="og:image:height" content="421" />
-<meta property="og:image:type" content="image/jpeg" />
-
-<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
-<meta property="twitter:description" content="국회의원이 읽은 내 연설문" />
-<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-desk.jpg" />
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image:height" content="800">
-<meta property="twitter:image:width" content="421">
 {% endblock %}
 
 {% block container %}
 <div class="container-fit">
-
-	<div class="desk-header">
-		<div class="visible-xs">
-			<img src="{{ 'CDN_URL'|get_settings_variable }}/header_xs.jpg" class="desk-header--image__xs" />
-		</div>
-		<div class="hidden-xs">
-			<img src="{{ 'CDN_URL'|get_settings_variable }}/header_lg.jpg" class="desk-header--image__lg" />
-		</div>
-			
-		<div class="desk-header--container">
-			<div class="desk-header--title">
-				필리버스터 편집실
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="desk-context">
-			<div class="desk-context--title">
-				당신이 쓴 연설문,<br/>
-				국회 본회의장에서<br/>
-				읽혔습니다
-			</div>
-			<div class="desk-context--link">
-				<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-			</div>
-		</div>
-	</div>
-
-	<div class="desk-navbar">
-		<div class="desk-navbar--container">
-			<div class="row desk-navbar--title">
-				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-					<a href="/" class="desk-navbar--home-link hidden">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					</a>
-				</div>
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-					필리버스터 편집실
-				</div>
-				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="desk-main">
 		<div class="container">
-			
-			<div class="desk-main--alert-message">
-				<div class="alert alert-info" role="alert">
-					<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-					국회의원들이 직접 읽은 연설물을 모았습니다
-				</div>
-			</div>
-			
 			<form class="input-group" id="search-form">
 				<div class="input-group-btn">
 					<input tyoe="hidden" id="category" value="nickname" />
@@ -105,70 +32,11 @@
 				</div>
 			</form>
 			
-			<div class="social-media--btn-group">
-				{# Facebook #}
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
-				</a>
-				{# Twitter #}
-				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
-				</a>
-				{# Google+ #}
-				<a href="https://plus.google.com/share?url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
-				</a>
-				{# LINE #}
-				<a href="line://msg/text/[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! http://filibuster.me/desk/" class="social-media--btn" id="line-share-1">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
-				</a>
-				{# Kakao talk #}
-				<a href="javascript:;" class="social-media--btn" id="kakaotalk-share-1">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
-				</a>
-			</div>
-			
 			<div id="spoken-comment-list"></div>
 		
 			<button type="button" class="btn btn-defaukt btn-lg btn-block" id="see-more-comments" data-loading-text="가져오는 중입니다">
 				더 보기
 			</button> 
-			
-			<div class="social-media--btn-group">
-				{# Facebook #}
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg"/>
-				</a>
-				{# Twitter #}
-				<a href="https://twitter.com/intent/tweet?text=[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! &url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
-				</a>
-				{# Google+ #}
-				<a href="https://plus.google.com/share?url=http://filibuster.me/desk/" target="_blank" class="social-media--btn">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
-				</a>
-				{# LINE #}
-				<a href="line://msg/text/[필리버스터 릴레이: 편집실] 국회 본회의장에서 내가 쓴 글이 읽혔습니다. 당신도 참여하세요! http://filibuster.me/desk/" class="social-media--btn" id="line-share-2">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
-				</a>
-				{# Kakao talk #}
-				<a href="javascript:;" class="social-media--btn" id="kakaotalk-share-2">
-					<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
-				</a>
-			</div>
-		</div>
-		
-		<div class="desk-footer">
-			<div class="visible-xs">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/footer_xs.jpg" class="desk-footer--image" />
-			</div>
-			<div class="hidden-xs">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/footer_lg.jpg" class="desk-footer--image" />
-			</div>
-			
-			<a href="/" role="button" class="btn btn-default btn-lg desk-footer--btn">
-				연설문 쓰러 가기
-			</a>
 		</div>
 	</div>
 </div>

@@ -1,12 +1,3 @@
-// Alert that line and kakaotalk messenger sharing is only available at mobile
-$(document).on('click', '#line-share-1, #line-share-2, #kakaotalk-share-1, #kakaotalk-share-2', function() {
-  // Detect desktop browser
-  if (!('ontouchstart' in window)) {
-    alert("모바일에서만 가능합니다");
-  }
-  return false;
-});
-
 $(document).on('click', '.dropdown-menu li', function(event) {
   var $target = $(event.currentTarget);
 
@@ -77,35 +68,7 @@ $(document).on('submit', '#search-form', function(event) {
   getSpokenComments($('#category').val(), $('#keyword').val(), -1);
 });
 
-$(window).scroll(function() {
-  // Automatically set position of navigation bar
-  if ($(window).scrollTop() > $('.desk-navbar').offset().top) {
-    $('.desk-navbar--container').addClass('fixed');
-    $('.desk-navbar--home-link').removeClass('hidden');
-    $('#back-to-top').removeClass('hidden');
-  } else {
-    $('.desk-navbar--container').removeClass('fixed');
-    $('.desk-navbar--home-link').addClass('hidden');
-    $('#back-to-top').addClass('hidden');
-  }
-});
-
-// Scroll to top if user clicked 'back to top'
-$(document).on('click', '#back-to-top', function(event) {
-  event.preventDefault();
-  
-  $('html, body').animate({ scrollTop: 0 }, 'fast');
-});
-
 $(window).load(function() {
-  $('#loading-icon').addClass('hidden');
-
-  // Ease effect when body DOM loads
-  $('body').animate({opacity: 1}, 700);
-
-  // Attach fast-click to boost up touch reaction
-  FastClick.attach(document.body);
-
   var permalink = location.href.split('?')[1];
   if (permalink != null) {
     var regexMatching = permalink.match(/(\w+)=(\w+)/);
@@ -141,33 +104,4 @@ $(window).load(function() {
   } else {
     getSpokenComments($('#category').val(), '', -1);
   }
-
-  // Kakaotalk sharing
-  Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
-  Kakao.Link.createTalkLinkButton({
-    container: '#kakaotalk-share-1',
-    label: '[필리버스터 릴레이] 국회의원이 읽은 내 연설문 보러 가기 ',
-    image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
-      width: '800',
-      height: '421'
-    },
-    webButton: {
-      text: '둘러보기',
-      url: 'http://filibuster.me/'
-    }
-  });
-  Kakao.Link.createTalkLinkButton({
-    container: '#kakaotalk-share-2',
-    label: '[필리버스터 릴레이] 국회의원이 읽은 내 연설문 보러 가기 ',
-    image: {
-      src: 'http://d1es9gk2quk02b.cloudfront.net/share-desk.jpg',
-      width: '800',
-      height: '421'
-    },
-    webButton: {
-      text: '둘러보기',
-      url: 'http://filibuster.me/'
-    }
-  });
 });
