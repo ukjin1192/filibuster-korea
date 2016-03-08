@@ -1,0 +1,35 @@
+{% load custom_filter %}
+
+{% if request.path == '/' %}
+<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me{{ request.path }}" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% else %}
+<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me{{ request.path }}" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% endif %}

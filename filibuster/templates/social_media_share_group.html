@@ -1,0 +1,47 @@
+{% load custom_filter %}
+
+{% if request.path == '/' %}
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/facebook.svg" class="social-media__icon" />
+</a>
+<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/twitter.png" class="social-media__icon" />
+</a>
+<a href="https://plus.google.com/share?url=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/google_plus.svg" class="social-media__icon" />
+</a>
+<a href="line://msg/text/[가나다] 라마바 http://filibuster.me{{ request.path }}" id="line-share">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/line.svg" class="social-media__icon" />
+</a>
+<a href="javascript:;" id="kakaotalk-share">
+  <input type="hidden" id="kakaotalk-share__label" value="[가나다] 라마바" />
+  <input type="hidden" id="kakaotalk-share__image-src" value="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.jpg" />
+  <input type="hidden" id="kakaotalk-share__image-width" value="800" />
+  <input type="hidden" id="kakaotalk-share__image-height" value="421" />
+  <input type="hidden" id="kakaotalk-share__btn-text" value="둘러보기" />
+  <input type="hidden" id="kakaotalk-share__url" value="http://filibuster.me{{ request.path }}" />
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/kakaotalk.svg" class="social-media__icon" />
+</a>
+{% else %}
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/facebook.svg" class="social-media__icon" />
+</a>
+<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/twitter.png" class="social-media__icon" />
+</a>
+<a href="https://plus.google.com/share?url=http://filibuster.me{{ request.path }}" target="_blank">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/google_plus.svg" class="social-media__icon" />
+</a>
+<a href="line://msg/text/[가나다] 라마바 http://filibuster.me{{ request.path }}" id="line-share">
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/line.svg" class="social-media__icon" />
+</a>
+<a href="javascript:;" id="kakaotalk-share">
+  <input type="hidden" id="kakaotalk-share__label" value="[가나다] 라마바" />
+  <input type="hidden" id="kakaotalk-share__image-src" value="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.jpg" />
+  <input type="hidden" id="kakaotalk-share__image-width" value="800" />
+  <input type="hidden" id="kakaotalk-share__image-height" value="421" />
+  <input type="hidden" id="kakaotalk-share__btn-text" value="둘러보기" />
+  <input type="hidden" id="kakaotalk-share__url" value="http://filibuster.me{{ request.path }}" />
+  <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/kakaotalk.svg" class="social-media__icon" />
+</a>
+{% endif %}
