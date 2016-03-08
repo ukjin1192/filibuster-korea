@@ -16,12 +16,10 @@ urlpatterns = [
     ),
 
     # Captcha for human validation
-    """
-    url(
-        r'^captcha/', 
-        include('captcha.urls')
-    ),
-    """
+    # url(
+    #     r'^captcha/', 
+    #     include('captcha.urls')
+    # ),
 
     # API end points
     url(
