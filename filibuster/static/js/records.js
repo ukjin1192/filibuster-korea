@@ -97,11 +97,11 @@ $(document).on('click', '#tab-toggle--3', function() {
 $(window).scroll(function() {
   // Support inifinite scroll
   if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-    if ($('tab-toggle--1').hasClass('active')) {
+    if ($('#tab-toggle--1').hasClass('active')) {
       var lastCommentID = parseInt($('#tab--1 .comment-list .comment').last().attr('data-comment-id'));
       if (isNaN(lastCommentID)) getComments('김제남', 0);
       else getComments('김제남', lastCommentID);
-    } else if ($('tab-toggle--2').hasClass('active')) {
+    } else if ($('#tab-toggle--2').hasClass('active')) {
       var lastCommentID = parseInt($('#tab--2 .comment-list .comment').last().attr('data-comment-id'));
       if (isNaN(lastCommentID)) getComments('서영교', 0);
       else getComments('서영교', lastCommentID);
