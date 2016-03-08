@@ -29,15 +29,51 @@ urlpatterns = [
 
     # Front-end page
     url(
-        r'^desk/', 
-        TemplateView.as_view(template_name='desk.html')
+        r'^menu/$', 
+        TemplateView.as_view(template_name='menu.html')
     ),
     url(
-        r'^test/', 
-        TemplateView.as_view(template_name='test.html')
+        r'^praise/$', 
+        TemplateView.as_view(template_name='praise.html')
     ),
     url(
-        r'^', 
-        TemplateView.as_view(template_name='index.html')
+        r'^records/$', 
+        TemplateView.as_view(template_name='records.html')
+    ),
+    url(
+        r'^story/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^foreign_case/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^quotation/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^resident_abroad/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^letter/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^law_book/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^civil_complaint/$', 
+        TemplateView.as_view(template_name='category.html')
+    ),
+    url(
+        r'^search/$', 
+        TemplateView.as_view(template_name='search.html')
+    ),
+    url(
+        r'^$', 
+        TemplateView.as_view(template_name='landing.html')
     ),
 ]

@@ -6,6 +6,7 @@ $red-color: #76252B;
 $light-red-color: lighten($red-color, 4%);
 $dark-red-color: darken($red-color, 10%);
 $gold-color: #D2AF6D;
+$dark-gold-color: darken($gold-color, 15%);
 $blue-color: #34495E;
 $ivory-color: #F0EDDF; 
 $grey-color: #E0E0E0;
@@ -68,14 +69,6 @@ a, a:focus, a:hover, a:active, a:visited {
 	cursor: pointer;
 	color: inherit;
 	outline: 0;
-}
-
-/* ==================
- * Override bootstrap 
- * ================== */
-
-.container-fit {
-	padding: 0;
 }
 
 /* =========================
@@ -628,6 +621,68 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
+/* ==========
+ * Page title
+ * ========== */
+
+.page__title {
+	display: block; 
+	width: 100%; 
+	padding: 10px 0;
+	background-color: $red-color; 
+	font-weight: 700; 
+	font-size: 1.5em; 
+	color: white;
+	text-align: center; 
+}
+
+/* ===================
+ * Menu navigation bar
+ * =================== */
+
+.menu__navbar {
+	width: 100%;
+	margin: 0 auto;
+	padding-bottom: 25px;
+	background-color: $red-color; 
+
+	.menu__list {
+		width: 100%;
+		max-width: 700px;
+		margin: 0 auto;
+		
+		.menu {
+			position: relative;
+			display: block;
+			padding: 0;
+			text-align: center;
+			
+			.menu__title {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				font-size: 0.9em;
+				color: white;
+			}
+			
+			.menu__image {
+				width: 100%;
+			}
+
+			.menu__glyphicon {
+				margin-top: 30px;
+				font-size: 3.0em;
+				color: white;
+				
+				@media screen and (min-width: $screen-sm-min) {
+					margin-top: 40px;
+					font-size: 4.0em;
+				}
+			}
+		}
+	}
+}
+
 /* ======
  * Footer
  * ====== */
@@ -638,10 +693,65 @@ a, a:focus, a:hover, a:active, a:visited {
 	padding: 15px 0;
 	background-color: $gold-color; 
 	font-weight: 700; 
-	text-align:center;
+	text-align: center;
 
-	.footer__license {
+	.footer__menu-link {
+		display: block;
+		max-width: 520px;
+		margin: 0 auto;
+		
+		button {
+			border: none;
+			background-color: $dark-gold-color;
+			font-weight: 500;
+			color: white;
+		}
+	}
+
+	.footer__license-text {
+		margin: 15px 0;
+	}
+
+	.footer__license-image {
 		width: 100px;
+	}
+}
+
+/* ============
+ * Comment list
+ * ============ */
+
+.comment-list {
+	max-width: 700px;
+	margin: 0 auto;
+
+	.comment {
+		padding: 10px; 
+		border-top: 1px solid white;
+		
+		.comment__nickname {
+			font-weight: 700;
+			font-size: 1.5em;
+			color: white;
+			text-align: center;
+		}
+		
+		.comment__content {
+			margin: 20px 0; 
+			line-height: 1.5em; 
+			white-space: pre-wrap;
+			font-weight: 500;
+			font-size: 1.2em;
+			color: white;
+			text-align: left;
+		}
+		
+		.comment__additional-info {
+			font-weight: 500;
+			font-size: 1.0em;
+			color: $grey-color;
+			text-align: center;
+		}
 	}
 }
 
@@ -723,11 +833,11 @@ a, a:focus, a:hover, a:active, a:visited {
 	}
 }
 
-/* ==================
- * Menu page - Footer
- * ================== */
+/* =========
+ * Menu page
+ * ========= */
 
-.menu__list {
+.menu__page {
 	background-color: $red-color;
 
 	.menu__description {
@@ -741,61 +851,117 @@ a, a:focus, a:hover, a:active, a:visited {
 			padding: 20px 0;
 		}
 	}
-
-	.menu {
-		position: relative;
-		padding: 0;
+	
+	.menu__list {
+		width: 100%;
+		max-width: 700px;
+		margin: 0 auto;
 		
-		.menu__image {
-			max-width: 100%;
-			width: 100%;
+		.menu {
+			position: relative;
+			padding: 0;
+			
+			.menu__image {
+				max-width: 100%;
+				width: 100%;
+			}
+			
+			.menu__title {
+				position: absolute;
+				top: 15px;
+				left: 15px;
+				display: inline;
+				font-weight: 700;
+				font-size: 1.5em;
+				color: white;
+			}
 		}
 		
-		.menu__title {
-			position: absolute;
-			top: 15px;
-			left: 15px;
-			display: inline;
-			font-weight: 700;
-			font-size: 1.5em;
-			color: white;
+		.menu--bg {
+			padding: 0;
+			text-align: center;
+			
+			@media screen and (min-width: $screen-sm-min) {
+				margin: 30px 0;
+				border: 5px solid white;
+				border-radius: 10px;
+			}
+			
+			.menu__title {
+				margin: 15px 0 0 15px;
+				font-size: 1.5em;
+				color: white;
+				text-align: left;
+				
+				@media screen and (min-width: $screen-sm-min) {
+					font-size: 1.8em;
+					text-align: center;
+				}
+			}
+			
+			.menu__glyphicon {
+				margin: 10px 0 0 0;
+				font-size: 6.0em;
+				color: white;
+				
+				@media screen and (min-width: $screen-sm-min) {
+					margin: 20px 0 30px 10px;
+				}
+			}
 		}
 	}
+}
 
-	.menu--bg {
-		padding: 0;
+/* ============
+ * Records page
+ * ============ */
+
+.records__tab-group {
+	padding-bottom: 5px;
+	background-color: $red-color;
+	
+	.tab-group {
+		margin: 0 auto;
+		max-width: 560px;
+		
+		.tab-toggle {
+			padding: 10px 5px;
+			
+			.active {
+				border: 1px solid white;
+				background-color: $light-red-color; 
+				color: white;
+			}
+		}
+	}
+}
+
+.records__tab-content {
+	background-color: $red-color;
+	
+	.records__youtube {
 		text-align: center;
 		
-		@media screen and (min-width: $screen-sm-min) {
-			margin: 30px 0;
-			border: 5px solid white;
-			border-radius: 10px;
-		}
-		
-		.menu__title {
-			margin: 15px 0 0 15px;
-			font-size: 1.5em;
-			color: white;
-			text-align: left;
-			
-			@media screen and (min-width: $screen-sm-min) {
-				font-size: 1.8em;
-				text-align: center;
-			}
-		}
-		
-		.menu__glyphicon {
-			margin: 10px 0 0 0;
+		iframe {
 			max-width: 100%;
-			width: 100%;
-			font-size: 6.0em;
-			color: white;
-			
-			@media screen and (min-width: $screen-sm-min) {
-				margin: 20px 0 30px 10px;
-			}
 		}
 	}
+
+	.records__tab-title {
+		padding: 10px 0 15px 0;
+		font-weight: 700;
+		font-size: 1.5em;
+		color: white;
+		text-align: center;
+	}
+}
+
+/* =============
+ * Category page
+ * ============= */
+
+.category__content {
+	background-color: $red-color;
 }
 
 /* ========================
@@ -804,21 +970,20 @@ a, a:focus, a:hover, a:active, a:visited {
 
 #social-media__share-group {
 	position: fixed; 
-	bottom: 15px; 
-	right: 15px; 
+	bottom: 10px; 
+	right: 10px; 
 	z-index: 1000;
   
 	button {
-		width: 48px; 
-		height: 48px;
-		padding: 9px 9px 7px 12px; 
+		width: 40px; 
+		height: 40px;
+		padding: 5px; 
 		border-radius: 50%; 
 		background-color: $grey-color;
-		
-		.glyphicon {
-			font-size: 1.5em;
-			color: $red-color;
-		}
+		font-weight: 700;
+		font-size: 1.0em;
+		color: $red-color;
+		text-align: center;
 	}
 
 	li {
@@ -857,14 +1022,16 @@ a, a:focus, a:hover, a:active, a:visited {
 
 #back-to-top {
 	position: fixed; 
-	display: inline; 
-	bottom: 15px; 
-	right: 15px; 
-	padding: 2px 7px 0 5px; 
-	font-size: 1.4em;
-	border: 1px solid $grey-color; 
-	background-color: white; 
-	color: $grey-color; 
+	bottom: 10px; 
+	left: 10px; 
+	width: 40px; 
+	height: 40px;
+	padding-top: 10px; 
+	border-radius: 50%; 
+	font-size: 1.0em;
+	background-color: $grey-color; 
+	color: $dark-grey-color; 
+	text-align: center;
 	cursor: pointer;
 	z-index: 100;
 }

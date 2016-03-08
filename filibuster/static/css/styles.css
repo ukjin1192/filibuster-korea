@@ -33,12 +33,6 @@ a, a:focus, a:hover, a:active, a:visited {
   color: inherit;
   outline: 0; }
 
-/* ==================
- * Override bootstrap 
- * ================== */
-.container-fit {
-  padding: 0; }
-
 /* =========================
  * Main page - Intro section 
  * ========================= */
@@ -449,6 +443,53 @@ a, a:focus, a:hover, a:active, a:visited {
     top: 0;
     left: 0; }
 
+/* ==========
+ * Page title
+ * ========== */
+.page__title {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #76252B;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: white;
+  text-align: center; }
+
+/* ===================
+ * Menu navigation bar
+ * =================== */
+.menu__navbar {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+  background-color: #76252B; }
+  .menu__navbar .menu__list {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; }
+    .menu__navbar .menu__list .menu {
+      position: relative;
+      display: block;
+      padding: 0;
+      text-align: center; }
+      .menu__navbar .menu__list .menu .menu__title {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 0.9em;
+        color: white; }
+      .menu__navbar .menu__list .menu .menu__image {
+        width: 100%; }
+      .menu__navbar .menu__list .menu .menu__glyphicon {
+        margin-top: 30px;
+        font-size: 3.0em;
+        color: white; }
+        @media screen and (min-width: 768px) {
+          .menu__navbar .menu__list .menu .menu__glyphicon {
+            margin-top: 40px;
+            font-size: 4.0em; } }
+
 /* ======
  * Footer
  * ====== */
@@ -459,8 +500,47 @@ a, a:focus, a:hover, a:active, a:visited {
   background-color: #D2AF6D;
   font-weight: 700;
   text-align: center; }
-  .footer .footer__license {
+  .footer .footer__menu-link {
+    display: block;
+    max-width: 520px;
+    margin: 0 auto; }
+    .footer .footer__menu-link button {
+      border: none;
+      background-color: #b98d39;
+      font-weight: 500;
+      color: white; }
+  .footer .footer__license-text {
+    margin: 15px 0; }
+  .footer .footer__license-image {
     width: 100px; }
+
+/* ============
+ * Comment list
+ * ============ */
+.comment-list {
+  max-width: 700px;
+  margin: 0 auto; }
+  .comment-list .comment {
+    padding: 10px;
+    border-top: 1px solid white; }
+    .comment-list .comment .comment__nickname {
+      font-weight: 700;
+      font-size: 1.5em;
+      color: white;
+      text-align: center; }
+    .comment-list .comment .comment__content {
+      margin: 20px 0;
+      line-height: 1.5em;
+      white-space: pre-wrap;
+      font-weight: 500;
+      font-size: 1.2em;
+      color: white;
+      text-align: left; }
+    .comment-list .comment .comment__additional-info {
+      font-weight: 500;
+      font-size: 1.0em;
+      color: #E0E0E0;
+      text-align: center; }
 
 /* ==========================
  * Landing page - fullpage.js
@@ -518,78 +598,116 @@ a, a:focus, a:hover, a:active, a:visited {
     font-size: 2.0em;
     color: white; }
 
-/* ==================
- * Menu page - Footer
- * ================== */
-.menu__list {
+/* =========
+ * Menu page
+ * ========= */
+.menu__page {
   background-color: #76252B; }
-  .menu__list .menu__description {
+  .menu__page .menu__description {
     padding: 10px 0;
     font-weight: 500;
     font-size: 1.35em;
     color: white;
     text-align: center; }
     @media screen and (min-width: 768px) {
-      .menu__list .menu__description {
+      .menu__page .menu__description {
         padding: 20px 0; } }
-  .menu__list .menu {
-    position: relative;
-    padding: 0; }
-    .menu__list .menu .menu__image {
-      max-width: 100%;
-      width: 100%; }
-    .menu__list .menu .menu__title {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      display: inline;
-      font-weight: 700;
-      font-size: 1.5em;
-      color: white; }
-  .menu__list .menu--bg {
-    padding: 0;
+  .menu__page .menu__list {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; }
+    .menu__page .menu__list .menu {
+      position: relative;
+      padding: 0; }
+      .menu__page .menu__list .menu .menu__image {
+        max-width: 100%;
+        width: 100%; }
+      .menu__page .menu__list .menu .menu__title {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: inline;
+        font-weight: 700;
+        font-size: 1.5em;
+        color: white; }
+    .menu__page .menu__list .menu--bg {
+      padding: 0;
+      text-align: center; }
+      @media screen and (min-width: 768px) {
+        .menu__page .menu__list .menu--bg {
+          margin: 30px 0;
+          border: 5px solid white;
+          border-radius: 10px; } }
+      .menu__page .menu__list .menu--bg .menu__title {
+        margin: 15px 0 0 15px;
+        font-size: 1.5em;
+        color: white;
+        text-align: left; }
+        @media screen and (min-width: 768px) {
+          .menu__page .menu__list .menu--bg .menu__title {
+            font-size: 1.8em;
+            text-align: center; } }
+      .menu__page .menu__list .menu--bg .menu__glyphicon {
+        margin: 10px 0 0 0;
+        font-size: 6.0em;
+        color: white; }
+        @media screen and (min-width: 768px) {
+          .menu__page .menu__list .menu--bg .menu__glyphicon {
+            margin: 20px 0 30px 10px; } }
+
+/* ============
+ * Records page
+ * ============ */
+.records__tab-group {
+  padding-bottom: 5px;
+  background-color: #76252B; }
+  .records__tab-group .tab-group {
+    margin: 0 auto;
+    max-width: 560px; }
+    .records__tab-group .tab-group .tab-toggle {
+      padding: 10px 5px; }
+      .records__tab-group .tab-group .tab-toggle .active {
+        border: 1px solid white;
+        background-color: #862a31;
+        color: white; }
+
+.records__tab-content {
+  background-color: #76252B; }
+  .records__tab-content .records__youtube {
     text-align: center; }
-    @media screen and (min-width: 768px) {
-      .menu__list .menu--bg {
-        margin: 30px 0;
-        border: 5px solid white;
-        border-radius: 10px; } }
-    .menu__list .menu--bg .menu__title {
-      margin: 15px 0 0 15px;
-      font-size: 1.5em;
-      color: white;
-      text-align: left; }
-      @media screen and (min-width: 768px) {
-        .menu__list .menu--bg .menu__title {
-          font-size: 1.8em;
-          text-align: center; } }
-    .menu__list .menu--bg .menu__glyphicon {
-      margin: 10px 0 0 0;
-      max-width: 100%;
-      width: 100%;
-      font-size: 6.0em;
-      color: white; }
-      @media screen and (min-width: 768px) {
-        .menu__list .menu--bg .menu__glyphicon {
-          margin: 20px 0 30px 10px; } }
+    .records__tab-content .records__youtube iframe {
+      max-width: 100%; }
+  .records__tab-content .records__tab-title {
+    padding: 10px 0 15px 0;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: white;
+    text-align: center; }
+
+/* =============
+ * Category page
+ * ============= */
+.category__content {
+  background-color: #76252B; }
 
 /* ========================
  * Social media share group
  * ======================== */
 #social-media__share-group {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 10px;
+  right: 10px;
   z-index: 1000; }
   #social-media__share-group button {
-    width: 48px;
-    height: 48px;
-    padding: 9px 9px 7px 12px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
     border-radius: 50%;
-    background-color: #E0E0E0; }
-    #social-media__share-group button .glyphicon {
-      font-size: 1.5em;
-      color: #76252B; }
+    background-color: #E0E0E0;
+    font-weight: 700;
+    font-size: 1.0em;
+    color: #76252B;
+    text-align: center; }
   #social-media__share-group li {
     margin: 10px 0;
     font-size: 1.2em; }
@@ -615,14 +733,16 @@ a, a:focus, a:hover, a:active, a:visited {
  * ================== */
 #back-to-top {
   position: fixed;
-  display: inline;
-  bottom: 15px;
-  right: 15px;
-  padding: 2px 7px 0 5px;
-  font-size: 1.4em;
-  border: 1px solid #E0E0E0;
-  background-color: white;
-  color: #E0E0E0;
+  bottom: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  padding-top: 10px;
+  border-radius: 50%;
+  font-size: 1.0em;
+  background-color: #E0E0E0;
+  color: #949494;
+  text-align: center;
   cursor: pointer;
   z-index: 100; }
 
