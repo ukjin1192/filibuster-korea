@@ -25,6 +25,9 @@ def create_comment(request):
     """
     Create comment if captcha input is valid
     """
+    # Do not allow to create new comment
+    return HttpResponse(status=403)
+    """
     if all(x in request.POST for x in ['nickname', 'content', 'captcha_key', 'captcha_value']):
         
         # Human validation by captcha form
@@ -52,6 +55,7 @@ def create_comment(request):
         
     else:
         return HttpResponse(status=400)
+    """
 
 
 @require_http_methods(['GET'])
