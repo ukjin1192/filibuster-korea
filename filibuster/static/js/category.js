@@ -1,17 +1,32 @@
+// Get comments count
+function getCommentsCount() {
+  $('#loading-icon').removeClass('hidden');
+
+  $.ajax({
+    url: '/api/comments/count/',
+    type: 'GET',
+    data: {
+      'category': $('#category').val()
+    }
+  }).done(function(data) {
+    $('#comments-count').text('(' + data.count + '개)'); 
+  }).always(function() {
+    $('#loading-icon').addClass('hidden');
+  });
+}
+
 // Get comments and add it to list
 function getComments(lastCommentID) {
   $('#loading-icon').removeClass('hidden');
 
-  var data = {};
-
-  data['ordering'] = 'asc';
-  data['category'] = $('#category').val();
-  data['originally_last_comment_id'] = lastCommentID;
-
   $.ajax({
     url: '/api/comments/list/',
     type: 'GET',
-    data: data
+    data: {
+      'ordering': 'asc',
+      'category': $('#category').val(),
+      'originally_last_comment_id': lastCommentID
+    }
   }).done(function(data) {
     var comments = data.comments;
     
@@ -39,6 +54,9 @@ $(window).scroll(function() {
 });
 
 $(window).load(function() {
+  // Get comments count
+  getCommentsCount();
+
   // Get initial data
   getComments(0);
 });

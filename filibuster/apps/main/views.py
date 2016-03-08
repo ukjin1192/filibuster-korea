@@ -65,63 +65,82 @@ def get_comments(request):
     """
     comments = Comment.objects.all()
 
-    try:
-        # Ordering
-        if 'ordering' in request.GET:
-            if request.GET['ordering'] == 'desc':
-                comments = comments.order_by('-id')
-            elif request.GET['ordering'] == 'random':
-                comments = comments.order_by('?')
-            else:
-                comments = comments.order_by('id')
+    # Ordering
+    if 'ordering' in request.GET:
+        if request.GET['ordering'] == 'desc':
+            comments = comments.order_by('-id')
+        elif request.GET['ordering'] == 'random':
+            comments = comments.order_by('?')
         else:
             comments = comments.order_by('id')
-        
-        # Filtering options
-        if 'id' in request.GET:
-            comments = comments.filter(id=request.GET['id'])
-        if 'nickname' in request.GET:
-            comments = comments.filter(nickname__contains=request.GET['nickname'])
-        if 'content' in request.GET:
-            comments = comments.filter(content__contains=request.GET['content'])
-        if 'category' in request.GET and request.GET['category'] in \
-            ['civil_complaint', 'law_book', 'story', 'quotation', 'resident_abroad', 'letter', 'foreign_case', 'spoken', 'abusing']:
-            comments = comments.filter(category=request.GET['category'])
-        if 'speaker' in request.GET:
-            comments = Comment.objects.filter(speaker=request.GET['speaker'])
-        if 'first_comment_id' in request.GET:
-            comments = comments.filter(id__gte=int(request.GET['first_comment_id'])) 
-        if 'last_comment_id' in request.GET:
-            comments = comments.filter(id__lte=int(request.GET['last_comment_id'])) 
-        if 'originally_last_comment_id' in request.GET:
-            if 'ordering' in request.GET and request.GET['ordering'] == 'desc':
-                comments = comments.filter(id__lt=int(request.GET['originally_last_comment_id'])) 
-            else:
-                comments = comments.filter(id__gt=int(request.GET['originally_last_comment_id'])) 
-        
-        # Number of comments
-        number_of_comments = getattr(settings, 'MAX_COMMENTS_PER_QUERYSET')
-        if 'number_of_comments' in request.GET:
-            number_of_comments = min(int(request.GET['number_of_comments']), getattr(settings, 'MAX_COMMENTS_PER_QUERYSET'))
-        comments = comments[:number_of_comments]
-        
-        # Serialize data
-        comments = list(comments.values('id', 'nickname', 'content', 'category', 'speaker', 'spoken_at', 'created_at'))
-        
-        # Encrypt IP address
-        """
-        for comment in comments:
-            if comment['ip_address'] != None:
-                ip_address = comment['ip_address']
-                ip_address = ip_address.split('.')
-                ip_address[-1] = '**'
-                comment['ip_address'] = '.'.join(ip_address)
-        """
-        
-        return JsonResponse({'comments': comments})
-        
-    except:
-        return HttpResponse(status=400)
+    else:
+        comments = comments.order_by('id')
+    
+    # Filtering options
+    if 'id' in request.GET:
+        comments = comments.filter(id=request.GET['id'])
+    if 'nickname' in request.GET:
+        comments = comments.filter(nickname__contains=request.GET['nickname'])
+    if 'content' in request.GET:
+        comments = comments.filter(content__contains=request.GET['content'])
+    if 'category' in request.GET and request.GET['category'] in \
+        ['civil_complaint', 'law_book', 'story', 'quotation', 'resident_abroad', 'letter', 'foreign_case', 'spoken', 'abusing']:
+        comments = comments.filter(category=request.GET['category'])
+    if 'speaker' in request.GET:
+        comments = comments.filter(speaker=request.GET['speaker'])
+    if 'first_comment_id' in request.GET:
+        comments = comments.filter(id__gte=int(request.GET['first_comment_id'])) 
+    if 'last_comment_id' in request.GET:
+        comments = comments.filter(id__lte=int(request.GET['last_comment_id'])) 
+    if 'originally_last_comment_id' in request.GET:
+        if 'ordering' in request.GET and request.GET['ordering'] == 'desc':
+            comments = comments.filter(id__lt=int(request.GET['originally_last_comment_id'])) 
+        else:
+            comments = comments.filter(id__gt=int(request.GET['originally_last_comment_id'])) 
+    
+    # Number of comments
+    number_of_comments = getattr(settings, 'MAX_COMMENTS_PER_QUERYSET')
+    if 'number_of_comments' in request.GET:
+        number_of_comments = min(int(request.GET['number_of_comments']), getattr(settings, 'MAX_COMMENTS_PER_QUERYSET'))
+    comments = comments[:number_of_comments]
+    
+    # Serialize data
+    comments = list(comments.values('id', 'nickname', 'content', 'category', 'speaker', 'spoken_at', 'created_at'))
+    
+    # Encrypt IP address
+    """
+    for comment in comments:
+        if comment['ip_address'] != None:
+            ip_address = comment['ip_address']
+            ip_address = ip_address.split('.')
+            ip_address[-1] = '**'
+            comment['ip_address'] = '.'.join(ip_address)
+    """
+    
+    return JsonResponse({'comments': comments})
+
+
+@require_http_methods(['GET'])
+def get_comments_count(request):
+    """
+    Get comments count of specific category
+    """
+    comments = Comment.objects.all()
+
+    # Filtering options
+    if 'id' in request.GET:
+        comments = comments.filter(id=request.GET['id'])
+    if 'nickname' in request.GET:
+        comments = comments.filter(nickname__contains=request.GET['nickname'])
+    if 'content' in request.GET:
+        comments = comments.filter(content__contains=request.GET['content'])
+    if 'category' in request.GET and request.GET['category'] in \
+        ['civil_complaint', 'law_book', 'story', 'quotation', 'resident_abroad', 'letter', 'foreign_case', 'spoken', 'abusing']:
+        comments = comments.filter(category=request.GET['category'])
+    if 'speaker' in request.GET:
+        comments = comments.filter(speaker=request.GET['speaker'])
+
+    return JsonResponse({'count': comments.count()})
 
 
 def update_firebase_database(permalink, key, value):
