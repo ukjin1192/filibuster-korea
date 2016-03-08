@@ -110,6 +110,7 @@
     <a href="/menu/">필리버스터 릴레이</a>
   </header>
 
+  {# Container only for landing page which using fullpage.js #}
   {% block fullpage_container %}{% endblock %}
 
   {# Main container #}
@@ -124,6 +125,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
           <a href="#" class="footer__btn" id="back-to-top">
             <button type="button" class="btn btn-default btn-block">
+              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>&emsp;
               맨위로 이동하기
             </button>
           </a>
@@ -131,15 +133,15 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
           <a href="/menu/" class="footer__btn">
             <button type="button" class="btn btn-default btn-block" href="/menu/">
+              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>&emsp;
               메뉴로 돌아가기
             </button>
           </a>
         </div>
       </div>
-      <div class="footer__license-text">
-        <a href="http://creativecommons.org/licenses/by/2.0/kr/" target="_blank"><u>크리에이티브 커먼즈 저작자표시 2.0 대한민국 라이선스</u></a>에 따라 웹사이트를 이용할 수 있습니다.
+      <div class="footer__license">
+      <a href="http://creativecommons.org/licenses/by/2.0/kr/" target="_blank"><u>크리에이티브 커먼즈 저작자표시 2.0 대한민국 라이선스</u></a>에 따라 웹사이트를 이용할 수 있습니다.
       </div>
-      <img src="{{ 'CDN_URL'|get_settings_variable }}/assets/cc_license.png" class="footer__license-image" />
     </div>
     {% endif %}
   </div>

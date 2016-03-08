@@ -384,7 +384,7 @@ a, a:focus, a:hover, a:active, a:visited {
 
 	.footer__btn-group {
 		max-width: 520px;
-		margin: 0 auto 10px auto;
+		margin: 0 auto 15px auto;
 		
 		.footer__btn {
 			display: block;
@@ -401,12 +401,8 @@ a, a:focus, a:hover, a:active, a:visited {
 		}
 	}
 
-	.footer__license-text {
-		margin: 15px 0;
-	}
-
-	.footer__license-image {
-		width: 100px;
+	.footer__license {
+		color: $dark-grey-color;
 	}
 }
 

@@ -270,7 +270,7 @@ a, a:focus, a:hover, a:active, a:visited {
   text-align: center; }
   .footer--relative .footer__btn-group {
     max-width: 520px;
-    margin: 0 auto 10px auto; }
+    margin: 0 auto 15px auto; }
     .footer--relative .footer__btn-group .footer__btn {
       display: block;
       max-width: 520px;
@@ -281,10 +281,8 @@ a, a:focus, a:hover, a:active, a:visited {
         font-weight: 500;
         font-size: 1.0em;
         color: white; }
-  .footer--relative .footer__license-text {
-    margin: 15px 0; }
-  .footer--relative .footer__license-image {
-    width: 100px; }
+  .footer--relative .footer__license {
+    color: #949494; }
 
 .footer--fixed {
   position: fixed;
