@@ -11,7 +11,7 @@ $(window).load(function() {
     },
     webButton: {
       text: '둘러보기',
-      url: 'http://filibuster.me/menu/'
+      url: $('#kakaotalk-share__link-url').val()
     }
   });
 });
