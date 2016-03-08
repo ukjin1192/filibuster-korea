@@ -20,6 +20,7 @@ html, body {
   height: 100%; }
 
 body {
+  background-color: #76252B;
   opacity: 0;
   -ms-touch-action: manipulation;
   touch-action: manipulation; }
@@ -32,168 +33,6 @@ a, a:focus, a:hover, a:active, a:visited {
   cursor: pointer;
   color: inherit;
   outline: 0; }
-
-/* ==================
- * Desk page - Header 
- * ================== */
-.desk-header .desk-header--image__xs {
-  width: 100%;
-  margin: 0 auto;
-  z-index: 5; }
-.desk-header .desk-header--image__lg {
-  width: 100%;
-  margin: 0 auto;
-  max-height: 800px;
-  z-index: 5; }
-.desk-header .desk-header--container {
-  position: absolute;
-  width: 100%;
-  margin: 0 auto;
-  color: white;
-  text-align: center;
-  z-index: 10; }
-  @media screen and (max-width: 767px) {
-    .desk-header .desk-header--container {
-      top: 110px; } }
-  @media screen and (min-width: 768px) {
-    .desk-header .desk-header--container {
-      top: 170px; } }
-  .desk-header .desk-header--container .desk-header--title {
-    padding: 15px 0;
-    background-color: #34495E;
-    font-weight: 700;
-    color: white; }
-    @media screen and (max-width: 767px) {
-      .desk-header .desk-header--container .desk-header--title {
-        font-size: 2.5em; } }
-    @media screen and (min-width: 768px) {
-      .desk-header .desk-header--container .desk-header--title {
-        font-size: 3.0em; } }
-
-/* ===================
- * Desk page - Context
- * =================== */
-.desk-context .desk-context--title {
-  max-width: 700px;
-  text-align: left;
-  font-weight: 700;
-  color: white; }
-  @media screen and (max-width: 320px) {
-    .desk-context .desk-context--title {
-      margin: -150px auto 0 auto;
-      font-size: 1.9em; } }
-  @media screen and (min-width: 321px) and (max-width: 767px) {
-    .desk-context .desk-context--title {
-      margin: -150px auto 0 auto;
-      font-size: 2.0em; } }
-  @media screen and (min-width: 768px) {
-    .desk-context .desk-context--title {
-      margin: -180px auto 0 auto;
-      font-size: 2.5em; } }
-.desk-context .desk-context--link {
-  width: 100%;
-  color: white;
-  cursor: pointer;
-  text-align: center;
-  z-index: 10; }
-  @media screen and (max-width: 767px) {
-    .desk-context .desk-context--link {
-      margin-top: -15px;
-      font-size: 2.0em; } }
-  @media screen and (min-width: 768px) {
-    .desk-context .desk-context--link {
-      margin-top: -30px;
-      font-size: 2.5em; } }
-
-/* ==========================
- * Desk page - Navigation bar
- * ========================== */
-.desk-navbar {
-  width: 100%;
-  height: 55px;
-  text-align: center; }
-  .desk-navbar .desk-navbar--container {
-    width: 100%;
-    padding: 10px 0;
-    background-color: #34495E;
-    font-size: 1.8em;
-    font-weight: 700;
-    color: white;
-    z-index: 100; }
-    .desk-navbar .desk-navbar--container.fixed {
-      position: fixed;
-      top: 0;
-      left: 0; }
-    .desk-navbar .desk-navbar--container .desk-navbar--title {
-      max-width: 700px;
-      margin: 0 auto; }
-      .desk-navbar .desk-navbar--container .desk-navbar--title .desk-navbar--home-link {
-        margin: -10px;
-        padding: 10px; }
-
-/* =======================
- * Desk page - Search form
- * ======================= */
-.desk-main {
-  background-color: #F0EDDF; }
-  .desk-main .desk-main--alert-message {
-    margin-top: 20px;
-    text-align: center; }
-  .desk-main #search-form {
-    max-width: 700px;
-    margin: 20px auto 0 auto; }
-
-/* ===============================
- * Desk page - Spoken comment list
- * =============================== */
-#spoken-comment-list {
-  max-width: 700px;
-  margin: 0 auto; }
-  #spoken-comment-list .comment {
-    padding: 10px;
-    border-top: 1px solid white; }
-    #spoken-comment-list .comment .comment-nickname {
-      margin-bottom: 25px;
-      font-weight: 700;
-      text-align: center; }
-    #spoken-comment-list .comment .comment-content {
-      line-height: 1.5em;
-      white-space: pre-wrap; }
-    #spoken-comment-list .comment .comment-additional-info {
-      padding: 1px;
-      background-color: #E0E0E0;
-      text-align: center; }
-
-#see-more-comments {
-  max-width: 700px;
-  margin: 15px auto 0 auto;
-  font-weight: 700;
-  color: white; }
-
-/* ==================
- * Desk page - Footer
- * ================== */
-.desk-footer {
-  position: relative; }
-  .desk-footer .desk-footer--image {
-    width: 100%;
-    max-height: 300px;
-    margin: 0 auto;
-    z-index: 5; }
-  .desk-footer .desk-footer--btn {
-    position: absolute;
-    left: 50%;
-    margin-left: -77px;
-    color: #D2AF6D;
-    background-color: #76252B;
-    font-weight: 700;
-    z-index: 10; }
-    @media screen and (max-width: 767px) {
-      .desk-footer .desk-footer--btn {
-        top: 25px; } }
-    @media screen and (min-width: 768px) {
-      .desk-footer .desk-footer--btn {
-        top: 50px; } }
 
 /* ======
  * Header
@@ -463,6 +302,28 @@ a, a:focus, a:hover, a:active, a:visited {
  * ============= */
 .category__content {
   background-color: #76252B; }
+
+/* ===========
+ * Search page
+ * =========== */
+#search__form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px; }
+
+.search__result {
+  min-height: 300px; }
+  @media screen and (min-width: 768px) {
+    .search__result {
+      min-height: 600px; } }
+  .search__result .search__title {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 1.5em;
+    color: white;
+    text-align: center; }
 
 /* ============
  * Loading icon

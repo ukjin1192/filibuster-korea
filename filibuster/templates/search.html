@@ -9,12 +9,38 @@
 	직접 검색하기
 </div>
 
-<div class="container" style="font-size: 1.5em; font-weight: 500; color: white; text-align: center; min-height: 500px; padding: 100px 0;">
-	죄송합니다. 준비중입니다. 24시간안에 완성될 예정입니다.
+<form class="input-group" id="search__form">
+	<div class="input-group-btn">
+		<input type="hidden" id="category" value="nickname" />
+		<input type="hidden" id="keyword" value="" />
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span data-bind="label" id="category-text">별명</span> <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li class="dropdown-text"><a href="#">주자 번호</a></li>
+			<li class="dropdown-text"><a href="#">별명</a></li>
+			<li class="dropdown-text"><a href="#">연설문 내용</a></li>
+		</ul>
+	</div>
+	<input type="text" class="form-control" id="keyword-input" placeholder="검색 키워드를 입력해주세요" required />
+	<div class="input-group-btn">
+		<button type="submit" class="btn btn-default" id="search-btn">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</button>
+	</div>
+</form>
+
+<div class="search__result">
+	<div class="search__title">
+		검색 결과
+		<small><span id="comments-count"><span></small>
+	</div>
+	<div class="comment-list"></div>
 </div>
 {% endblock %}
 
 {% block custom_js %}
 {% compress js %}
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 {% endcompress %}
 {% endblock %}
