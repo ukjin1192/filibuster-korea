@@ -7,7 +7,14 @@ $(document).on('click', '#line-share, #kakaotalk-share', function() {
   return false;
 });
 
+// Scroll to top if user clicked 'back to top'
+$(document).on('click', '#back-to-top', function(event) {
+  event.preventDefault();
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
+});
+
 $(window).load(function() {
+  // Hide loading icon
   $('#loading-icon').addClass('hidden');
 
   // Ease effect when body DOM loads
@@ -15,4 +22,7 @@ $(window).load(function() {
 
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);
+
+  // Set locale of moment.js
+  moment.locale('ko');
 });

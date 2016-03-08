@@ -41,7 +41,7 @@
   <link rel="mask-icon" href="{{ 'CDN_URL'|get_settings_variable }}/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-TileImage" content="{{ 'CDN_URL'|get_settings_variable }}/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="##76252B">
 
   {# CDN CSS #}
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -67,7 +67,7 @@
   <script type="text/javascript" src="{% static 'js/googleAnalytics.js' %}"></script>
   {% endif %}
 </head>
-<body>
+<body style="background-color: #76252B; opacity: 0;">
   {# Loading icon #}
   <div id="loading-icon"></div>
 
@@ -103,10 +103,49 @@
   </noscript>
   {% endcache %}
 
+  {# Header #}
+  {% if request.path == '/' %}
+  <header class="header header--fixed">
+    <a href="/menu/">필리버스터 릴레이</a>
+  </header>
+  {% else %}
+  <header class="header">
+    <a href="/menu/">필리버스터 릴레이</a>
+  </header>
+  {% endif %}
+
   {% block container %}{% endblock %}
 
+  {# Footer #}
+  {% if request.path != '/' %}
+  <footer class="footer">
+    <div class="container">
+      <a href="/menu/" class="footer__menu-link">
+        <button type="button" class="btn btn-default btn-block" href="/menu/">
+          메뉴로 돌아가기
+        </button>
+      </a>
+      <div class="footer__license-text">
+        <a href="http://creativecommons.org/licenses/by/2.0/kr/" target="_blank"><u>크리에이티브 커먼즈 저작자표시 2.0 대한민국 라이선스</u></a>에 따라 웹사이트를 이용할 수 있습니다.
+      </div>
+      <img src="{{ 'CDN_URL'|get_settings_variable }}/assets/cc_license.png" class="footer__license-image" />
+    </div>
+  </footer>
+  {% endif %}
+
+  {# Back to top button #}
   <div class="hidden" id="back-to-top">
-    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+    위로
+  </div>
+
+  {# Comment virtual DOM #}
+  <div class="comment hidden" data-comment-id="" id="comment__virtual-dom">
+    <div class="comment__nickname"></div>
+    <div class="comment__content"></div>
+    <div class="comment__additional-info">
+      <span class="comment__id"></span>번째 주자 &nbsp; 
+      <span class="comment__created-at"></span>
+    </div>
   </div>
 
   {# CDN JS #}
