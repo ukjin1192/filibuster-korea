@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% load compress %}
+{% load custom_filter %}
+{% load staticfiles %}
+
+{% block social_media_meta_tags %}
+<meta property="fb:app_id" content="192025411163419" />
+<meta property="fb:locale" content="ko_KR" />
+
+<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:url" content="http://filibuster.me/menu/" />
+<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="og:image:width" content="800" />
+<meta property="og:image:height" content="421" />
+<meta property="og:image:type" content="image/png" />
+
+<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image:height" content="800">
+<meta property="twitter:image:width" content="421">
+{% endblock %}
+
+{% block container %}
+<div class="page__title">
+	국회 속기록
+</div>
+
+<div class="records__tab-group">
+	<div class="row tab-group">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 tab-toggle">
+			<button type="button" class="btn btn-default btn-block active" id="tab-toggle--1" href="#tab--1" data-toggle="tab">
+				김제남 의원
+			</button>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 tab-toggle">
+			<button type="button" class="btn btn-default btn-block" id="tab-toggle--2" href="#tab--2" data-toggle="tab">
+				서영교 의원
+			</button>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 tab-toggle">
+			<button type="button" class="btn btn-default btn-block" id="tab-toggle--3" href="#tab--3" data-toggle="tab">
+				최민희 의원
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="records__tab-content">
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="tab--1">
+			<div class="records__youtube">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/05CvUfouSDI" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="container">
+				<div class="records__tab-title">
+					이외 김제남 의원이 <div class="visible-xs"></div>
+					국회 본회의장에서 <div class="visible-xs"></div>
+					읽은 시민 의견
+				</div>
+			</div>
+			<div class="comment-list"></div>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="tab--2">
+			<div class="records__youtube">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/mnhTM5xlfmw" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="container">
+				<div class="records__tab-title">
+					이외 서영교 의원이 <div class="visible-xs"></div>
+					국회 본회의장에서 <div class="visible-xs"></div>
+					읽은 시민 의견
+				</div>
+			</div>
+			<div class="comment-list"></div>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="tab--3">
+			<div class="records__youtube">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/lfdJjUhYatc" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="container">
+				<div class="records__tab-title">
+					이외 최민희 의원이 <div class="visible-xs"></div>
+					국회 본회의장에서 <div class="visible-xs"></div>
+					읽은 시민 의견
+				</div>
+			</div>
+			<div class="comment-list"></div>
+		</div>
+	</div>
+</div>
+
+<div class="dropup" id="social-media__share-group">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+		공유
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right">
+		<li>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me/menu/" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg" />
+				페이스북
+			</a>
+		</li>
+		<li>
+			<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me/menu/" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
+				트위터
+			</a>
+		</li>
+		<li>
+			<a href="https://plus.google.com/share?url=http://filibuster.me/menu" target="_blank">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
+				구글+
+			</a>
+		</li>
+		<li>
+			<a href="line://msg/text/[가나다] 라마바 http://filibuster.me/menu" id="line-share">
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
+				라인
+			</a>
+		</li>
+		<li>
+			<a href="javascript:;" id="kakaotalk-share">
+				<input type="hidden" id="kakaotalk-share__link-url" value="http://filibuster.me{{ request.path }}" />
+				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
+				카카오톡
+			</a>
+		</li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block custom_js %}
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/records.js' %}"></script>
+{% endcompress %}
+{% endblock %}
