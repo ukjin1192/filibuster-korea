@@ -73,7 +73,7 @@ $(window).load(function() {
     },
     webButton: {
       text: '둘러보기',
-      url: 'http://filibuster.me/'
+      url: $('#kakaotalk-share__link-url').val()
     }
   });
 });

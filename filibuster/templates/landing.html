@@ -10,7 +10,7 @@
 
 <meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
 <meta property="og:site_name" content="필리버스터 릴레이" />
-<meta property="og:url" content="http://filibuster.me" />
+<meta property="og:url" content="http://filibuster.me{{ request.path }}" />
 <meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share-index.png" />
@@ -27,10 +27,6 @@
 {% endblock %}
 
 {% block container %}
-<div class="header header--fixed">
-	<a href="/">필리버스터 릴레이</a>
-</div>
-
 <div class="fullpage-container">
 	<div class="section">
 		<div class="container">
@@ -104,35 +100,36 @@
 
 <div class="dropup" id="social-media__share-group">
 	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-		<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+		공유
   </button>
   <ul class="dropdown-menu dropdown-menu-right">
 		<li>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me" target="_blank">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me{{ request.path }}" target="_blank">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/facebook.svg" />
 				페이스북
 			</a>
 		</li>
 		<li>
-			<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me" target="_blank">
+			<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me{{ request.path }}" target="_blank">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/twitter.png" />
 				트위터
 			</a>
 		</li>
 		<li>
-			<a href="https://plus.google.com/share?url=http://filibuster.me" target="_blank">
+			<a href="https://plus.google.com/share?url=http://filibuster.me{{ request.path }}" target="_blank">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/google_plus.svg" />
 				구글+
 			</a>
 		</li>
 		<li>
-			<a href="line://msg/text/[가나다] 라마바 http://filibuster.me" id="line-share">
+			<a href="line://msg/text/[가나다] 라마바 http://filibuster.me{{ request.path }}" id="line-share">
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/line.svg" />
 				라인
 			</a>
 		</li>
 		<li>
 			<a href="javascript:;" id="kakaotalk-share">
+				<input type="hidden" id="kakaotalk-share__link-url" value="http://filibuster.me{{ request.path }}" />
 				<img src="{{ 'CDN_URL'|get_settings_variable }}/kakaotalk.svg" />
 				카카오톡
 			</a>
@@ -143,6 +140,6 @@
 
 {% block custom_js %}
 {% compress js %}
-<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/landing.js' %}"></script>
 {% endcompress %}
 {% endblock %}
