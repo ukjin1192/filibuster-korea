@@ -36,13 +36,6 @@ $(window).scroll(function() {
     if (isNaN(lastCommentID)) getComments(0);
     else getComments(lastCommentID);
   }
-
-  // Synchronize back to top button with scroll position
-  if($(window).scrollTop() > $(window).height() + 300) {
-    $('#back-to-top').removeClass('hidden');
-  } else {
-    $('#back-to-top').addClass('hidden');
-  }
 });
 
 $(window).load(function() {

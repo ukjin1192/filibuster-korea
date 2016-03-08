@@ -199,6 +199,9 @@ a, a:focus, a:hover, a:active, a:visited {
  * Header
  * ====== */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
   padding: 10px 0;
@@ -208,10 +211,12 @@ a, a:focus, a:hover, a:active, a:visited {
   color: #D2AF6D;
   text-align: center;
   z-index: 10; }
-  .header.header--fixed {
-    position: fixed;
-    top: 0;
-    left: 0; }
+
+/* ==============
+ * Main container
+ * ============== */
+.main-container {
+  padding: 60px 0; }
 
 /* ==========
  * Page title
@@ -232,8 +237,7 @@ a, a:focus, a:hover, a:active, a:visited {
 .menu__navbar {
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 25px;
-  background-color: #76252B; }
+  padding-bottom: 25px; }
   .menu__navbar .menu__list {
     width: 100%;
     max-width: 700px;
@@ -251,38 +255,56 @@ a, a:focus, a:hover, a:active, a:visited {
         color: white; }
       .menu__navbar .menu__list .menu .menu__image {
         width: 100%; }
-      .menu__navbar .menu__list .menu .menu__glyphicon {
-        margin-top: 30px;
-        font-size: 3.0em;
-        color: white; }
-        @media screen and (min-width: 768px) {
-          .menu__navbar .menu__list .menu .menu__glyphicon {
-            margin-top: 40px;
-            font-size: 4.0em; } }
 
 /* ======
  * Footer
  * ====== */
-.footer {
+.footer--relative {
   display: block;
   width: 100%;
-  padding: 15px 0;
-  background-color: #D2AF6D;
+  padding: 15px 10px;
+  background-color: #4f191d;
   font-weight: 700;
+  font-size: 1.0em;
+  color: white;
   text-align: center; }
-  .footer .footer__menu-link {
-    display: block;
+  .footer--relative .footer__btn-group {
     max-width: 520px;
-    margin: 0 auto; }
-    .footer .footer__menu-link button {
-      border: none;
-      background-color: #b98d39;
-      font-weight: 500;
-      color: white; }
-  .footer .footer__license-text {
+    margin: 0 auto 10px auto; }
+    .footer--relative .footer__btn-group .footer__btn {
+      display: block;
+      max-width: 520px;
+      margin: 0 auto; }
+      .footer--relative .footer__btn-group .footer__btn button {
+        border: none;
+        background-color: #76252B;
+        font-weight: 500;
+        font-size: 1.0em;
+        color: white; }
+  .footer--relative .footer__license-text {
     margin: 15px 0; }
-  .footer .footer__license-image {
+  .footer--relative .footer__license-image {
     width: 100px; }
+
+.footer--fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+  background-color: #4f191d;
+  font-weight: 700;
+  font-size: 1.0em;
+  color: white;
+  text-align: center;
+  z-index: 10; }
+  .footer--fixed .footer__social-media {
+    max-width: 300px;
+    margin: 0 auto; }
+    .footer--fixed .footer__social-media .social-media__icon {
+      width: 12%;
+      margin: 8px; }
 
 /* ============
  * Comment list
@@ -315,45 +337,52 @@ a, a:focus, a:hover, a:active, a:visited {
 /* ==========================
  * Landing page - fullpage.js
  * ========================== */
-.fullpage-container .section {
+#fullpage-container .section {
   text-align: center;
   background-color: #76252B;
   color: white; }
-  .fullpage-container .section #microphone-icon {
+  #fullpage-container .section #microphone-icon {
     width: 23%;
     max-width: 200px;
     margin-bottom: 20px; }
-  .fullpage-container .section #bullhorn-icon {
+  #fullpage-container .section #bullhorn-icon {
     margin-bottom: 20px;
     font-size: 4.0em;
     color: white; }
-  .fullpage-container .section .section__phrase {
+  #fullpage-container .section .section__phrase {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px 0;
     font-size: 2.3em;
     font-weight: 700;
     font-style: italic;
     text-align: left; }
-    @media screen and (min-width: 992px) {
-      .fullpage-container .section .section__phrase {
-        text-align: center; } }
-  .fullpage-container .section .section__contents--sm {
-    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      #fullpage-container .section .section__phrase {
+        font-size: 3.2em; } }
+  #fullpage-container .section .section__contents-box {
+    border-top: 3px solid #E0E0E0;
+    border-bottom: 3px solid #E0E0E0; }
+  #fullpage-container .section .section__contents--sm {
+    margin: 10px 0;
     font-size: 2.0em;
     font-weight: 700; }
-  .fullpage-container .section .section__contents--lg {
-    font-size: 5.5em;
+  #fullpage-container .section .section__contents--lg {
+    font-size: 4.0em;
     font-weight: 700; }
+    @media screen and (min-width: 768px) {
+      #fullpage-container .section .section__contents--lg {
+        font-size: 5.5em; } }
 
 /* =====================
  * Landing page - Footer
  * ===================== */
 .landing-page__footer {
   position: fixed;
-  bottom: 0;
+  bottom: 65px;
   left: 0;
   display: block;
   width: 100%;
-  padding-bottom: 10px;
   text-align: center;
   cursor: pointer;
   z-index: 10; }
@@ -372,6 +401,7 @@ a, a:focus, a:hover, a:active, a:visited {
  * Menu page
  * ========= */
 .menu__page {
+  padding-bottom: 40px;
   background-color: #76252B; }
   .menu__page .menu__description {
     padding: 10px 0;
@@ -384,7 +414,7 @@ a, a:focus, a:hover, a:active, a:visited {
         padding: 20px 0; } }
   .menu__page .menu__list {
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto; }
     .menu__page .menu__list .menu {
       position: relative;
@@ -400,30 +430,6 @@ a, a:focus, a:hover, a:active, a:visited {
         font-weight: 700;
         font-size: 1.5em;
         color: white; }
-    .menu__page .menu__list .menu--bg {
-      padding: 0;
-      text-align: center; }
-      @media screen and (min-width: 768px) {
-        .menu__page .menu__list .menu--bg {
-          margin: 30px 0;
-          border: 5px solid white;
-          border-radius: 10px; } }
-      .menu__page .menu__list .menu--bg .menu__title {
-        margin: 15px 0 0 15px;
-        font-size: 1.5em;
-        color: white;
-        text-align: left; }
-        @media screen and (min-width: 768px) {
-          .menu__page .menu__list .menu--bg .menu__title {
-            font-size: 1.8em;
-            text-align: center; } }
-      .menu__page .menu__list .menu--bg .menu__glyphicon {
-        margin: 10px 0 0 0;
-        font-size: 6.0em;
-        color: white; }
-        @media screen and (min-width: 768px) {
-          .menu__page .menu__list .menu--bg .menu__glyphicon {
-            margin: 20px 0 30px 10px; } }
 
 /* ============
  * Records page
@@ -459,49 +465,6 @@ a, a:focus, a:hover, a:active, a:visited {
  * ============= */
 .category__content {
   background-color: #76252B; }
-
-/* ========================
- * Social media share group
- * ======================== */
-#social-media__share-group {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 1000; }
-  #social-media__share-group button {
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    border-radius: 50%;
-    background-color: #E0E0E0;
-    font-weight: 700;
-    font-size: 1.0em;
-    color: #76252B;
-    text-align: center; }
-  #social-media__share-group li {
-    margin: 10px 0;
-    font-size: 1.2em; }
-    #social-media__share-group li img {
-      width: 30px;
-      margin-right: 10px; }
-
-/* ==================
- * Back to top button
- * ================== */
-#back-to-top {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  width: 40px;
-  height: 40px;
-  padding-top: 10px;
-  border-radius: 50%;
-  font-size: 1.0em;
-  background-color: #E0E0E0;
-  color: #949494;
-  text-align: center;
-  cursor: pointer;
-  z-index: 100; }
 
 /* ============
  * Loading icon

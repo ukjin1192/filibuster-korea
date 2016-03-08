@@ -5,10 +5,11 @@ $(document).on('click', '.landing-page__footer', function() {
 $(window).load(function() {
 	var showNavigationMessage;
 
-	$('.fullpage-container').fullpage({
+	$('#fullpage-container').fullpage({
 		anchors: ['1', '2', '3', '4', '5', '6'],
 		animateAnchor: true,
 		controlArrows: true,
+    fixedElements: '.header, .footer--fixed',
 		recordHistory: true,
     
     afterRender: function() {

@@ -296,6 +296,9 @@ a, a:focus, a:hover, a:active, a:visited {
  * ====== */
 
 .header {
+	position: fixed; 
+	top: 0; 
+	left: 0; 
 	display: block; 
 	width: 100%; 
 	padding: 10px 0;
@@ -305,12 +308,14 @@ a, a:focus, a:hover, a:active, a:visited {
 	color: $gold-color;
 	text-align: center; 
 	z-index: 10; 
+}
 
-	&.header--fixed {
-		position: fixed; 
-		top: 0; 
-		left: 0; 
-	}
+/* ==============
+ * Main container
+ * ============== */
+
+.main-container {
+	padding: 60px 0;
 }
 
 /* ==========
@@ -336,7 +341,6 @@ a, a:focus, a:hover, a:active, a:visited {
 	width: 100%;
 	margin: 0 auto;
 	padding-bottom: 25px;
-	background-color: $red-color; 
 
 	.menu__list {
 		width: 100%;
@@ -360,17 +364,6 @@ a, a:focus, a:hover, a:active, a:visited {
 			.menu__image {
 				width: 100%;
 			}
-
-			.menu__glyphicon {
-				margin-top: 30px;
-				font-size: 3.0em;
-				color: white;
-				
-				@media screen and (min-width: $screen-sm-min) {
-					margin-top: 40px;
-					font-size: 4.0em;
-				}
-			}
 		}
 	}
 }
@@ -379,24 +372,32 @@ a, a:focus, a:hover, a:active, a:visited {
  * Footer
  * ====== */
 
-.footer {
+.footer--relative {
 	display: block; 
 	width: 100%; 
-	padding: 15px 0;
-	background-color: $gold-color; 
+	padding: 15px 10px;
+	background-color: $dark-red-color; 
 	font-weight: 700; 
+	font-size: 1.0em;
+	color: white;
 	text-align: center;
 
-	.footer__menu-link {
-		display: block;
+	.footer__btn-group {
 		max-width: 520px;
-		margin: 0 auto;
+		margin: 0 auto 10px auto;
 		
-		button {
-			border: none;
-			background-color: $dark-gold-color;
-			font-weight: 500;
-			color: white;
+		.footer__btn {
+			display: block;
+			max-width: 520px;
+			margin: 0 auto;
+			
+			button {
+				border: none;
+				background-color: $red-color;
+				font-weight: 500;
+				font-size: 1.0em;
+				color: white;
+			}
 		}
 	}
 
@@ -406,6 +407,31 @@ a, a:focus, a:hover, a:active, a:visited {
 
 	.footer__license-image {
 		width: 100px;
+	}
+}
+
+.footer--fixed {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	padding: 5px 0;
+	background-color: $dark-red-color;
+	font-weight: 700;
+	font-size: 1.0em;
+	color: white;
+	text-align: center;
+	z-index: 10;
+	
+	.footer__social-media {
+		max-width: 300px;
+		margin: 0 auto;
+		
+		.social-media__icon {
+			width: 12%;
+			margin: 8px;
+		}
 	}
 }
 
@@ -451,7 +477,7 @@ a, a:focus, a:hover, a:active, a:visited {
  * Landing page - fullpage.js
  * ========================== */
 
-.fullpage-container {
+#fullpage-container {
 
 	.section {
 		text-align: center;
@@ -471,26 +497,37 @@ a, a:focus, a:hover, a:active, a:visited {
 		}
 		
 		.section__phrase {
+			max-width: 600px;
+			margin: 0 auto;
 			padding: 20px 0; 
 			font-size: 2.3em; 
 			font-weight: 700; 
 			font-style: italic; 
 			text-align: left;
 			
-			@media screen and (min-width: $screen-md-min) {
-				text-align: center;
+			@media screen and (min-width: $screen-sm-min) {
+				font-size: 3.2em; 
 			}
 		}
 		
+		.section__contents-box {
+			border-top: 3px solid $grey-color;
+			border-bottom: 3px solid $grey-color;
+		}
+			
 		.section__contents--sm {
-			margin-bottom: 20px;
+			margin: 10px 0;
 			font-size: 2.0em; 
 			font-weight: 700; 
 		}
 		
 		.section__contents--lg {
-			font-size: 5.5em; 
+			font-size: 4.0em; 
 			font-weight: 700;
+			
+			@media screen and (min-width: $screen-sm-min) {
+				font-size: 5.5em; 
+			}
 		}
 	}
 }
@@ -501,11 +538,10 @@ a, a:focus, a:hover, a:active, a:visited {
 
 .landing-page__footer {
 	position: fixed; 
-	bottom: 0; 
+	bottom: 65px; 
 	left: 0; 
 	display: block; 
 	width: 100%; 
-	padding-bottom: 10px; 
 	text-align: center; 
 	cursor: pointer;
 	z-index: 10; 
@@ -530,6 +566,7 @@ a, a:focus, a:hover, a:active, a:visited {
  * ========= */
 
 .menu__page {
+	padding-bottom: 40px;
 	background-color: $red-color;
 
 	.menu__description {
@@ -546,7 +583,7 @@ a, a:focus, a:hover, a:active, a:visited {
 	
 	.menu__list {
 		width: 100%;
-		max-width: 700px;
+		max-width: 1000px;
 		margin: 0 auto;
 		
 		.menu {
@@ -566,39 +603,6 @@ a, a:focus, a:hover, a:active, a:visited {
 				font-weight: 700;
 				font-size: 1.5em;
 				color: white;
-			}
-		}
-		
-		.menu--bg {
-			padding: 0;
-			text-align: center;
-			
-			@media screen and (min-width: $screen-sm-min) {
-				margin: 30px 0;
-				border: 5px solid white;
-				border-radius: 10px;
-			}
-			
-			.menu__title {
-				margin: 15px 0 0 15px;
-				font-size: 1.5em;
-				color: white;
-				text-align: left;
-				
-				@media screen and (min-width: $screen-sm-min) {
-					font-size: 1.8em;
-					text-align: center;
-				}
-			}
-			
-			.menu__glyphicon {
-				margin: 10px 0 0 0;
-				font-size: 6.0em;
-				color: white;
-				
-				@media screen and (min-width: $screen-sm-min) {
-					margin: 20px 0 30px 10px;
-				}
 			}
 		}
 	}
@@ -654,59 +658,6 @@ a, a:focus, a:hover, a:active, a:visited {
 
 .category__content {
 	background-color: $red-color;
-}
-
-/* ========================
- * Social media share group
- * ======================== */
-
-#social-media__share-group {
-	position: fixed; 
-	bottom: 10px; 
-	right: 10px; 
-	z-index: 1000;
-  
-	button {
-		width: 40px; 
-		height: 40px;
-		padding: 5px; 
-		border-radius: 50%; 
-		background-color: $grey-color;
-		font-weight: 700;
-		font-size: 1.0em;
-		color: $red-color;
-		text-align: center;
-	}
-
-	li {
-		margin: 10px 0; 
-		font-size: 1.2em;
-		
-		img {
-			width: 30px; 
-			margin-right: 10px;
-		}
-	}
-}
-
-/* ==================
- * Back to top button
- * ================== */
-
-#back-to-top {
-	position: fixed; 
-	bottom: 10px; 
-	left: 10px; 
-	width: 40px; 
-	height: 40px;
-	padding-top: 10px; 
-	border-radius: 50%; 
-	font-size: 1.0em;
-	background-color: $grey-color; 
-	color: $dark-grey-color; 
-	text-align: center;
-	cursor: pointer;
-	z-index: 100;
 }
 
 /* ============

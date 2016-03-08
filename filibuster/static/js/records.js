@@ -86,13 +86,6 @@ $(window).scroll(function() {
       else getComments('최민희', lastCommentID);
     }
   }
-
-  // Synchronize back to top button with scroll position
-  if($(window).scrollTop() > $(window).height() + 300) {
-    $('#back-to-top').removeClass('hidden');
-  } else {
-    $('#back-to-top').addClass('hidden');
-  }
 });
 
 $(window).load(function() {

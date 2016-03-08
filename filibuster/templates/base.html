@@ -21,7 +21,26 @@
   <meta name="keywords" content="필리버스터, Filibuster" />
 
   {# Social media meta tags #}
-  {% block social_media_meta_tags %}{% endblock %}
+  <meta property="fb:app_id" content="192025411163419" />
+  <meta property="fb:locale" content="ko_KR" />
+
+  {# TODO CUSTOMIZE AT EVERY PAGE #}
+  <meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
+  <meta property="og:site_name" content="필리버스터 릴레이" />
+  <meta property="og:url" content="http://filibuster.me{{ request.path }}" />
+  <meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="421" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
+  <meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
+  <meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:image:height" content="800">
+  <meta property="twitter:image:width" content="421">
 
   {# Favicon #}
   <link rel="apple-touch-icon" sizes="57x57" href="{{ 'CDN_URL'|get_settings_variable }}/favicon/apple-touch-icon-57x57.png">
@@ -45,8 +64,6 @@
 
   {# CDN CSS #}
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.8/jquery.fullPage.min.css" />
 
   {# Project CSS #}
@@ -104,39 +121,67 @@
   {% endcache %}
 
   {# Header #}
-  {% if request.path == '/' %}
-  <header class="header header--fixed">
-    <a href="/menu/">필리버스터 릴레이</a>
-  </header>
-  {% else %}
   <header class="header">
     <a href="/menu/">필리버스터 릴레이</a>
   </header>
-  {% endif %}
 
-  {% block container %}{% endblock %}
+  {% block fullpage_container %}{% endblock %}
 
-  {# Footer #}
+  {# Main container #}
   {% if request.path != '/' %}
-  <footer class="footer">
-    <div class="container">
-      <a href="/menu/" class="footer__menu-link">
-        <button type="button" class="btn btn-default btn-block" href="/menu/">
-          메뉴로 돌아가기
-        </button>
-      </a>
+  <div class="main-container">
+    {% block container %}{% endblock %}
+    
+    {# Relatively positioned footer #}
+    {% if request.path != '/menu/' %}
+    <div class="footer--relative">
+      <div class="row footer__btn-group">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <a href="#" class="footer__btn" id="back-to-top">
+            <button type="button" class="btn btn-default btn-block">
+              맨위로 이동하기
+            </button>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <a href="/menu/" class="footer__btn">
+            <button type="button" class="btn btn-default btn-block" href="/menu/">
+              메뉴로 돌아가기
+            </button>
+          </a>
+        </div>
+      </div>
       <div class="footer__license-text">
         <a href="http://creativecommons.org/licenses/by/2.0/kr/" target="_blank"><u>크리에이티브 커먼즈 저작자표시 2.0 대한민국 라이선스</u></a>에 따라 웹사이트를 이용할 수 있습니다.
       </div>
       <img src="{{ 'CDN_URL'|get_settings_variable }}/assets/cc_license.png" class="footer__license-image" />
     </div>
-  </footer>
+    {% endif %}
+  </div>
   {% endif %}
 
-  {# Back to top button #}
-  <div class="hidden" id="back-to-top">
-    위로
-  </div>
+  {# Fixed footer #}
+  <footer class="footer--fixed">
+    <div class="footer__social-media">
+      {# TODO CUSTOMIZE AT EVERY PAGE #}
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me{{ request.path }}" target="_blank">
+        <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/facebook.svg" class="social-media__icon" />
+      </a>
+      <a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me{{ request.path }}" target="_blank">
+        <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/twitter.png" class="social-media__icon" />
+      </a>
+      <a href="https://plus.google.com/share?url=http://filibuster.me{{ request.path }}" target="_blank">
+        <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/google_plus.svg" class="social-media__icon" />
+      </a>
+      <a href="line://msg/text/[가나다] 라마바 http://filibuster.me{{ request.path }}" id="line-share">
+        <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/line.svg" class="social-media__icon" />
+      </a>
+      <a href="javascript:;" id="kakaotalk-share">
+        <input type="hidden" id="kakaotalk-share__link-url" value="http://filibuster.me{{ request.path }}" />
+        <img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/kakaotalk.svg" class="social-media__icon" />
+      </a>
+    </div>
+  </footer>
 
   {# Comment virtual DOM #}
   <div class="comment hidden" data-comment-id="" id="comment__virtual-dom">
@@ -155,14 +200,11 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-  <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
-  <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.3.0/jquery-migrate.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ko.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.8/jquery.fullPage.min.js"></script>
+  <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
   {% compress js %}
   <script type="text/javascript" src="{% static 'js/base.js' %}"></script>

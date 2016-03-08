@@ -4,39 +4,19 @@
 {% load custom_filter %}
 {% load staticfiles %}
 
-{% block social_media_meta_tags %}
-<meta property="fb:app_id" content="192025411163419" />
-<meta property="fb:locale" content="ko_KR" />
-
-<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
-<meta property="og:site_name" content="필리버스터 릴레이" />
-<meta property="og:url" content="http://filibuster.me{{ request.path }}" />
-<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
-<meta property="og:image:width" content="800" />
-<meta property="og:image:height" content="421" />
-<meta property="og:image:type" content="image/png" />
-
-<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
-<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
-<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image:height" content="800">
-<meta property="twitter:image:width" content="421">
-{% endblock %}
-
-{% block container %}
-<div class="fullpage-container">
+{% block fullpage_container %}
+<div id="fullpage-container">
 	<div class="section">
 		<div class="container">
-			<div class="section__contents--sm">
-				국회 필리버스터
-			</div>
-			<div class="section__contents--lg">
-				192시간<br/>
-				53분<br/>
-				24초<span class="typed-cursor">|</span>
+			<div class="section__contents-box">
+				<div class="section__contents--sm">
+					국회 필리버스터
+				</div>
+				<div class="section__contents--lg">
+					192시간<br/>
+					53분<br/>
+					24초<span class="typed-cursor">|</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -44,22 +24,26 @@
 	<div class="section">
 		<div class="container">
 			<img src="{{ 'CDN_URL'|get_settings_variable }}/assets/microphone.svg" id="microphone-icon" />
-			<div class="section__contents--lg">
-				<span id="speaker-list">세계<span class="typed-cursor">|</span></span>
-			</div>
-			<div class="section__contents--lg">
-				기록
+			<div class="section__contents-box">
+				<div class="section__contents--lg">
+					<span id="speaker-list">세계<span class="typed-cursor">|</span></span>
+				</div>
+				<div class="section__contents--lg">
+					기록
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="section">
 		<div class="container">
-			<div class="section__contents--sm">
-				시민 필리버스터
-			</div>
-			<div class="section__contents--lg">
-				<span id="total-comments"></span>
+			<div class="section__contents-box">
+				<div class="section__contents--sm">
+					시민 필리버스터
+				</div>
+				<div class="section__contents--lg">
+					<span id="total-comments">&nbsp;</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -67,21 +51,29 @@
 	<div class="section">
 		<div class="container">
 			<span class="glyphicon glyphicon-bullhorn" aria-hidden="true" id="bullhorn-icon"></span>
-			<div class="section__contents--lg">
-				<span id="nickname-list"></span>
-			</div>
-			<div class="section__contents--lg">
-				기록
+			<div class="section__contents-box">
+				<div class="section__contents--lg">
+					<span id="nickname-list">&nbsp;</span>
+				</div>
+				<div class="section__contents--lg">
+					기록
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="section">
 		<div class="container">
-			<div class="section__phrase">
-				국회 연설은 끝났지만, 우리가 전하고자 했던 얘기는 끝나지 않았습니다.
-				<br/><br/>
-				침묵하지 않는 시민이 세상을 바꿉니다.
+			<div class="section__contents-box">
+				<div class="section__phrase">
+					국회 연설은 끝났지만, 
+					<div class="hidden-xs"></div>
+					우리가 전하고자 했던 
+					<div class="hidden-xs"></div>
+					얘기는 끝나지 않았습니다.
+					<br/><br/>
+					침묵하지 않는 시민을 응원합니다.
+				</div>
 			</div>
 		</div>
 	</div>
@@ -96,45 +88,6 @@
 	</div>
 	<br/>
 	<span class="glyphicon glyphicon-chevron-down footer__chevron" aria-hidden="true"></span>
-</div>
-
-<div class="dropup" id="social-media__share-group">
-	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-		공유
-  </button>
-  <ul class="dropdown-menu dropdown-menu-right">
-		<li>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://filibuster.me{{ request.path }}" target="_blank">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/facebook.svg" />
-				페이스북
-			</a>
-		</li>
-		<li>
-			<a href="https://twitter.com/intent/tweet?text=[가나다] 라마바 &url=http://filibuster.me{{ request.path }}" target="_blank">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/twitter.png" />
-				트위터
-			</a>
-		</li>
-		<li>
-			<a href="https://plus.google.com/share?url=http://filibuster.me{{ request.path }}" target="_blank">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/google_plus.svg" />
-				구글+
-			</a>
-		</li>
-		<li>
-			<a href="line://msg/text/[가나다] 라마바 http://filibuster.me{{ request.path }}" id="line-share">
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/line.svg" />
-				라인
-			</a>
-		</li>
-		<li>
-			<a href="javascript:;" id="kakaotalk-share">
-				<input type="hidden" id="kakaotalk-share__link-url" value="http://filibuster.me{{ request.path }}" />
-				<img src="{{ 'CDN_URL'|get_settings_variable }}/social-media-icon/kakaotalk.svg" />
-				카카오톡
-			</a>
-		</li>
-  </ul>
 </div>
 {% endblock %}
 
