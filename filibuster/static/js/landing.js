@@ -43,14 +43,18 @@ $(window).load(function() {
 				});
 			}
 			else if (anchorLink == '6') {
-        window.location.href = '/menu/';
+        window.location.href = '/menu/#main';
+        return false;
       }
 		},
 		
 		onLeave: function(index, nextIndex, direction){
 			var leavingSection = $(this);
       
-      if (nextIndex == 6) window.location.href = '/menu/';
+      if (nextIndex == 6) {
+        window.location.href = '/menu/#main';
+        return false;
+      }
     
 			clearTimeout(showNavigationMessage);
 			$('.landing-page__footer').animate({opacity: 0}, 700);
