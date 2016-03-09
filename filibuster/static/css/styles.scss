@@ -93,6 +93,15 @@ a, a:focus, a:hover, a:active, a:visited {
 		max-width: 1000px;
 		margin: 0 auto;
 		
+		.header__back-btn {
+			position: absolute;
+			top: 5px;
+			left: 10px;
+			font-size: 1.0em;
+			color: $gold-color;
+			cursor: pointer;
+		}
+		
 		.header__dropdown {
 			position: absolute;
 			top: -2px;

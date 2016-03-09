@@ -13,6 +13,11 @@ $(document).on('click', '#back-to-top', function(event) {
   $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
 
+// Back to previous page
+$(document).on('click', '.header__back-btn', function() {
+  history.go(-1);
+});
+
 $(window).load(function() {
   // Hide loading icon
   $('#loading-icon').addClass('hidden');
