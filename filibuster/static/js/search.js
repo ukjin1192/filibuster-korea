@@ -88,3 +88,8 @@ $(document).on('submit', '#search__form', function(event) {
   // Get first page of searched comments
   getComments(0);
 });
+
+$(window).load(function() {
+  // Set minimum height of search result box
+  $('.comment-list').css('min-height', $(window).height() - $('#main').outerHeight());
+});
