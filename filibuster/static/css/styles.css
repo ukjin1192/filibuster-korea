@@ -183,7 +183,7 @@ a, a:focus, a:hover, a:active, a:visited {
   max-width: 700px;
   margin: 0 auto; }
   .comment-list .comment {
-    padding: 20px 10px;
+    padding: 30px 10px 40px 10px;
     border-top: 1px solid white; }
     .comment-list .comment .comment__nickname {
       font-weight: 700;
@@ -194,12 +194,12 @@ a, a:focus, a:hover, a:active, a:visited {
       margin: 20px 0;
       line-height: 1.5em;
       white-space: pre-wrap;
-      font-weight: 500;
+      font-weight: 300;
       font-size: 1.2em;
       color: white;
       text-align: left; }
     .comment-list .comment .comment__additional-info {
-      font-weight: 500;
+      font-weight: 300;
       font-size: 1.0em;
       color: #E0E0E0;
       text-align: center; }
@@ -222,7 +222,6 @@ a, a:focus, a:hover, a:active, a:visited {
   #fullpage-container .section .section__phrase {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px 0;
     font-size: 2.0em;
     font-weight: 700;
     text-align: center; }

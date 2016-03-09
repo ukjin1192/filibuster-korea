@@ -265,7 +265,7 @@ a, a:focus, a:hover, a:active, a:visited {
 	margin: 0 auto;
 
 	.comment {
-		padding: 20px 10px; 
+		padding: 25px 10px 35px 10px; 
 		border-top: 1px solid white;
 		
 		.comment__nickname {
@@ -279,14 +279,14 @@ a, a:focus, a:hover, a:active, a:visited {
 			margin: 20px 0; 
 			line-height: 1.5em; 
 			white-space: pre-wrap;
-			font-weight: 500;
+			font-weight: 300;
 			font-size: 1.2em;
 			color: white;
 			text-align: left;
 		}
 		
 		.comment__additional-info {
-			font-weight: 500;
+			font-weight: 300;
 			font-size: 1.0em;
 			color: $grey-color;
 			text-align: center;
