@@ -12,8 +12,8 @@ config.read(ROOT_DIR + '/conf/sensitive/configuration.ini')
 
 PROJECT_NAME = config.get('django', 'project_name')
 
-
-def authenticate_aws():
+# Deploy server information
+if int(config.get('django', 'development_mode')) == 1:
     AWS_ACCESS_KEY_ID = config.get('aws', 'access_key_id')
     AWS_SECRET_ACCESS_KEY = config.get('aws', 'secret_access_key')
 
@@ -80,8 +80,6 @@ def update_staticfiles():
 
 
 def deploy(*command):
-    authenticate_aws() 
-
     with cd(ROOT_DIR):
         sudo("git pull origin master")
     
