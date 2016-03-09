@@ -483,6 +483,16 @@ a, a:focus, a:hover, a:active, a:visited {
 	padding: 10px;
 }
 
+.search__keyword {
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 0 10px 30px 10px;
+	font-weight: 500;
+	font-size: 1.0em;
+	color: $grey-color;
+	text-align: center;
+}
+
 .search__result {
 	min-height: 300px;
 
@@ -494,6 +504,7 @@ a, a:focus, a:hover, a:active, a:visited {
 		max-width: 700px;
 		margin: 0 auto;
 		padding: 10px;
+		border-top: 1px solid white;
 		font-weight: 500;
 		font-size: 1.5em;
 		color: white;
