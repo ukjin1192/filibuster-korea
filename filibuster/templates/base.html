@@ -69,7 +69,7 @@
   <script type="text/javascript" src="{% static 'js/googleAnalytics.js' %}"></script>
   {% endif %}
 </head>
-<body style="opacity: 0;">
+<body>
   {# Loading icon #}
   <div id="loading-icon"></div>
 
@@ -134,11 +134,13 @@
   </header>
 
   {# Container only for landing page which using fullpage.js #}
-  {% block fullpage_container %}{% endblock %}
+  <div id="fullpage-main" style="opacity: 0;">
+    {% block fullpage_container %}{% endblock %}
+  </div>
 
   {# Main container #}
   {% if request.path != '/' %}
-  <div id="main">
+  <div id="main" style="opacity: 0;">
     {% block container %}{% endblock %}
     
     {# Relatively positioned footer #}

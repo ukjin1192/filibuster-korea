@@ -23,7 +23,7 @@ $(window).load(function() {
   $('#loading-icon').addClass('hidden');
 
   // Ease effect when body DOM loads
-  $('body').animate({opacity: 1}, 700);
+  $('#main, #fullpage-main').animate({opacity: 1}, 700);
 
   // Attach fast-click to boost up touch reaction
   FastClick.attach(document.body);

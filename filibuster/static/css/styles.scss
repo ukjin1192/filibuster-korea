@@ -51,9 +51,6 @@ html, body {
 body {
 	background-color: $red-color;
 
-	// Ease effect when body DOM loads
-	opacity: 0;
-
 	// Disable double-tap-to-zoom in IE 10, 11 for fast-click
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
