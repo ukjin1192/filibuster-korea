@@ -87,6 +87,39 @@ a, a:focus, a:hover, a:active, a:visited {
 	color: $gold-color;
 	text-align: center; 
 	z-index: 10; 
+
+	.header__content {
+		position: relative;
+		max-width: 1000px;
+		margin: 0 auto;
+		
+		.header__dropdown {
+			position: absolute;
+			top: -2px;
+			right: 10px;
+			padding: 0;
+			
+			.dropdown-toggle {
+				padding: 3px 7px 0 7px; 
+				border: 2px solid $gold-color;
+				background-color: $dark-red-color;
+				font-size: 0.6em;
+				color: $gold-color;
+				
+				@media screen and (min-width: $screen-sm-min) {
+					font-size: 0.7em;
+				}
+			}
+			
+			.dropdown-menu {
+				background-color: $dark-red-color;
+				
+				a {
+					color: $gold-color;
+				}
+			}
+		}
+	}
 }
 
 /* ==============
