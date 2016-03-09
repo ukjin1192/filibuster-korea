@@ -55,9 +55,12 @@ a, a:focus, a:hover, a:active, a:visited {
     margin: 0 auto; }
     .header .header__content .header__back-btn {
       position: absolute;
-      top: 5px;
+      top: 4px;
       left: 10px;
-      font-size: 1.0em;
+      padding: 2px 3px 5px 5px;
+      border: 2px solid #D2AF6D;
+      border-radius: 4px;
+      font-size: 0.8em;
       color: #D2AF6D;
       cursor: pointer; }
     .header .header__content .header__dropdown {
@@ -74,6 +77,8 @@ a, a:focus, a:hover, a:active, a:visited {
         @media screen and (min-width: 768px) {
           .header .header__content .header__dropdown .dropdown-toggle {
             font-size: 0.7em; } }
+        .header .header__content .header__dropdown .dropdown-toggle .glyphicon {
+          font-weight: 700; }
       .header .header__content .header__dropdown .dropdown-menu {
         background-color: #4f191d; }
         .header .header__content .header__dropdown .dropdown-menu a {
