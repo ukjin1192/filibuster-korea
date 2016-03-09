@@ -208,8 +208,8 @@ a, a:focus, a:hover, a:active, a:visited {
   color: white; }
   #fullpage-container .section #microphone-icon {
     width: 23%;
-    max-width: 200px;
-    margin-bottom: 20px; }
+    max-width: 100px;
+    margin-bottom: 10px; }
   #fullpage-container .section #bullhorn-icon {
     margin-bottom: 20px;
     font-size: 4.0em;
@@ -225,6 +225,7 @@ a, a:focus, a:hover, a:active, a:visited {
       #fullpage-container .section .section__phrase {
         font-size: 3.2em; } }
   #fullpage-container .section .section__contents-box {
+    padding: 20px 0 30px 0;
     border-top: 5px solid #E0E0E0;
     border-bottom: 5px solid #E0E0E0; }
   #fullpage-container .section .section__contents--sm {
