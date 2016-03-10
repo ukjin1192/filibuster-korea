@@ -1,35 +1,17 @@
 {% load custom_filter %}
 
-{% if request.path == '/' %}
-<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
-<meta property="og:site_name" content="필리버스터 릴레이" />
+<meta property="og:title" content="필리버스터는 끝났지만, 나의 이야기는 끝나지 않았습니다" />
+<meta property="og:site_name" content="filibuster.me" />
 <meta property="og:url" content="http://filibuster.me{{ request.path }}" />
-<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
-<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
-<meta property="og:image:width" content="800" />
-<meta property="og:image:height" content="421" />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:description" content="시민 필리버스터 결산페이지 확인하기" />
+<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/index.jpg" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="210" />
+<meta property="og:image:type" content="image/jpg" />
 
-<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
-<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
-<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
+<meta property="twitter:meta_title" content="[filibuster.me] " />
+<meta property="twitter:description" content="필리버스터는 끝났지만, 나의 이야기는 끝나지 않았습니다" />
+<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/index.jpg" />
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image:height" content="800">
-<meta property="twitter:image:width" content="421">
-{% else %}
-<meta property="og:title" content="내가 쓰는 필리버스터 연설문" />
-<meta property="og:site_name" content="필리버스터 릴레이" />
-<meta property="og:url" content="http://filibuster.me{{ request.path }}" />
-<meta property="og:description" content="내가 쓰면 국회의원이 읽는다. 필리버스터 연설문 보러 가기" />
-<meta property="og:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
-<meta property="og:image:width" content="800" />
-<meta property="og:image:height" content="421" />
-<meta property="og:image:type" content="image/png" />
-
-<meta property="twitter:meta_title" content="[필리버스터 릴레이] " />
-<meta property="twitter:description" content="내가 쓰는 필리버스터 연설문" />
-<meta property="twitter:image" content="{{ 'CDN_URL'|get_settings_variable }}/share/share-index.png" />
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image:height" content="800">
-<meta property="twitter:image:width" content="421">
-{% endif %}
+<meta property="twitter:image:height" content="400">
+<meta property="twitter:image:width" content="210">
