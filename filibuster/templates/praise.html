@@ -9,14 +9,25 @@
 	주목과 찬사
 </div>
 
-<div style="max-width: 700px; margin: 0 auto; font-size: 1.5em; font-weight: 500; color: white; text-align: center; min-height: 500px; padding: 100px 10px;">
-	시민 필리버스터 사이트가 받은
-	주목과 찬사를 모아 기념하는 공간입니다.
-	빠른 시일 내에 준비하겠습니다.
-</div>
-{% endblock %}
+<div class="praise__page">
 
-{% block custom_js %}
-{% compress js %}
-{% endcompress %}
+	<div class="praise__summary">
+		필리버스터 시작 후 <u>10시간</u>만에 급히 만들어진 사이트에 <u>11일</u>동안 누적 <u>30만여명의 시민</u>들이 들어오셔서 <u>38,000여개의 소중한 글</u>들을 남겨주셨습니다. 페이스북, 카카오톡, 트위터에서 <u>3,000여건의 공유</u>가 이뤄졌고, <u>15,500여명</u>이 좋아요를 눌러서 공감을 해주셨습니다. 그 목소리가 국회까지 전해져 <u>7명의 국회의원</u>들이 본회의장에서 우리의 목소리를 언급하고 글을 낭독하기도 했습니다.
+	</div>
+
+	<a href="/records/">
+		<button type="button" class="btn btn-default btn-block btn-lg praise__records-link">
+			<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> 
+			국회의원들이 우리 글을 읽는 영상 보러가기
+		</button>
+	</a>
+
+	<div class="praise__news-title">
+		우리가 다뤄진 뉴스 기사들
+	</div>
+
+	<div class="praise__news-list">
+		<a href="#" target="_blank"></a>
+	</div>
+</div>
 {% endblock %}

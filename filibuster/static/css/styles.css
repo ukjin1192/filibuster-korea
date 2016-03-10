@@ -301,6 +301,41 @@ a, a:focus, a:hover, a:active, a:visited {
         color: white; }
 
 /* ============
+ * Praise page
+ * ============ */
+.praise__page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px; }
+  .praise__page .praise__summary {
+    padding-top: 20px;
+    line-height: 2.0em;
+    font-size: 1.2em;
+    color: white; }
+  .praise__page .praise__records-link {
+    margin: 40px 0;
+    border: none;
+    background-color: #4f191d;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: white; }
+  .praise__page .praise__news-title {
+    padding: 10px;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: white;
+    text-align: center; }
+  .praise__page .praise__news-list {
+    padding-bottom: 40px;
+    text-decoration: underline;
+    text-align: center; }
+    .praise__page .praise__news-list a {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.1em;
+      color: white; }
+
+/* ============
  * Records page
  * ============ */
 .records__tab-group {
