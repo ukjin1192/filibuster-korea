@@ -32,18 +32,22 @@ $(window).load(function() {
   moment.locale('ko');
 
   // Kakaotalk sharing
-  Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
-  Kakao.Link.createTalkLinkButton({
-    container: '#kakaotalk-share',
-    label: $('#kakaotalk-share__label').val(),
-    image: {
-      src: $('#kakaotalk-share__image-src').val(),
-      width: $('#kakaotalk-share__image-width').val(),
-      height: $('#kakaotalk-share__image-height').val()
-    },
-    webButton: {
-      text: $('#kakaotalk-share__btn-text').val(),
-      url: $('#kakaotalk-share__url').val()
-    }
-  });
+  try {
+    Kakao.init('8c5bcdda801470eb94f4db4b66f33d02');
+    Kakao.Link.createTalkLinkButton({
+      container: '#kakaotalk-share',
+      label: $('#kakaotalk-share__label').val(),
+      image: {
+        src: $('#kakaotalk-share__image-src').val(),
+        width: $('#kakaotalk-share__image-width').val(),
+        height: $('#kakaotalk-share__image-height').val()
+      },
+      webButton: {
+        text: $('#kakaotalk-share__btn-text').val(),
+        url: $('#kakaotalk-share__url').val()
+      }
+    });
+  } catch(err) {
+    console.log('Failed to load Kakaotalk SDK : ' + err);
+  } 
 });
