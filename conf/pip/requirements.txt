@@ -16,7 +16,7 @@ django-simple-captcha==0.5.1
 Pillow==3.1.1
 django-suit==0.2.16
 docutils==0.12
-ecdsa==0.13
+ecdsa==0.13.3
 futures==3.0.5
 gyp==0.1
 html5lib==0.999
